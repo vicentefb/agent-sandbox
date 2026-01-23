@@ -29,6 +29,9 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime"
+	"k8s.io/apimachinery/pkg/types"
+	clientgoscheme "k8s.io/client-go/kubernetes/scheme"
+	"k8s.io/client-go/rest"
 	"k8s.io/client-go/tools/record"
 	"k8s.io/kubectl/pkg/util/podutils"
 	ctrl "sigs.k8s.io/controller-runtime"
@@ -54,9 +57,10 @@ var ErrTemplateNotFound = errors.New("SandboxTemplate not found")
 // SandboxClaimReconciler reconciles a SandboxClaim object
 type SandboxClaimReconciler struct {
 	client.Client
-	Scheme   *runtime.Scheme
-	Recorder record.EventRecorder
-	Tracer   asmetrics.Instrumenter
+	Scheme     *runtime.Scheme
+	RESTConfig *rest.Config // Added for In-Place Resize (Crowbar)
+	Recorder   record.EventRecorder
+	Tracer     asmetrics.Instrumenter
 }
 
 //+kubebuilder:rbac:groups=extensions.agents.x-k8s.io,resources=sandboxclaims,verbs=get;list;watch;create;update;patch;delete
@@ -64,6 +68,7 @@ type SandboxClaimReconciler struct {
 //+kubebuilder:rbac:groups=agents.x-k8s.io,resources=sandboxes,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups=extensions.agents.x-k8s.io,resources=sandboxtemplates,verbs=get;list;watch
 //+kubebuilder:rbac:groups=core,resources=pods,verbs=get;list;watch;update;patch
+//+kubebuilder:rbac:groups="",resources=pods/resize,verbs=patch
 //+kubebuilder:rbac:groups=networking.k8s.io,resources=networkpolicies,verbs=get;list;watch;create;update;patch;delete
 //+kubebuilder:rbac:groups="",resources=events,verbs=create;patch
 
@@ -336,20 +341,15 @@ func (r *SandboxClaimReconciler) computeAndSetStatus(claim *extensionsv1alpha1.S
 }
 
 // tryAdoptPodFromPool attempts to find and adopt a pod from the warm pool
-func (r *SandboxClaimReconciler) tryAdoptPodFromPool(ctx context.Context, claim *extensionsv1alpha1.SandboxClaim, sandbox *v1alpha1.Sandbox) (*corev1.Pod, error) {
+func (r *SandboxClaimReconciler) tryAdoptPodFromPool(ctx context.Context, claim *extensionsv1alpha1.SandboxClaim, sandbox *v1alpha1.Sandbox, template *extensionsv1alpha1.SandboxTemplate) (*corev1.Pod, error) {
 	log := log.FromContext(ctx)
 
-	// List all pods with the podTemplateHashLabel matching the hash
+	// 1. List and Filter (Standard logic)
 	podList := &corev1.PodList{}
 	labelSelector := labels.SelectorFromSet(labels.Set{
 		sandboxTemplateRefHash: sandboxcontrollers.NameHash(claim.Spec.TemplateRef.Name),
 	})
-
-	if err := r.List(ctx, podList, &client.ListOptions{
-		LabelSelector: labelSelector,
-		Namespace:     claim.Namespace,
-	}); err != nil {
-		log.Error(err, "Failed to list pods from warm pool")
+	if err := r.List(ctx, podList, &client.ListOptions{LabelSelector: labelSelector, Namespace: claim.Namespace}); err != nil {
 		return nil, err
 	}
 
@@ -387,11 +387,63 @@ func (r *SandboxClaimReconciler) tryAdoptPodFromPool(ctx context.Context, claim 
 	pod := candidates[0]
 	log.Info("Adopting pod from warm pool", "pod", pod.Name)
 
-	// Remove the pool labels
+	// -----------------------------------------------------------
+	// PHASE 1: THE RESIZE (Using the Raw Client Helper)
+	// -----------------------------------------------------------
+	if state, ok := pod.Annotations["agents.x-k8s.io/power-state"]; ok && state == "Folded" {
+		log.Info("Soft Pause: Unfolding via RAW /resize (Crowbar Method)", "pod", pod.Name)
+
+		originalPod := pod.DeepCopy()
+
+		// Prepare the target state in memory
+		if len(pod.Spec.Containers) > 0 && len(template.Spec.PodTemplate.Spec.Containers) > 0 {
+			targetResources := template.Spec.PodTemplate.Spec.Containers[0].Resources
+			pod.Spec.Containers[0].Resources = targetResources
+
+			// Sync Limits == Requests (Autopilot requirement)
+			if pod.Spec.Containers[0].Resources.Limits == nil {
+				pod.Spec.Containers[0].Resources.Limits = make(corev1.ResourceList)
+			}
+			if cpuReq, ok := pod.Spec.Containers[0].Resources.Requests[corev1.ResourceCPU]; ok {
+				pod.Spec.Containers[0].Resources.Limits[corev1.ResourceCPU] = cpuReq
+			}
+			if memReq, ok := pod.Spec.Containers[0].Resources.Requests[corev1.ResourceMemory]; ok {
+				pod.Spec.Containers[0].Resources.Limits[corev1.ResourceMemory] = memReq
+			}
+		}
+
+		// Generate the Patch Data
+		patchGen := client.MergeFrom(originalPod)
+		patchData, err := patchGen.Data(pod)
+		if err != nil {
+			return nil, fmt.Errorf("failed to generate patch data: %w", err)
+		}
+
+		// Send it via the Side Door
+		if err := r.patchResizeRaw(ctx, pod, patchData); err != nil {
+			log.Error(err, "Failed to patch /resize endpoint", "pod", pod.Name)
+			return nil, err
+		}
+		log.Info("Successfully resized pod in-place", "pod", pod.Name)
+
+		// Update Annotation & Refetch
+		if err := r.Get(ctx, client.ObjectKeyFromObject(pod), pod); err != nil {
+			return nil, err
+		}
+		if pod.Annotations == nil {
+			pod.Annotations = make(map[string]string)
+		}
+		pod.Annotations["agents.x-k8s.io/power-state"] = "Unfolded"
+	}
+
+	// -----------------------------------------------------------
+	// PHASE 2: THE ADOPTION (Metadata Update)
+	// -----------------------------------------------------------
+	if pod.Labels == nil {
+		pod.Labels = make(map[string]string)
+	}
 	delete(pod.Labels, poolLabel)
 	delete(pod.Labels, sandboxTemplateRefHash)
-
-	// Remove existing owner references (from SandboxWarmPool)
 	pod.OwnerReferences = nil
 
 	nameHash := sandboxcontrollers.NameHash(claim.Name)
@@ -407,12 +459,40 @@ func (r *SandboxClaimReconciler) tryAdoptPodFromPool(ctx context.Context, claim 
 
 	// Update the pod
 	if err := r.Update(ctx, pod); err != nil {
-		log.Error(err, "Failed to update adopted pod")
+		log.Error(err, "Failed to update adopted pod metadata", "pod", pod.Name)
 		return nil, err
 	}
 
-	log.Info("Successfully adopted pod from warm pool", "pod", pod.Name, "sandbox", sandbox.Name)
+	log.Info("Successfully adopted pod", "pod", pod.Name, "sandbox", sandbox.Name)
 	return pod, nil
+}
+
+// patchResizeRaw bypasses controller-runtime and hits the /resize subresource directly
+func (r *SandboxClaimReconciler) patchResizeRaw(ctx context.Context, pod *corev1.Pod, patchData []byte) error {
+	config := rest.CopyConfig(r.RESTConfig)
+	config.GroupVersion = &corev1.SchemeGroupVersion
+	config.APIPath = "/api"
+	config.NegotiatedSerializer = clientgoscheme.Codecs.WithoutConversion()
+
+	restClient, err := rest.RESTClientFor(config)
+	if err != nil {
+		return fmt.Errorf("failed to create REST client: %w", err)
+	}
+
+	// Force the request to: PATCH /api/v1/namespaces/{ns}/pods/{name}/resize
+	result := restClient.Patch(types.StrategicMergePatchType).
+		Namespace(pod.Namespace).
+		Resource("pods").
+		Name(pod.Name).
+		SubResource("resize"). // <--- The most important line in the entire project
+		Body(patchData).
+		Do(ctx)
+
+	if err := result.Error(); err != nil {
+		return fmt.Errorf("raw patch to /resize failed: %w", err)
+	}
+
+	return nil
 }
 
 func (r *SandboxClaimReconciler) createSandbox(ctx context.Context, claim *extensionsv1alpha1.SandboxClaim, template *extensionsv1alpha1.SandboxTemplate) (*v1alpha1.Sandbox, error) {
@@ -462,7 +542,7 @@ func (r *SandboxClaimReconciler) createSandbox(ctx context.Context, claim *exten
 	}
 
 	// Before creating the sandbox, try to adopt a pod from the warm pool
-	adoptedPod, adoptErr := r.tryAdoptPodFromPool(ctx, claim, sandbox)
+	adoptedPod, adoptErr := r.tryAdoptPodFromPool(ctx, claim, sandbox, template)
 	if adoptErr != nil {
 		logger.Error(adoptErr, "Failed to adopt pod from warm pool")
 		return nil, adoptErr
@@ -539,6 +619,7 @@ func (r *SandboxClaimReconciler) getTemplate(ctx context.Context, claim *extensi
 
 // SetupWithManager sets up the controller with the Manager.
 func (r *SandboxClaimReconciler) SetupWithManager(mgr ctrl.Manager) error {
+	r.RESTConfig = mgr.GetConfig()
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&extensionsv1alpha1.SandboxClaim{}).
 		Owns(&sandboxv1alpha1.Sandbox{}).
