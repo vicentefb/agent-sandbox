@@ -238,6 +238,36 @@ func (r *SandboxWarmPoolReconciler) createPoolPod(ctx context.Context, warmPool 
 		podAnnotations[k] = v
 	}
 
+	// [NEW] DeepCopy the spec so we don't mutate the cache
+	podSpec := template.Spec.PodTemplate.Spec.DeepCopy()
+
+	// [NEW] Check if the user wants Soft Pause
+	if template.Spec.FoldedResources != nil {
+
+		// 1. Define the Resize Policy (CRITICAL: Prevents Cold Boot restarts)
+		resizePolicy := []corev1.ContainerResizePolicy{
+			{ResourceName: corev1.ResourceCPU, RestartPolicy: corev1.NotRequired},
+			{ResourceName: corev1.ResourceMemory, RestartPolicy: corev1.NotRequired},
+		}
+
+		// 2. Apply to containers
+		for i := range podSpec.Containers {
+			podSpec.Containers[i].ResizePolicy = resizePolicy
+
+			// 3. Set the resources to the FOLDED (Small) values
+			// We only fold container[0] for the PoC
+			if i == 0 {
+				podSpec.Containers[i].Resources = *template.Spec.FoldedResources
+			}
+		}
+
+		// 4. Add Annotation so the Claim controller knows this pod is sleeping
+		if podAnnotations == nil {
+			podAnnotations = make(map[string]string)
+		}
+		podAnnotations["agents.x-k8s.io/power-state"] = "Folded"
+	}
+
 	// Create the pod
 	pod := &corev1.Pod{
 		ObjectMeta: metav1.ObjectMeta{
@@ -246,7 +276,7 @@ func (r *SandboxWarmPoolReconciler) createPoolPod(ctx context.Context, warmPool 
 			Labels:       podLabels,
 			Annotations:  podAnnotations,
 		},
-		Spec: template.Spec.PodTemplate.Spec,
+		Spec: *podSpec,
 	}
 
 	// pod.Labels[podNameLabel] = sandboxcontrollers.NameHash(pod.Name)

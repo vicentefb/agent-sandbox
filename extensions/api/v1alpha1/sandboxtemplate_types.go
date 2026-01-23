@@ -15,6 +15,7 @@
 package v1alpha1
 
 import (
+	corev1 "k8s.io/api/core/v1"
 	networkingv1 "k8s.io/api/networking/v1"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	sandboxv1alpha1 "sigs.k8s.io/agent-sandbox/api/v1alpha1"
@@ -53,6 +54,11 @@ type SandboxTemplateSpec struct {
 	// to ensure a secure-by-default environment.
 	// +kubebuilder:validation:Required
 	PodTemplate sandboxv1alpha1.PodTemplate `json:"podTemplate" protobuf:"bytes,3,opt,name=podTemplate"`
+
+	// [NEW] FoldedResources defines the minimal resources for the "Soft Paused" state.
+	// If this is defined, WarmPools will create pods in this state.
+	// +optional
+	FoldedResources *corev1.ResourceRequirements `json:"foldedResources,omitempty"`
 
 	// NetworkPolicy defines the network policy to be applied to the sandboxes
 	// created from this template.
