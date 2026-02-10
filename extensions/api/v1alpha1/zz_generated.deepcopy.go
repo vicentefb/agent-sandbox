@@ -5,6 +5,7 @@
 package v1alpha1
 
 import (
+	corev1 "k8s.io/api/core/v1"
 	networkingv1 "k8s.io/api/networking/v1"
 	"k8s.io/apimachinery/pkg/apis/meta/v1"
 	runtime "k8s.io/apimachinery/pkg/runtime"
@@ -254,6 +255,11 @@ func (in *SandboxTemplateRef) DeepCopy() *SandboxTemplateRef {
 func (in *SandboxTemplateSpec) DeepCopyInto(out *SandboxTemplateSpec) {
 	*out = *in
 	in.PodTemplate.DeepCopyInto(&out.PodTemplate)
+	if in.FoldedResources != nil {
+		in, out := &in.FoldedResources, &out.FoldedResources
+		*out = new(corev1.ResourceRequirements)
+		(*in).DeepCopyInto(*out)
+	}
 	if in.NetworkPolicy != nil {
 		in, out := &in.NetworkPolicy, &out.NetworkPolicy
 		*out = new(NetworkPolicySpec)

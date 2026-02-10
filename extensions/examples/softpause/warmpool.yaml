@@ -1,0 +1,8 @@
+apiVersion: extensions.agents.x-k8s.io/v1alpha1
+kind: SandboxWarmPool
+metadata:
+  name: pool-1
+spec:
+  replicas: 15
+  sandboxTemplateRef:
+    name: autopilot-test-template

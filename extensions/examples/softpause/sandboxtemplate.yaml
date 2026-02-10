@@ -1,0 +1,42 @@
+apiVersion: extensions.agents.x-k8s.io/v1alpha1
+kind: SandboxTemplate
+metadata:
+  name: autopilot-test-template
+spec:
+  # 1. THE SLEEP PROFILE (Folded State)
+  # using GKE Autopilot minimums (250m/512Mi) to avoid admission warnings
+  foldedResources:
+    requests:
+      cpu: "250m"
+      memory: "512Mi"
+    limits:
+      cpu: "250m"
+      memory: "512Mi"
+
+  # 2. THE ACTIVE PROFILE (Unfolded State)
+  # This is what it resizes TO when you Claim it
+  podTemplate:
+    metadata:
+      labels:
+        app: long-running-workload
+        pool-group: group-a 
+    spec:
+      topologySpreadConstraints:
+      - maxSkew: 1
+        topologyKey: kubernetes.io/hostname
+        whenUnsatisfiable: ScheduleAnyway
+        labelSelector:
+          matchLabels:
+            app: long-running-workload
+            pool-group: group-a
+      containers:
+      - name: sandbox # Ensure this matches your controller's expected container name
+        image: ubuntu:latest
+        command: ["/bin/sh", "-c", "sleep infinity"]
+        resources:
+          requests:
+            cpu: "1"      # High CPU to force resize (Unfolded)
+            memory: "2Gi"
+          limits:
+            cpu: "1"      # Limits == Requests (Critical for Autopilot)
+            memory: "2Gi"
