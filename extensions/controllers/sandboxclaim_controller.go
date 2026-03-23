@@ -252,8 +252,31 @@ func (r *SandboxClaimReconciler) updateStatus(ctx context.Context, oldStatus *ex
 		return nil
 	}
 
-	if err := r.Status().Update(ctx, claim); err != nil {
-		log.Error(err, "Failed to update sandboxclaim status")
+	// SSA Patch with ForceOwnership is the correct way to update status in a controller,
+	// as it avoids conflicts and ensures we don't accidentally overwrite changes made by other actors.
+	skeleton := &extensionsv1alpha1.SandboxClaim{
+		TypeMeta: metav1.TypeMeta{
+			APIVersion: "extensions.agents.x-k8s.io/v1alpha1",
+			Kind:       "SandboxClaim",
+		},
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      claim.Name,
+			Namespace: claim.Namespace,
+		},
+		Status: claim.Status, // Asserting our declarative intent for the status block
+	}
+
+	// Apply the patch using the clean skeleton
+	err := r.Status().Patch(
+		ctx,
+		skeleton,
+		client.Apply,
+		client.FieldOwner("sandboxclaim-controller"),
+		client.ForceOwnership,
+	)
+
+	if err != nil {
+		log.Error(err, "Failed to apply sandboxclaim status via proper SSA")
 		return err
 	}
 

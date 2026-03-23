@@ -44,6 +44,7 @@ import (
 
 const (
 	sandboxLabel                = "agents.x-k8s.io/sandbox-name-hash"
+	warmPoolSandboxLabel        = "agents.x-k8s.io/warm-pool-sandbox"
 	SandboxPodNameAnnotation    = "agents.x-k8s.io/pod-name"
 	sandboxControllerFieldOwner = "sandbox-controller"
 )
@@ -75,13 +76,6 @@ type SandboxReconciler struct {
 
 // Reconcile is part of the main kubernetes reconciliation loop which aims to
 // move the current state of the cluster closer to the desired state.
-// TODO(user): Modify the Reconcile function to compare the state specified by
-// the Sandbox object against the actual cluster state, and then
-// perform operations to make the cluster state reflect the state specified by
-// the user.
-//
-// For more details, check Reconcile and its Result here:
-// - https://pkg.go.dev/sigs.k8s.io/controller-runtime@v0.14.1/pkg/reconcile
 func (r *SandboxReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ctrl.Result, error) {
 	log := log.FromContext(ctx)
 
@@ -119,14 +113,28 @@ func (r *SandboxReconciler) Reconcile(ctx context.Context, req ctrl.Request) (ct
 
 	// Initialize trace ID for active resources missing an ID (inline, no re-reconcile)
 	tc := r.Tracer.GetTraceContext(ctx)
-	if tc != "" && (sandbox.Annotations == nil || sandbox.Annotations[asmetrics.TraceContextAnnotation] == "") {
-		patch := client.MergeFrom(sandbox.DeepCopy())
-		if sandbox.Annotations == nil {
-			sandbox.Annotations = make(map[string]string)
-		}
-		sandbox.Annotations[asmetrics.TraceContextAnnotation] = tc
 
-		if err := r.Patch(ctx, sandbox, patch); err != nil {
+	// Do not inject trace context into Warm Pool sandboxes. The Claim Controller will do this upon adoption.
+	// This prevents a massive cache-invalidation race condition during burst scaling.
+	_, isWarmPool := sandbox.Labels[warmPoolSandboxLabel]
+
+	if !isWarmPool && tc != "" && (sandbox.Annotations == nil || sandbox.Annotations[asmetrics.TraceContextAnnotation] == "") {
+
+		skeleton := &sandboxv1alpha1.Sandbox{
+			TypeMeta: metav1.TypeMeta{
+				APIVersion: "agents.x-k8s.io/v1alpha1",
+				Kind:       "Sandbox",
+			},
+			ObjectMeta: metav1.ObjectMeta{
+				Name:      sandbox.Name,
+				Namespace: sandbox.Namespace,
+				Annotations: map[string]string{
+					asmetrics.TraceContextAnnotation: tc,
+				},
+			},
+		}
+
+		if err := r.Patch(ctx, skeleton, client.Apply, client.FieldOwner(sandboxControllerFieldOwner), client.ForceOwnership); err != nil {
 			return ctrl.Result{}, err
 		}
 	}
@@ -259,8 +267,30 @@ func (r *SandboxReconciler) updateStatus(ctx context.Context, oldStatus *sandbox
 		return nil
 	}
 
-	if err := r.Status().Update(ctx, sandbox); err != nil {
-		log.Error(err, "Failed to update sandbox status")
+	// SSA Patch
+	skeleton := &sandboxv1alpha1.Sandbox{
+		TypeMeta: metav1.TypeMeta{
+			APIVersion: "agents.x-k8s.io/v1alpha1",
+			Kind:       "Sandbox",
+		},
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      sandbox.Name,
+			Namespace: sandbox.Namespace,
+		},
+		Status: sandbox.Status, // Asserting our declarative intent for the status block
+	}
+
+	// Apply the patch using the clean skeleton and the existing field owner constant
+	err := r.Status().Patch(
+		ctx,
+		skeleton,
+		client.Apply,
+		client.FieldOwner(sandboxControllerFieldOwner),
+		client.ForceOwnership,
+	)
+
+	if err != nil {
+		log.Error(err, "Failed to apply sandbox status via proper SSA")
 		return err
 	}
 
