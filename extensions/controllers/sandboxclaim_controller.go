@@ -19,6 +19,8 @@ import (
 	"errors"
 	"fmt"
 	"sort"
+	"strings"
+	"sync"
 	"time"
 
 	corev1 "k8s.io/api/core/v1"
@@ -28,21 +30,23 @@ import (
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/runtime"
+	toolscache "k8s.io/client-go/tools/cache"
 	"k8s.io/client-go/tools/record"
+	v1alpha1 "sigs.k8s.io/agent-sandbox/api/v1alpha1"
+	sandboxcontrollers "sigs.k8s.io/agent-sandbox/controllers"
+	extensionsv1alpha1 "sigs.k8s.io/agent-sandbox/extensions/api/v1alpha1"
+	asmetrics "sigs.k8s.io/agent-sandbox/internal/metrics"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller"
 	"sigs.k8s.io/controller-runtime/pkg/controller/controllerutil"
 	"sigs.k8s.io/controller-runtime/pkg/log"
-
-	v1alpha1 "sigs.k8s.io/agent-sandbox/api/v1alpha1"
-	sandboxcontrollers "sigs.k8s.io/agent-sandbox/controllers"
-	extensionsv1alpha1 "sigs.k8s.io/agent-sandbox/extensions/api/v1alpha1"
-	asmetrics "sigs.k8s.io/agent-sandbox/internal/metrics"
 )
 
 // ErrTemplateNotFound is a sentinel error indicating a SandboxTemplate was not found.
 var ErrTemplateNotFound = errors.New("SandboxTemplate not found")
+
+const sandboxTemplateHashIndex = "templateHash"
 
 // SandboxClaimReconciler reconciles a SandboxClaim object
 type SandboxClaimReconciler struct {
@@ -51,6 +55,8 @@ type SandboxClaimReconciler struct {
 	Recorder                record.EventRecorder
 	Tracer                  asmetrics.Instrumenter
 	MaxConcurrentReconciles int
+	SandboxIndexer          toolscache.Indexer
+	inFlightAdoptions       sync.Map
 }
 
 //+kubebuilder:rbac:groups=extensions.agents.x-k8s.io,resources=sandboxclaims,verbs=get;list;watch;create;update;patch;delete
@@ -373,7 +379,17 @@ func (r *SandboxClaimReconciler) adoptSandboxFromCandidates(ctx context.Context,
 	// Iterate through the entire list starting from the hashed offset.
 	for i := 0; i < n; i++ {
 		currIndex := (startIndex + i) % n
-		adopted := candidates[currIndex]
+		candidate := candidates[currIndex]
+
+		// --- THE IN-FLIGHT LOCK ---
+		// Try to claim this Sandbox UID in local RAM first.
+		// If another worker already put it in the map, move on instantly!
+		if _, alreadyClaimed := r.inFlightAdoptions.LoadOrStore(candidate.UID, true); alreadyClaimed {
+			continue
+		}
+
+		// We got the local lock! Now we safely DeepCopy.
+		adopted := candidate.DeepCopy()
 
 		// Extract pool name from owner reference before clearing
 		poolName := "none"
@@ -390,6 +406,7 @@ func (r *SandboxClaimReconciler) adoptSandboxFromCandidates(ctx context.Context,
 		// Transfer ownership from SandboxWarmPool to SandboxClaim
 		adopted.OwnerReferences = nil
 		if err := controllerutil.SetControllerReference(claim, adopted, r.Scheme); err != nil {
+			r.inFlightAdoptions.Delete(candidate.UID) // ALWAYS release the lock on an error
 			return nil, fmt.Errorf("failed to set controller reference on adopted sandbox: %w", err)
 		}
 
@@ -407,16 +424,20 @@ func (r *SandboxClaimReconciler) adoptSandboxFromCandidates(ctx context.Context,
 		}
 		adopted.Spec.PodTemplate.ObjectMeta.Labels[extensionsv1alpha1.SandboxIDLabel] = string(claim.UID)
 
-		// Update uses optimistic concurrency (resourceVersion) so concurrent
-		// claims racing to adopt the same sandbox will conflict and retry.
+		// Send the Update to the API Server
 		if err := r.Update(ctx, adopted); err != nil {
+			r.inFlightAdoptions.Delete(candidate.UID) // Release the lock on network failure!
 			if k8errors.IsConflict(err) || k8errors.IsNotFound(err) {
-				// Another worker adopted this sandbox while we were processing; try next candidate.
+				// If we somehow still hit a conflict, try the next candidate
 				continue
 			}
 			log.Error(err, "Failed to update adopted sandbox")
 			return nil, err
 		}
+
+		// We successfully adopted it! We intentionally DO NOT release the lock here.
+		// We leave it in the map so other workers don't try to grab it while we
+		// wait for the API Server to update our local read-only cache.
 
 		log.Info("Successfully adopted sandbox from warm pool", "sandbox", adopted.Name, "claim", claim.Name)
 
@@ -570,39 +591,43 @@ func (r *SandboxClaimReconciler) getOrCreateSandbox(ctx context.Context, claim *
 		return sandbox, nil
 	}
 
-	// Single List: ownership guard + adoption candidate scan.
-	// This queries the informer cache (not the API server), so it's fast.
-	allSandboxes := &v1alpha1.SandboxList{}
-	if err := r.List(ctx, allSandboxes, client.InNamespace(claim.Namespace)); err != nil {
-		return nil, fmt.Errorf("failed to list sandboxes: %w", err)
+	// --- THE ZERO-COPY AMPUTATION ---
+	// Instead of r.List(), we query the raw Indexer. This allocates 0 bytes.
+	templateHash := sandboxcontrollers.NameHash(claim.Spec.TemplateRef.Name)
+
+	rawObjects, err := r.SandboxIndexer.ByIndex(sandboxTemplateHashIndex, templateHash)
+	if err != nil {
+		return nil, fmt.Errorf("failed to get sandboxes from indexer: %w", err)
 	}
 
-	templateHash := sandboxcontrollers.NameHash(claim.Spec.TemplateRef.Name)
 	var adoptionCandidates []*v1alpha1.Sandbox
 
-	for i := range allSandboxes.Items {
-		sb := &allSandboxes.Items[i]
+	for _, obj := range rawObjects {
+		sb := obj.(*v1alpha1.Sandbox) // Raw pointer! Do not mutate this directly!
+
+		// The indexer is cross-namespace by default, so we filter manually
+		if sb.Namespace != claim.Namespace {
+			continue
+		}
 		if !sb.DeletionTimestamp.IsZero() {
 			continue
 		}
 
-		// Ownership guard: if this claim already owns a sandbox, return it
+		// Ownership guard: if this claim already owns a sandbox, return it safely
 		if metav1.IsControlledBy(sb, claim) {
 			logger.Info("found existing owned sandbox", "name", sb.Name)
-			return sb, nil
+			return sb.DeepCopy(), nil // MUST DeepCopy before returning to safely mutate later
 		}
 
 		// Collect adoption candidates from warm pool
 		if _, ok := sb.Labels[warmPoolSandboxLabel]; !ok {
 			continue
 		}
-		if sb.Labels[sandboxTemplateRefHash] != templateHash {
-			continue
-		}
 		controllerRef := metav1.GetControllerOf(sb)
 		if controllerRef != nil && controllerRef.Kind != "SandboxWarmPool" {
 			continue
 		}
+
 		adoptionCandidates = append(adoptionCandidates, sb)
 	}
 
@@ -641,6 +666,54 @@ func (r *SandboxClaimReconciler) getTemplate(ctx context.Context, claim *extensi
 // SetupWithManager sets up the controller with the Manager.
 func (r *SandboxClaimReconciler) SetupWithManager(mgr ctrl.Manager, concurrentWorkers int) error {
 	r.MaxConcurrentReconciles = concurrentWorkers
+
+	// Extract the Informer Interface
+	informer, err := mgr.GetCache().GetInformer(context.Background(), &v1alpha1.Sandbox{})
+	if err != nil {
+		return err
+	}
+
+	// Unmask the interface to access the raw client-go methods
+	sharedInformer, ok := informer.(toolscache.SharedIndexInformer)
+	if !ok {
+		return fmt.Errorf("failed to cast informer to client-go SharedIndexInformer")
+	}
+
+	// Add the custom index directly to the raw client-go Informer
+	err = sharedInformer.AddIndexers(toolscache.Indexers{
+		sandboxTemplateHashIndex: func(obj interface{}) ([]string, error) {
+			sandbox, ok := obj.(*v1alpha1.Sandbox)
+			if !ok {
+				return nil, nil
+			}
+			if hash, exists := sandbox.Labels["agents.x-k8s.io/sandbox-template-ref-hash"]; exists {
+				return []string{hash}, nil
+			}
+			return nil, nil
+		},
+	})
+
+	// Safely catch the conflict using strings.Contains
+	if err != nil && !strings.Contains(err.Error(), "indexer conflict") {
+		return fmt.Errorf("failed to add raw indexer: %w", err)
+	}
+
+	// Safely attach the zero-copy indexer to our controller struct
+	r.SandboxIndexer = sharedInformer.GetIndexer()
+
+	// Cache syncs take milliseconds, so a 5-minute sweep is perfectly safe.
+	go func() {
+		ticker := time.NewTicker(5 * time.Minute)
+		defer ticker.Stop()
+		for range ticker.C {
+			// Range over and delete to be safe across all Go versions
+			r.inFlightAdoptions.Range(func(key, value any) bool {
+				r.inFlightAdoptions.Delete(key)
+				return true
+			})
+		}
+	}()
+
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&extensionsv1alpha1.SandboxClaim{}).
 		Owns(&v1alpha1.Sandbox{}).

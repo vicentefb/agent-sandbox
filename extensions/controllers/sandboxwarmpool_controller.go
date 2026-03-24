@@ -19,6 +19,7 @@ import (
 	"errors"
 	"fmt"
 	"sort"
+	"strings"
 	"time"
 
 	corev1 "k8s.io/api/core/v1"
@@ -27,6 +28,7 @@ import (
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
 	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime"
+	toolscache "k8s.io/client-go/tools/cache"
 	ctrl "sigs.k8s.io/controller-runtime"
 	"sigs.k8s.io/controller-runtime/pkg/client"
 	"sigs.k8s.io/controller-runtime/pkg/controller"
@@ -34,6 +36,7 @@ import (
 	"sigs.k8s.io/controller-runtime/pkg/log"
 
 	sandboxv1alpha1 "sigs.k8s.io/agent-sandbox/api/v1alpha1"
+	v1alpha1 "sigs.k8s.io/agent-sandbox/api/v1alpha1"
 	sandboxcontrollers "sigs.k8s.io/agent-sandbox/controllers"
 	extensionsv1alpha1 "sigs.k8s.io/agent-sandbox/extensions/api/v1alpha1"
 )
@@ -46,7 +49,8 @@ const (
 // SandboxWarmPoolReconciler reconciles a SandboxWarmPool object
 type SandboxWarmPoolReconciler struct {
 	client.Client
-	Scheme *runtime.Scheme
+	Scheme          *runtime.Scheme
+	WarmpoolIndexer toolscache.Indexer
 }
 
 //+kubebuilder:rbac:groups=extensions.agents.x-k8s.io,resources=sandboxwarmpools,verbs=get;list;watch;create;update;patch;delete
@@ -100,61 +104,64 @@ func (r *SandboxWarmPoolReconciler) reconcilePool(ctx context.Context, warmPool 
 	// Compute hash of the warm pool name for the pool label
 	poolNameHash := sandboxcontrollers.NameHash(warmPool.Name)
 
-	// List all Sandbox CRs with the warm pool label
-	sandboxList := &sandboxv1alpha1.SandboxList{}
+	// We still need this string to update the WarmPool status later
 	labelSelector := labels.SelectorFromSet(labels.Set{
 		warmPoolSandboxLabel: poolNameHash,
 	})
 
-	if err := r.List(ctx, sandboxList, &client.ListOptions{
-		LabelSelector: labelSelector,
-		Namespace:     warmPool.Namespace,
-	}); err != nil {
-		log.Error(err, "Failed to list sandboxes")
+	// --- CHANGE 1: Use a slice of POINTERS ---
+	var activeSandboxes []*sandboxv1alpha1.Sandbox
+	var allErrors error
+
+	templateHash := sandboxcontrollers.NameHash(warmPool.Spec.TemplateRef.Name)
+	rawObjects, err := r.WarmpoolIndexer.ByIndex(sandboxTemplateHashIndex, templateHash)
+	if err != nil {
+		log.Error(err, "Failed to get sandboxes from indexer")
 		return err
 	}
 
-	// Filter sandboxes by ownership
-	var activeSandboxes []sandboxv1alpha1.Sandbox
-	var allErrors error
+	for _, obj := range rawObjects {
+		rawSb := obj.(*v1alpha1.Sandbox) // Raw pointer!
 
-	for _, sb := range sandboxList.Items {
-		if !sb.DeletionTimestamp.IsZero() {
+		if rawSb.Namespace != warmPool.Namespace {
+			continue
+		}
+		if !rawSb.DeletionTimestamp.IsZero() {
+			continue
+		}
+		if rawSb.Labels[warmPoolSandboxLabel] != poolNameHash {
 			continue
 		}
 
-		controllerRef := metav1.GetControllerOf(&sb)
+		controllerRef := metav1.GetControllerOf(rawSb)
 
 		if controllerRef == nil {
-			// Orphaned sandbox - adopt it
-			log.Info("Adopting orphaned sandbox", "sandbox", sb.Name)
-			if err := r.adoptSandbox(ctx, warmPool, &sb); err != nil {
-				log.Error(err, "Failed to adopt sandbox", "sandbox", sb.Name)
+			// Orphaned sandbox - we MUST mutate to adopt, so DeepCopy here!
+			log.Info("Adopting orphaned sandbox", "sandbox", rawSb.Name)
+			sbToAdopt := rawSb.DeepCopy()
+			if err := r.adoptSandbox(ctx, warmPool, sbToAdopt); err != nil {
+				log.Error(err, "Failed to adopt sandbox", "sandbox", rawSb.Name)
 				allErrors = errors.Join(allErrors, err)
 				continue
 			}
-			activeSandboxes = append(activeSandboxes, sb)
+			activeSandboxes = append(activeSandboxes, sbToAdopt)
 		} else if controllerRef.UID == warmPool.UID {
-			activeSandboxes = append(activeSandboxes, sb)
-		} else {
-			log.Info("Ignoring sandbox with different controller",
-				"sandbox", sb.Name,
-				"controller", controllerRef.Name,
-				"controllerKind", controllerRef.Kind)
+			// Already owned - append the RAW POINTER! 0 bytes allocated.
+			activeSandboxes = append(activeSandboxes, rawSb)
 		}
 	}
 
 	const warmPoolReadinessGracePeriod = 5 * time.Minute
-
 	now := time.Now()
-	var healthySandboxes []sandboxv1alpha1.Sandbox
+	var healthySandboxes []*sandboxv1alpha1.Sandbox
+
 	for _, sb := range activeSandboxes {
-		if !isSandboxReady(&sb) && !sb.CreationTimestamp.IsZero() && now.Sub(sb.CreationTimestamp.Time) > warmPoolReadinessGracePeriod {
-			log.Info("Deleting stuck warm pool sandbox",
-				"sandbox", sb.Name,
-				"age", now.Sub(sb.CreationTimestamp.Time).Round(time.Second))
-			if err := r.Delete(ctx, &sb); err != nil {
-				log.Error(err, "Failed to delete stuck sandbox", "sandbox", sb.Name)
+		if !isSandboxReady(sb) && !sb.CreationTimestamp.IsZero() && now.Sub(sb.CreationTimestamp.Time) > warmPoolReadinessGracePeriod {
+			// Delete stuck sandbox using a skeleton to protect cache pointer
+			deleteSkeleton := &sandboxv1alpha1.Sandbox{
+				ObjectMeta: metav1.ObjectMeta{Name: sb.Name, Namespace: sb.Namespace},
+			}
+			if err := r.Delete(ctx, deleteSkeleton); err != nil {
 				allErrors = errors.Join(allErrors, err)
 			}
 			continue
@@ -166,57 +173,43 @@ func (r *SandboxWarmPoolReconciler) reconcilePool(ctx context.Context, warmPool 
 	desiredReplicas := warmPool.Spec.Replicas
 	currentReplicas := int32(len(activeSandboxes))
 
-	log.Info("Pool status",
-		"desired", desiredReplicas,
-		"current", currentReplicas,
-		"poolName", warmPool.Name,
-		"poolNameHash", poolNameHash)
-
 	warmPool.Status.Replicas = currentReplicas
 	warmPool.Status.Selector = labelSelector.String()
 
-	// Calculate ready replicas by checking Sandbox Ready condition
+	// Calculate ready replicas
 	readyReplicas := int32(0)
 	for i := range activeSandboxes {
-		if isSandboxReady(&activeSandboxes[i]) {
+		if isSandboxReady(activeSandboxes[i]) {
 			readyReplicas++
 		}
 	}
 	warmPool.Status.ReadyReplicas = readyReplicas
 
-	// Create new sandboxes if we need more
 	if currentReplicas < desiredReplicas {
-		sandboxesToCreate := desiredReplicas - currentReplicas
-		log.Info("Creating new pool sandboxes", "count", sandboxesToCreate)
-
-		for i := int32(0); i < sandboxesToCreate; i++ {
+		for i := int32(0); i < desiredReplicas-currentReplicas; i++ {
 			if err := r.createPoolSandbox(ctx, warmPool, poolNameHash); err != nil {
-				log.Error(err, "Failed to create pool sandbox")
 				allErrors = errors.Join(allErrors, err)
 			}
 		}
 	}
 
-	// Delete excess sandboxes if we have too many
 	if currentReplicas > desiredReplicas {
-		sandboxesToDelete := currentReplicas - desiredReplicas
-		log.Info("Deleting excess sandboxes", "count", sandboxesToDelete)
-
-		// Prioritize deleting unready sandboxes before ready ones,
-		// then newest first within each group.
+		// Sort using pointers
 		sort.Slice(activeSandboxes, func(i, j int) bool {
-			iReady := isSandboxReady(&activeSandboxes[i])
-			jReady := isSandboxReady(&activeSandboxes[j])
+			iReady := isSandboxReady(activeSandboxes[i])
+			jReady := isSandboxReady(activeSandboxes[j])
 			if iReady != jReady {
-				return !iReady // unready first
+				return !iReady
 			}
 			return activeSandboxes[i].CreationTimestamp.After(activeSandboxes[j].CreationTimestamp.Time)
 		})
 
-		for i := int32(0); i < sandboxesToDelete && i < int32(len(activeSandboxes)); i++ {
-			sb := &activeSandboxes[i]
-			if err := r.Delete(ctx, sb); err != nil {
-				log.Error(err, "Failed to delete sandbox", "sandbox", sb.Name)
+		for i := int32(0); i < currentReplicas-desiredReplicas && i < int32(len(activeSandboxes)); i++ {
+			// Delete excess using skeleton
+			deleteSkeleton := &sandboxv1alpha1.Sandbox{
+				ObjectMeta: metav1.ObjectMeta{Name: activeSandboxes[i].Name, Namespace: activeSandboxes[i].Namespace},
+			}
+			if err := r.Delete(ctx, deleteSkeleton); err != nil {
 				allErrors = errors.Join(allErrors, err)
 			}
 		}
@@ -366,9 +359,44 @@ func (r *SandboxWarmPoolReconciler) getTemplate(ctx context.Context, warmPool *e
 
 // SetupWithManager sets up the controller with the Manager
 func (r *SandboxWarmPoolReconciler) SetupWithManager(mgr ctrl.Manager, concurrentWorkers int) error {
+
+	// Extract the Informer Interface
+	informer, err := mgr.GetCache().GetInformer(context.Background(), &v1alpha1.Sandbox{})
+	if err != nil {
+		return err
+	}
+
+	// Unmask the interface to access the raw client-go methods
+	sharedInformer, ok := informer.(toolscache.SharedIndexInformer)
+	if !ok {
+		return fmt.Errorf("failed to cast informer to client-go SharedIndexInformer")
+	}
+
+	// Add the custom index directly to the raw client-go Informer
+	err = sharedInformer.AddIndexers(toolscache.Indexers{
+		sandboxTemplateHashIndex: func(obj interface{}) ([]string, error) {
+			sandbox, ok := obj.(*v1alpha1.Sandbox)
+			if !ok {
+				return nil, nil
+			}
+			if hash, exists := sandbox.Labels["agents.x-k8s.io/sandbox-template-ref-hash"]; exists {
+				return []string{hash}, nil
+			}
+			return nil, nil
+		},
+	})
+
+	// Safely catch the conflict using strings.Contains
+	if err != nil && !strings.Contains(err.Error(), "indexer conflict") {
+		return fmt.Errorf("failed to add raw indexer: %w", err)
+	}
+
+	// Safely attach the zero-copy indexer to our controller struct
+	r.WarmpoolIndexer = sharedInformer.GetIndexer()
+
 	return ctrl.NewControllerManagedBy(mgr).
 		For(&extensionsv1alpha1.SandboxWarmPool{}).
-		Owns(&sandboxv1alpha1.Sandbox{}).
+		Owns(&v1alpha1.Sandbox{}).
 		WithOptions(controller.Options{MaxConcurrentReconciles: concurrentWorkers}).
 		Complete(r)
 }
