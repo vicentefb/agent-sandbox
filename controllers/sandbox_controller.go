@@ -26,7 +26,6 @@ import (
 	k8serrors "k8s.io/apimachinery/pkg/api/errors"
 	"k8s.io/apimachinery/pkg/api/meta"
 	metav1 "k8s.io/apimachinery/pkg/apis/meta/v1"
-	"k8s.io/apimachinery/pkg/labels"
 	"k8s.io/apimachinery/pkg/runtime"
 	"k8s.io/apimachinery/pkg/types"
 	utilruntime "k8s.io/apimachinery/pkg/util/runtime"
@@ -258,12 +257,37 @@ func (r *SandboxReconciler) updateStatus(ctx context.Context, oldStatus *sandbox
 		return nil
 	}
 
-	if err := r.Status().Update(ctx, sandbox); err != nil {
-		log.Error(err, "Failed to update sandbox status")
+	// --- SERVER-SIDE APPLY (SSA) BYPASS ---
+	// Construct a microscopic payload containing ONLY the identity and the new Status.
+	// SSA completely ignores ResourceVersion and relies on Field Management.
+	patch := &sandboxv1alpha1.Sandbox{
+		TypeMeta: metav1.TypeMeta{
+			APIVersion: "agents.x-k8s.io/v1alpha1", // Ensure this matches your actual API Group/Version
+			Kind:       "Sandbox",
+		},
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      sandbox.Name,
+			Namespace: sandbox.Namespace,
+		},
+		Status: sandbox.Status,
+	}
+
+	// Apply the patch.
+	// ForceOwnership guarantees that even if another controller accidentally
+	// touched the status, we rip ownership back and overwrite it instantly.
+	err := r.Status().Patch(
+		ctx,
+		patch,
+		client.Apply,
+		client.FieldOwner(sandboxControllerFieldOwner),
+		client.ForceOwnership,
+	)
+
+	if err != nil {
+		log.Error(err, "Failed to apply sandbox status via SSA")
 		return err
 	}
 
-	// Surface error
 	return nil
 }
 
@@ -340,23 +364,9 @@ func (r *SandboxReconciler) reconcilePod(ctx context.Context, sandbox *sandboxv1
 	ctx, end := r.Tracer.StartSpan(ctx, nil, "reconcilePod", nil)
 	defer end()
 
-	// List all pods with the pool label matching the warm pool name hash
-	// TODO: find a better way to make sure one sandbox has at most one pod
-	podList := &corev1.PodList{}
-	labelSelector := labels.SelectorFromSet(labels.Set{
-		sandboxLabel: nameHash,
-	})
-
-	if err := r.List(ctx, podList, &client.ListOptions{
-		LabelSelector: labelSelector,
-		Namespace:     sandbox.Namespace,
-	}); err != nil {
-		log.Error(err, "Failed to list pods")
-	}
-
-	if len(podList.Items) > 1 {
-		log.Info("Multiple pods found for sandbox, this should not happen", "Sandbox", sandbox.Name, "PodCount", len(podList.Items))
-	}
+	// We no longer do an r.List() here. We rely entirely on the deterministic
+	// Pod name or the tracking annotation, changing an O(N) memory-heavy scan
+	// into an O(1) instant cache hit.
 
 	// Determine the pod name to look up
 	podName := sandbox.Name
