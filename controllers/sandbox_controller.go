@@ -257,12 +257,19 @@ func (r *SandboxReconciler) updateStatus(ctx context.Context, oldStatus *sandbox
 		return nil
 	}
 
-	if err := r.Status().Update(ctx, sandbox); err != nil {
-		log.Error(err, "Failed to update sandbox status")
+	// --- THE TRUE STATUS PATCH FIX ---
+	// By using Patch instead of Update, we send only the diff.
+	// The API Server will merge this status change unconditionally,
+	// entirely ignoring any ResourceVersion mismatches caused by
+	// the Claim Controller modifying the Sandbox concurrently.
+	baseSandbox := sandbox.DeepCopy()
+	baseSandbox.Status = *oldStatus
+
+	if err := r.Status().Patch(ctx, sandbox, client.MergeFrom(baseSandbox)); err != nil {
+		log.Error(err, "Failed to patch sandbox status")
 		return err
 	}
 
-	// Surface error
 	return nil
 }
 

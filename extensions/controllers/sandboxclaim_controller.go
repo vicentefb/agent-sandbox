@@ -258,8 +258,15 @@ func (r *SandboxClaimReconciler) updateStatus(ctx context.Context, oldStatus *ex
 		return nil
 	}
 
-	if err := r.Status().Update(ctx, claim); err != nil {
-		log.Error(err, "Failed to update sandboxclaim status")
+	// --- THE TRUE 409 BYPASS (PATCH) ---
+	// r.Get() reads from the local cache, which is lagging behind the API server.
+	// Instead of fetching a stale ResourceVersion and using Update(), we use Patch().
+	// Patch() sends only the diff, bypassing K8s ResourceVersion enforcement completely.
+	baseClaim := claim.DeepCopy()
+	baseClaim.Status = *oldStatus
+
+	if err := r.Status().Patch(ctx, claim, client.MergeFrom(baseClaim)); err != nil {
+		log.Error(err, "Failed to patch sandboxclaim status")
 		return err
 	}
 
@@ -391,6 +398,10 @@ func (r *SandboxClaimReconciler) adoptSandboxFromCandidates(ctx context.Context,
 		// We got the local lock! Now we safely DeepCopy.
 		adopted := candidate.DeepCopy()
 
+		// --- ADD THIS: Capture the base state for the Patch ---
+		adopted.ResourceVersion = ""
+		patchBase := client.MergeFrom(adopted.DeepCopy())
+
 		// Extract pool name from owner reference before clearing
 		poolName := "none"
 		if controllerRef := metav1.GetControllerOf(adopted); controllerRef != nil {
@@ -425,13 +436,13 @@ func (r *SandboxClaimReconciler) adoptSandboxFromCandidates(ctx context.Context,
 		adopted.Spec.PodTemplate.ObjectMeta.Labels[extensionsv1alpha1.SandboxIDLabel] = string(claim.UID)
 
 		// Send the Update to the API Server
-		if err := r.Update(ctx, adopted); err != nil {
+		if err := r.Patch(ctx, adopted, patchBase); err != nil {
 			r.inFlightAdoptions.Delete(candidate.UID) // Release the lock on network failure!
 			if k8errors.IsConflict(err) || k8errors.IsNotFound(err) {
 				// If we somehow still hit a conflict, try the next candidate
 				continue
 			}
-			log.Error(err, "Failed to update adopted sandbox")
+			log.Error(err, "Failed to patch adopted sandbox")
 			return nil, err
 		}
 
