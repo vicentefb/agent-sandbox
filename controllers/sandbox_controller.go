@@ -257,16 +257,34 @@ func (r *SandboxReconciler) updateStatus(ctx context.Context, oldStatus *sandbox
 		return nil
 	}
 
-	// --- THE TRUE STATUS PATCH FIX ---
-	// By using Patch instead of Update, we send only the diff.
-	// The API Server will merge this status change unconditionally,
-	// entirely ignoring any ResourceVersion mismatches caused by
-	// the Claim Controller modifying the Sandbox concurrently.
-	baseSandbox := sandbox.DeepCopy()
-	baseSandbox.Status = *oldStatus
+	// --- SERVER-SIDE APPLY (SSA) BYPASS ---
+	// Construct a microscopic payload containing ONLY the identity and the new Status.
+	// SSA completely ignores ResourceVersion and relies on Field Management.
+	patch := &sandboxv1alpha1.Sandbox{
+		TypeMeta: metav1.TypeMeta{
+			APIVersion: "agents.x-k8s.io/v1alpha1", // Ensure this matches your actual API Group/Version
+			Kind:       "Sandbox",
+		},
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      sandbox.Name,
+			Namespace: sandbox.Namespace,
+		},
+		Status: sandbox.Status,
+	}
 
-	if err := r.Status().Patch(ctx, sandbox, client.MergeFrom(baseSandbox)); err != nil {
-		log.Error(err, "Failed to patch sandbox status")
+	// Apply the patch.
+	// ForceOwnership guarantees that even if another controller accidentally
+	// touched the status, we rip ownership back and overwrite it instantly.
+	err := r.Status().Patch(
+		ctx,
+		patch,
+		client.Apply,
+		client.FieldOwner(sandboxControllerFieldOwner),
+		client.ForceOwnership,
+	)
+
+	if err != nil {
+		log.Error(err, "Failed to apply sandbox status via SSA")
 		return err
 	}
 

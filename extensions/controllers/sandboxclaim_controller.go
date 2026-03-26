@@ -258,15 +258,33 @@ func (r *SandboxClaimReconciler) updateStatus(ctx context.Context, oldStatus *ex
 		return nil
 	}
 
-	// --- THE TRUE 409 BYPASS (PATCH) ---
-	// r.Get() reads from the local cache, which is lagging behind the API server.
-	// Instead of fetching a stale ResourceVersion and using Update(), we use Patch().
-	// Patch() sends only the diff, bypassing K8s ResourceVersion enforcement completely.
-	baseClaim := claim.DeepCopy()
-	baseClaim.Status = *oldStatus
+	// --- SERVER-SIDE APPLY (SSA) BYPASS ---
+	// Construct a microscopic payload containing ONLY the identity and the new Status.
+	// SSA completely ignores ResourceVersion and relies on Field Management.
+	patchClaim := &extensionsv1alpha1.SandboxClaim{
+		TypeMeta: metav1.TypeMeta{
+			APIVersion: "extensions.agents.x-k8s.io/v1alpha1",
+			Kind:       "SandboxClaim",
+		},
+		ObjectMeta: metav1.ObjectMeta{
+			Name:      claim.Name,
+			Namespace: claim.Namespace,
+		},
+		Status: claim.Status,
+	}
 
-	if err := r.Status().Patch(ctx, claim, client.MergeFrom(baseClaim)); err != nil {
-		log.Error(err, "Failed to patch sandboxclaim status")
+	// Apply the patch using SSA.
+	// client.ForceOwnership ensures we unconditionally overwrite the status fields we own.
+	err := r.Status().Patch(
+		ctx,
+		patchClaim,
+		client.Apply,
+		client.FieldOwner("sandbox-claim-controller"),
+		client.ForceOwnership,
+	)
+
+	if err != nil {
+		log.Error(err, "Failed to apply sandboxclaim status via SSA")
 		return err
 	}
 
