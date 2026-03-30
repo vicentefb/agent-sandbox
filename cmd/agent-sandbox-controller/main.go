@@ -231,6 +231,11 @@ func main() {
 			os.Exit(1)
 		}
 
+		if err := assigner.SetupWithManager(mgr); err != nil {
+			setupLog.Error(err, "unable to set up pure-push watcher")
+			os.Exit(1)
+		}
+
 		if err = (&extensionscontrollers.SandboxClaimReconciler{
 			Client:   mgr.GetClient(),
 			Scheme:   mgr.GetScheme(),
@@ -291,9 +296,10 @@ func main() {
 		}
 
 		if isReady {
-			// Return the template hash so we can query specific templates instantly
-			templateHash := sandbox.Labels["agents.x-k8s.io/sandbox-template-ref-hash"]
-			return []string{"true-" + templateHash}
+			templateName := sandbox.Labels["agents.x-k8s.io/sandbox-template-ref"]
+			if templateName != "" {
+				return []string{"true-" + templateName}
+			}
 		}
 		return nil
 	}); err != nil {
