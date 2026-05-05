@@ -196,39 +196,29 @@ Wait until you see an IP address under the `ADDRESS` column.
 
 ### Step 3: Upgrade the Python Code
 
-Now that your router is exposed behind a robust Load Balancer, we can strip out the brittle tunneling logic.
+Now that your router is exposed behind a robust Load Balancer, we use `rl_poc_prod.py`.
 
-Update the `__init__` method of your `RLEnvironmentWorker` in your local Python script:
+This script strips out the local tunneling logic and replaces it with SandboxGatewayConnectionConfig. It automatically queries the K8s API for your Load Balancer IP and routes traffic natively.
 
 ```python
-@ray.remote
-class RLEnvironmentWorker:
-    def __init__(self, template_name: str, pool_name: str):
-        print("Initializing RL Environment Worker...")
+# From rl_poc_prod.py
+from k8s_agent_sandbox.models import SandboxGatewayConnectionConfig
         
-        # --- THE EXTERNAL CONFIG ---
-        # Instead of port-forwarding, the SDK will automatically query the K8s API 
-        # for the 'external-http-gateway' IP and route all HTTP traffic through it.
-        from k8s_agent_sandbox.models import SandboxGatewayConnectionConfig
-        
-        config = SandboxGatewayConnectionConfig(
-            gateway_name="external-http-gateway",
-            gateway_namespace="default",
-            server_port=8888
-        )
-        
-        self.client = SandboxClient(connection_config=config, cleanup=True)
-        
-        # The rest of your claiming logic remains identical
-        self.sandbox = self.client.create_sandbox(
-            template=template_name,
-            warmpool=pool_name,
-            shutdown_after_seconds=3600
-        )
-        print(f"Environment ready via Gateway: {self.sandbox.claim_name}")
+config = SandboxGatewayConnectionConfig(
+    gateway_name="external-http-gateway",
+    gateway_namespace="default",
+    server_port=8888
+)
+self.client = SandboxClient(connection_config=config, cleanup=True)
 ```
 
-### 5: Clean Up
+Run the script:
+
+```bash
+python rl_poc_prod.py
+```
+
+## 5: Clean Up
 To avoid unnecessary compute charges in your GKE Autopilot cluster and remove the PoC infrastructure, run the following commands:
 
 1. Delete the Warm Pool and Template:
