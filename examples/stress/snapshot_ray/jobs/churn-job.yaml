@@ -1,0 +1,49 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: grpo-churn
+spec:
+  completionMode: Indexed
+  completions: 100
+  parallelism: 100
+  backoffLimit: 5
+  template:
+    spec:
+      restartPolicy: Never
+      tolerations:
+      - key: sandbox.gke.io/runtime
+        operator: Equal
+        value: gvisor
+        effect: NoSchedule
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: cloud.google.com/gke-nodepool
+                operator: In
+                values: [shard-f15, shard-f20, shard-f27, shard-f41, shard-f48, shard-f51, shard-f55, shard-f61, shard-f67, stream-0, stream-1]
+      volumes:
+      - name: script
+        configMap:
+          name: grpo-script
+      containers:
+      - name: trainer
+        image: us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/grpo-trainer:v1
+        workingDir: /work
+        env:
+        - {name: OMP_NUM_THREADS, value: "6"}
+        - {name: MAX_COMPLETION, value: "128"}
+        - {name: MAX_STEPS, value: "20"}
+        - {name: REWARD_SANDBOXES, value: "8"}
+        - {name: NUM_GENERATIONS, value: "4"}
+        - {name: SUSPEND_MODE, value: "per_step"}
+        - {name: WARMPOOL, value: "swarm-pool"}
+        - {name: CLAIM_TIMEOUT, value: "600"}
+        - {name: ROLLOUT_LEN, value: "5"}
+        volumeMounts:
+        - {name: script, mountPath: /work}
+        resources:
+          requests: {cpu: "6", memory: "24Gi"}
+          limits: {cpu: "6", memory: "24Gi"}
+        command: ["bash", "-c", "sleep $((JOB_COMPLETION_INDEX*2)); exec python /work/grpo_sandbox_train.py"]
