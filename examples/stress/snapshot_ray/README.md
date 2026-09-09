@@ -5,10 +5,11 @@ Upstream issues: `SNAPSHOT_UPSTREAM_FILINGS.md` (7 SDK + 3 GKE).
 
 ## Canonical code
 
-- Harness + samples fork: https://github.com/vicentefb/kuberay
-  - branch `snapshotStress`: `ray-operator/config/samples/agent-sandbox-snapshots/stress/` (scratch harnesses)
-  - branch `raySuspendResumeArtifacts`: `ray-operator/config/samples/agent-sandbox/snapshots/` (the PR'd
-    demo + `rbac.yaml` + `sandbox-snapshot.yaml` used verbatim for cluster bring-up)
+- **This directory is the canonical harness**: `harness/` + `jobs/` here are the exact versions that
+  produced every number in the results doc.
+- Cluster bring-up manifests (`rbac.yaml`, `sandbox-snapshot.yaml`, the demo): branch
+  `raySuspendResumeArtifacts` of https://github.com/vicentefb/kuberay,
+  `ray-operator/config/samples/agent-sandbox/snapshots/`.
 - `harness/` here = the exact versions that produced the results (all live patches applied — the fork
   branch may lag these snapshots).
 - Trainer image: `us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/grpo-trainer:v1`

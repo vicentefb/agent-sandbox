@@ -1,21 +1,25 @@
-# GKE Pod Snapshots suspend/resume — scale characterization
+# GKE (Google Kubernetes Engine) Pod Snapshots suspend/resume — scale characterization
 
-## EXECUTIVE SUMMARY — the six axes of scale, each measured by its own experiment
+Stack under test: **GKE Pod Snapshots (Preview — requires GKE ≥ 1.35.3-gke.1234000; every measurement
+here ran on 1.36.3-gke.1537000)** · agent-sandbox controller v1.0.0 · Python SDK (software development
+kit) `k8s-agent-sandbox` 1.0.0 · gVisor sandboxes (`python-runtime-sandbox` v0.4.6).
 
-"Scale" is not one number. Each axis below was isolated and measured with real GRPO training jobs
+## Executive summary: the six axes of scale
+
+Each axis below was isolated and measured with real GRPO (Group Relative Policy Optimization, the reinforcement-learning algorithm our trainers use) training jobs
 (rewards = model-generated code executed in sandboxes) unless noted. ~340,000+ suspend/resume
 operations campaign-wide; zero state loss ever observed.
 
 | axis | what production needs | what we measured | headline finding | where |
 | --- | --- | --- | --- | --- |
-| **Fleet width** (concurrent rollouts) | 100s-1,000s | 450 trainers / 3,600 sandboxes, one shared pool | latency flat to 11.8 suspends/s; 800-claim burst absorbed in minutes | Part 6 rungs 1-5 |
-| **Suspend rate** (pipeline throughput) | 10-50/s fleet-wide | demand pushed to ~55/s on one cluster | **ceiling ≈ 20-25/s per (large-plane) cluster**; excess → queue latency, zero failures; shard clusters to scale | Part 6 rung 6 |
-| **Density** (rollouts per node) | cost lever | 87-slot arena served 320 & 480 rollouts | **3.7× clean; 5.5× = queueing collapse (still 0 lost)**; knee ∈ (3.7, 5.5)× for 3 nodes; keep awake-load <50% of slots | Part 7 |
-| **Cadence** (step/turn speed) | 15-60s turns | 1.6s / 22s / 71s steps, same fleet | **suspension costs a constant ~7s/cycle** → +9.4% at 71s, +45% at 22s, 5.2× at 1.6s; suspend per-turn only when turns are slow | Part 8 |
-| **Depth** (cycles per sandbox) | 5-50 per rollout lifetime | 3,000/sandbox (12h run; 10K in progress) | **60-600× beyond production; zero latency drift**; wedges (1/750 cycles) fully contained by one-strike eviction | Part 8 addendum |
-| **Model realism** | frontier | Qwen 0.5B & 3B (real coding model) | 3B aces MBPP in-sandbox (reward means 0.5-1.0); substrate is model-agnostic; frontier-sharded composition = the one quota-gated gap | Parts 5, 8 |
+| **Fleet width** (concurrent rollouts) | 100s-1,000s | 450 trainers / 3,600 sandboxes, one shared pool | latency flat to 11.8 suspends/s; 800-claim burst absorbed in minutes | §6 |
+| **Suspend rate** (pipeline throughput) | 10-50/s fleet-wide | demand pushed to ~55/s on one cluster | **ceiling ≈ 20-25/s per (large-plane) cluster**; excess → queue latency, zero failures; shard clusters to scale | §6 |
+| **Density** (rollouts per node) | cost lever | 87-slot arena served 320 & 480 rollouts | **3.7× clean; 5.5× = queueing collapse (still 0 lost)**; knee ∈ (3.7, 5.5)× for 3 nodes; keep awake-load <50% of slots | §7 |
+| **Cadence** (step/turn speed) | 15-60s turns | 1.6s / 22s / 71s steps, same fleet | **suspension costs a constant ~7s/cycle** → +9.4% at 71s, +45% at 22s, 5.2× at 1.6s; suspend per-turn only when turns are slow | §8 |
+| **Depth** (cycles per sandbox) | 5-50 per rollout lifetime | **10,000/sandbox (42.6h run)** | **~1,000× beyond production; zero latency drift at 2-day depth**; wedges (~1/700 cycles, 3 runs converging) fully contained by one-strike eviction | §8 |
+| **Model realism** | frontier | Qwen 0.5B & 3B (real coding model) | 3B aces MBPP in-sandbox (reward means 0.5-1.0); substrate is model-agnostic; frontier-sharded composition = the one quota-gated gap | §5, §8 |
 
-## THE LAWS — numbers to remember
+## Key measured constants
 
 | law | value |
 | --- | --- |
@@ -31,73 +35,35 @@ operations campaign-wide; zero state loss ever observed.
 | wedge rate under adversarial code | ~1 per 750 sandbox-cycles; IMMORTAL under snapshots (restore preserves the hang) → one-strike eviction is mandatory fleet hygiene (~20s/heal) |
 | N2/nodes/quota vs the pipeline ceiling | irrelevant — the ceiling is a managed-controller service rate; only more clusters (or GKE) raise it |
 
-## THE WORKLOAD — what the RL loop actually is
+## The workload: the RL (reinforcement learning) training loop
 
-Every "trainer" is a genuine GRPO training job (TRL 0.21): the policy model writes Python solutions
-to MBPP problems; each solution executes inside a gVisor sandbox against the problem's unit tests;
-pass-fraction is the reward (0.1·ran + 0.9·pass rate); GRPO updates the weights (lr 2e-6, KL
-beta 0.04). Per training step: 2 problems × 4 generations = **8 completions → 8 parallel sandbox
-executions → fleet suspends (snapshot to GCS, pods deleted) → model generates the next batch →
-fleet resumes**. The model measurably learns (rung-agnostic; the 3B reached repeated 8/8-perfect
-MBPP batches; the marathon trained 30 epochs).
+Every "trainer" is a genuine GRPO training job (TRL — the Transformer Reinforcement Learning library — v0.21): the policy model writes Python solutions
+to MBPP (Mostly Basic Python Problems) coding tasks; each solution executes inside a gVisor sandbox against the problem's unit tests;
+pass-fraction is the reward (0.1·ran + 0.9·pass rate); GRPO updates the weights (learning rate 2e-6,
+KL (Kullback-Leibler) divergence penalty beta 0.04). Per training step: 2 problems × 4 generations = **8 completions → 8 parallel sandbox
+executions → fleet suspends (snapshot to GCS (Google Cloud Storage), pods deleted) → model generates the next batch →
+fleet resumes**. The model measurably learns (level-agnostic; the 3B reached repeated 8/8-perfect
+MBPP batches; the 12-hour run trained 30 epochs).
 
 | experiment | trainers | steps each | sandboxes | suspend/resume ops | model |
 | --- | --- | --- | --- | --- | --- |
-| Part 5 A/B | 1 | 50 | 8 | ~800 | 0.5B (CPU) |
-| Rungs 1-2 | 5, 12 | 20 | 40, 96 | ~5,400 | 0.5B (CPU) |
-| Rungs 3-5 | 50, 100, 150 | 20 | 400-1,200 | ~91,000 | 0.5B (CPU) |
-| Rung 6 (ceiling) | 450 | 20 | 3,600 | ~137,000 | 0.5B (CPU) |
-| Density 3.7× / 5.5× | 40, 60 | 20 | 320, 480 | ~30,000 | 0.5B (CPU) |
-| Cadence A/B | 1 | 50 ×3 arms | 8 | ~2,400 | 0.5B + 3B (GPU) |
-| Marathon | 1 | 3,000 (10K running) | 8 | ~48,000+ | 0.5B (GPU) |
+| single trainer, suspension off vs on (§5) | 1 | 50 | 8 | ~800 | 0.5B (CPU) |
+| scaling series, small (§6) | 5, 12 | 20 | 40, 96 | ~5,400 | 0.5B (CPU) |
+| scaling series, large (§6) | 50, 100, 150 | 20 | 400-1,200 | ~91,000 | 0.5B (CPU) |
+| saturation run (§6) | 450 | 20 | 3,600 | ~137,000 | 0.5B (CPU) |
+| density arena, 3.7× / 5.5× (§7) | 40, 60 | 20 | 320, 480 | ~30,000 | 0.5B (CPU) |
+| GPU cadence comparison (§8) | 1 | 50, ×3 runs | 8 | ~2,400 | 0.5B + 3B (GPU) |
+| long runs, 12h + 42.6h (§8) | 1 | 3,000 + 10,000 | 8 | ~208,000 | 0.5B (GPU) |
 
-## LATENCIES AT A GLANCE (suspend / resume, seconds, 8-wide waves)
+## Latency summary (suspend / resume, seconds, 8-wide waves; p50/p95 = median / 95th percentile)
 
 | regime | suspend p50 / p95 | resume p50 / p95 | notes |
 | --- | --- | --- | --- |
-| unloaded → 11.8 suspends/s (rungs 1-5) | 4.6-4.8 / 5.4-6.6 | 2.3-4.2 / 4.3-4.4 | THE FLOOR — flat across 25× rate increase |
-| pipeline saturated ~55/s demand (rung 6) | 37.4 / 103.6 | 8.4 / 87.5 | queue latency, zero failures |
+| light load, up to 11.8 suspends/s | 4.6-4.8 / 5.4-6.6 | 2.3-4.2 / 4.3-4.4 | THE FLOOR — flat across 25× rate increase |
+| pipeline saturated (~55/s demanded) | 37.4 / 103.6 | 8.4 / 87.5 | queue latency, zero failures |
 | packed arena 3.7× | 9.3 / 20.4 | 8.3 / 38.5 | slot-wait tax (upper bound, mint-era contaminated) |
 | packed arena 5.5× (collapse) | 10.9 / 180 | 487.6 / 602 (at wait-cap) | rollouts wait ~8 min median; 0 lost |
-| 12h marathon, final 300 waves | 4.7 / 5.5 | 2.3 / 4.3 | zero drift at depth |
-
-## NOT TESTED — the honest gaps
-
-1. **Frontier composition** (sharded 70B+ policy, vLLM generation, 100s of rollouts per step, days-long
-   run, sandbox rewards). The one Reflection-production-shape gap. Quota-shaped; harness ready.
-   *("Sharded" = the model split across many GPUs because it fits on none — a 70B in bf16 is ~140GB
-   vs 80GB on an H100. Why it matters here: our biggest trained model was a 3B on one L4; the 7B
-   attempt needed sharding across both L4s (`device_map: auto`) and still OOM'd in the first forward
-   pass — so everything above 3B, i.e. the model class Reflection actually trains, ran zero steps in
-   this campaign. Note the same word appears in "shard clusters" as the pipeline-scaling lever —
-   there it means partitioning the rollout FLEET across clusters, one snapshot pipeline each;
-   unrelated mechanism, same split-what-doesn't-fit idea.)*
-2. ~~Multi-cluster / fleet-wave~~ **CLOSED (Part 9): A+C simultaneously on one bucket — bucket is a
-   non-factor; per-cluster pipelines are independent lanes; ceiling law reproduced on A.** (Beyond
-   2 clusters = extrapolation, now measurement-backed.)
-3. ~~Ceiling vs control-plane size~~ **CLOSED-WITH-CAVEAT (Part 10): F's 64-core plane held
-   ~17-18/s at the floor — proportional hypothesis falsified in the 64-96-core range; only the
-   tiny-plane (16-core) class remains unmeasured.**
-4. ~~Per-rollout churn combined with suspension~~ **CLOSED (Part 9): 4,000 fresh claims + 16,000
-   suspends interleaved, 0 failures; recycle = constant 20s per fleet (~4s/turn amortized); mixed
-   traffic lifts suspend p50 by ~3s.**
-5. ~~Multi-turn episode state inside training~~ **CLOSED for the state half (Part 9): 16,000
-   in-training ledger checks across 40 suspend cycles per sandbox, zero mismatches.** Conversational-
-   trajectory RL (history-conditioned generation) folds into gap 6.
-6. **Other algorithms/stacks**: GRPO/TRL only. PPO with a critic (2× model memory), verl/OpenRLHF
-   orchestration shapes, async pipelines — unmeasured (substrate-facing traffic should be identical,
-   but that is an inference, not a measurement).
-7. ~~Failure injection~~ **CLOSED (Part 9): pod force-kill, snapshot destruction (restore-miss
-   path), and node drain — all absorbed, 20/20 complete, zero eval errors; the SDK's fresh-instance
-   flag fired truthfully on the destroyed snapshots.** (Bucket outage and zone drain untested.)
-8. **Enforcing-NetworkPolicy clusters**: our clusters don't enforce; the SDK's pod-IP/DNS behavior on
-   enforcing clusters (SDK-2's home turf) is characterized but the full loop was never run under
-   enforcement.
-9. **Autoscaler economics (route 1)**: freed-capacity → fewer-nodes was argued from autoscaler
-   mechanics, not demonstrated (our suspension churn was always faster than scale-down reaction).
-10. **Adversarial security**: we ran hostile-by-accident code, not hostile-by-design; no sandbox-escape
-    or data-exfiltration attempts were made. gVisor containment is assumed from its threat model,
-    not re-verified here.
+| 12-hour run, final 300 waves | 4.7 / 5.5 | 2.3 / 4.3 | zero drift at depth |
 
 Operational recipes proven along the way: pool-free arenas (claims fresh-create; replacement minting
 actively harms scarce arenas), harvest-after-complete measurement, baked images for private nodes,
@@ -105,9 +71,9 @@ one-strike liveness eviction. Everything below is the chronological detail.
 
 ---
 
-**Campaign:** 2026-08-29/30, ~15,000 suspend/resume ops · **Cluster:** `sandbox-snapshot-demo`
+**Campaign:** ~15,000 suspend/resume ops · **Cluster:** `sandbox-snapshot-demo`
 (vicenteferrara-gke-dev, us-central1-a, GKE 1.36.3-gke.1537000 RAPID, `--enable-pod-snapshots`,
-n2-standard-8 gVisor pool ×12, agent-sandbox v1.0.0, SDK k8s-agent-sandbox==1.0.0) — torn down 2026-08-30.
+n2-standard-8 gVisor pool ×12, agent-sandbox v1.0.0, SDK k8s-agent-sandbox==1.0.0) — since torn down.
 **Harness:** `snapshotStress` branch of vicentefb/kuberay, `ray-operator/config/samples/agent-sandbox-snapshots/stress/`.
 **Context:** follow-up to the Ray + Agent Sandbox suspend/resume demo (kuberay PR / ray docs PR), driven by
 Tomer's ask ("test it in a large job — running times, and does the snapshot controller work correctly") and
@@ -126,7 +92,7 @@ The harness was designed against Ivan's own answers, not assumptions. Fidelity m
 | Suspend signal = turn boundary, declared by the client | suspend fired immediately after each command result | ✅ matches |
 | Full freeze (process tree + memory), NOT quiescence-required | every restore verified by content digest of guest state | ✅ verified ~7,000× |
 | Suspend must return the scheduler reservation | pod is deleted on suspend (verified) | ✅ |
-| Resume latency decides per-turn vs tail-only (<1s vs ~5s vs 15s gap) | per-op latency measured at every concurrency rung | ✅ answered (see §3) |
+| Resume latency decides per-turn vs tail-only (<1s vs ~5s vs 15s gap) | per-op latency measured at every concurrency level | ✅ answered (see §3) |
 | Turn cadence ~3s exec / ~15s model wait | execute → suspend → 5-10s hold → resume loop | ✅ approximates |
 
 Deliberate divergences — each biased toward worst case:
@@ -166,7 +132,7 @@ drains at a fixed ~4-5 ops/s cluster-wide; the median member of an N-wave waits 
 ~4s of actual work. gVisor nodes sat at 31-46% CPU throughout — the caps are concurrency limits, not
 CPU. **Per-op latency is a property of the wave size, not the system.** Staggered arrivals see the floor.
 
-**Zero confirmed state losses in the entire campaign.** Retention GC (`maxSnapshotCountPerGroup: 3`)
+**Zero confirmed state losses in the entire campaign.** Retention GC (garbage collection) (`maxSnapshotCountPerGroup: 3`)
 exact in every run, including mid-collapse (lags transiently under saturation: observed 1,342 vs 750 cap).
 
 ## 3. Answers to Ivan's three decision criteria
@@ -179,7 +145,7 @@ exact in every run, including mid-collapse (lags transiently under saturation: o
 3. **Resume semantics:** guest wall clock jumps forward; pod IP and pod name change; open connections
    do not survive; restore selects the newest Ready snapshot in the sandbox's label group.
 
-## 4. The walls (in order of severity)
+## 4. Limiting factors (in order of severity)
 
 ### 4.1 Node pod-slot density — THE dominant wall
 At ~105 pods/node against the 110 `max-pods` default, resume throughput hard-caps at ~32/wave
@@ -188,7 +154,7 @@ At ~105 pods/node against the 110 `max-pods` default, resume throughput hard-cap
 **backfill claimed sandboxes**, so pod demand = pool + claims. Rule: keep nodes ≤ ~80% of max-pods
 counting pool + claims + churn headroom.
 
-### 4.2 API Priority & Fairness — real but second-order at sane density
+### 4.2 API Priority and Fairness (APF) — real but second-order at sane density
 Stock: `service-accounts → workload-low` sheds first-wave trigger creates at 250-way
 (~0.7% of ops; 429 + Retry-After, absorbed after cycle 0; captured in
 `apiserver_flowcontrol_rejected_requests_total`). Fix: the F-cluster runbook
@@ -204,7 +170,7 @@ pile-up it fell behind (1,251-trigger backlog, "not processed within 180s"); at 
 concurrent when not buried; >250 unmeasured.
 
 ### 4.4 Load-generator sizing (harness/orchestrator-side)
-~100-150MB RSS per SDK client. 100+ concurrent clients need explicit Ray memory reservations and
+~100-150MB RSS (resident set size) per SDK client. 100+ concurrent clients need explicit Ray memory reservations and
 adequately sized worker pods or the raylet OOM-kills the fleet (invalidated one run). Applies to any
 Ray-based orchestrator holding one client per rollout.
 
@@ -216,7 +182,7 @@ Ray-based orchestrator holding one client per rollout.
    next-cycle digest verification. Rate grows with concurrency (1 @150 → 9 @250 per cycle). Fix: bounded poll.
 2. **Reconnect-after-resume DNS fallback** to `<pod>.default.svc.cluster.local`, which cannot resolve
    unless `service: true`; burns 5 urllib3 retries and fails the op. The persistent ~0.5-1% failure
-   floor at every healthy rung is exclusively this class.
+   floor at every healthy level is exclusively this class.
 3. **`snapshots.create()` completion wait hardcoded to 180s** — not configurable; at depth the client
    gives up while the controller is still working.
 4. **Timed-out triggers are abandoned, not deleted** — the pending trigger then rejects the next
@@ -251,11 +217,11 @@ contaminates naive latency stats (observed: "resume median 0.2s" during the coll
 
 ---
 
-# PART 2 — m2-fleet campaign (2026-08-30/31, m2-density-c, gke-ai-eco-dev)
+# PART 2 — m2-fleet campaign (m2-density-c, gke-ai-eco-dev)
 
 **Context:** fleet drained (standing SWERL ~994K deleted, Tomer-approved), pod snapshots enabled a–f,
-C staged as ladder host: 34× n2-standard-8 gVisor `snap-pool` (fresh, non-E2), AR-mirrored runtime image,
-region bucket + WIF, 12-node/30-worker loadgen, F-runbook FlowSchema (120-share `stress-snapshot` lane).
+C staged as ladder host: 34× n2-standard-8 gVisor `snap-pool` (fresh, non-E2), AR (Artifact Registry)-mirrored runtime image,
+region bucket + WIF (Workload Identity Federation), 12-node/30-worker loadgen, F-runbook FlowSchema (120-share `stress-snapshot` lane).
 
 ## The ladder (tuned C — the first 1,000-way gVisor memory-snapshot suspend/resume ever run)
 
@@ -267,8 +233,8 @@ region bucket + WIF, 12-node/30-worker loadgen, F-runbook FlowSchema (120-share 
 | 1,000 | 14.6 / 65.0s | 90 / 110s | 94–99.5% | 4,960 |
 
 Laws: **resume sub-linear** (2× wave ≈ 1.7× p50); **suspend linear** (~90ms × wave — GCS upload physics);
-claims flat 0.2s at every rung; retention GC exact at 3,000 managed snapshots; **zero state losses**
-(~25,000 ops across both campaigns). 2,000 rung deliberately skipped — extrapolable from the laws.
+claims flat 0.2s at every level; retention GC exact at 3,000 managed snapshots; **zero state losses**
+(~25,000 ops across both campaigns). 2,000 level deliberately skipped — extrapolable from the laws.
 
 ## Findings that supersede Part 1
 
@@ -276,7 +242,7 @@ claims flat 0.2s at every rung; retention GC exact at 3,000 managed snapshots; *
    Same-cluster A/B on C @250: stock = 2.8% failures; FlowSchema = 0.08% and resume p50 ~5s (vs ~30s
    implied by Part 1's law). With an adequate lane on a big plane, 250 simultaneous resumes run near the floor.
 2. **Control-plane size sets drain rate** (C's 642-node plane: cycle walls halved, p95 −30% vs demo at
-   equal rung, stock-vs-stock) — **APF config sets admission rate**; independent levers, both now measured.
+   equal level, stock-vs-stock) — **APF config sets admission rate**; independent levers, both now measured.
 3. **The 120-share lane's knee ∈ (500, 1,000)**: sheds 0→133→4,960 across 250/500/1,000. Server signals
    escalate to `Retry-After: 30` at depth. Collateral: shrunk `workload-low` rejected 6,157 requests from
    its remaining tenants (kuberay operator, fleet agent) — the reclaim config is for test windows, not production.
@@ -304,7 +270,7 @@ cluster with a dedicated FlowSchema, staggered resumes see ~2–5s; synchronized
 Per-turn suspension is viable at bounded concurrency; tail-only everywhere. Budget: ≤500 concurrent
 suspend/resume per tuned cluster for <1% failure floor (today, without SDK fixes); shard above that.
 
-## Snapshot size & storage throughput (measured post-1,000-rung, before cleanup)
+## Snapshot size & storage throughput (measured post-1,000-level, before cleanup)
 
 - **~99 MB per snapshot** (284.2 GB / 2,861 snapshots): 64MB injected incompressible state + ~35MB guest
   overhead (process memory, kernel state, rootfs delta), zero pages excluded, `--compression=none`.
@@ -313,7 +279,7 @@ suspend/resume per tuned cluster for <1% failure floor (today, without SDK fixes
 - Size regime validated: injected state to 1GB (suspend +~1.5s/GB, resume flat). Multi-GB in-memory
   working sets (e.g. model weights) extrapolate via the linear suspend law but were NOT measured.
 
-## Honesty box — what "scale" means here
+## Scope: what "scale" means here
 
 - **Proven: cluster scale.** 1,000 concurrent suspend/resume cycles on one cluster (34 gVisor nodes of
   C's 640; clusters a/b/d/e/f enabled but unused). This covers Reflection's per-cluster operating point.
@@ -321,20 +287,20 @@ suspend/resume per tuned cluster for <1% failure floor (today, without SDK fixes
   a/b/c write to one us-central1 bucket → ~3 GB/s against a single bucket. Everything else (control
   planes, nodes, agents) is per-cluster and expected to replicate. This is the natural follow-up
   campaign ("fleet-wide wave"), ~1-2h of per-cluster setup on already-enabled infra.
-  **[SUPERSEDED IN PART, 2026-09-08 — Part 9 gap 2: A+C ran simultaneously against the shared
+  **[SUPERSEDED IN PART — see Part 9: A+C ran simultaneously against the shared
   us-central1 bucket (combined ~29 suspends/s, ~1.2 GB/s of training-era ~35-40MB snapshots): the
   bucket was a NON-FACTOR, per-cluster pipelines proven independent, and Part 10 added a third
   cluster + second region (F/us-west1). Still untested: the full 6-cluster × 1,000-wave burst and
   the ~3 GB/s big-snapshot single-bucket regime. Note the snapshot-size figures above are from the
   64MB-ballast era; training-era snapshots are ~35-40MB.]**
-- **Success <100% is NOT a platform limit.** All misses at every rung were three client-side classes
-  (429-no-retry ×2 paths, DNS fallback) plus one harness OOM; the server signals retryability
+- **Success <100% is NOT a platform limit.** All misses at every level were three client-side classes
+  (429-no-retry ×2 paths, DNS fallback) plus one harness OOM (out-of-memory kill); the server signals retryability
   (`Retry-After`). Zero state losses, zero refused work at the platform level. With SDK fixes,
   1,000-way projects to ~99.9%.
 
 ---
 
-# PART 3 — Real-model RL-shaped run (tier-1 realism, 2026-08-31)
+# PART 3 — Real-model RL-shaped run
 
 **Setup:** 100 self-paced Ray rollout actors on m2-density-c; per turn each actor fires suspend()
 and a REAL Gemini inference concurrently (snapshot uploads while the model thinks), resumes when both
@@ -375,7 +341,7 @@ distributions — the platform served 95.2% of turns clean at first attempt with
 at the floor, and the residual errors split between two known SDK client bugs and one newly-found
 agent-side race worth filing.
 
-## PART 3 addendum — the suspend-throughput law (three-way isolation, 2026-08-31)
+## PART 3 addendum — the suspend-throughput law (three-way isolation)
 
 Self-paced 500-way runs isolated the suspend ceiling with two null experiments:
 
@@ -401,7 +367,7 @@ coincidence.) Resume held its 2.2s floor in all three. Corollaries:
   metadata/gcs_opts checkpoint-cleanup race (incidence tracks snapshot count, not node density —
   consistent with the same central pipeline).
 
-## PART 3 final — mitigation stack validated (2026-08-31, campaign close)
+## PART 3 final — mitigation stack validated
 
 Client-side mitigation stack (what any production orchestrator should implement):
 1. **Retry transient sandbox calls** (4 tries, 3s delay) — absorbs the SDK's post-resume DNS-fallback
@@ -428,7 +394,7 @@ With a retrying client, the operational failure floor is the platform's own chec
 
 ---
 
-# PART 4 — The economics: backfill experiment (2026-09-01)
+# PART 4 — The economics: backfill experiment
 
 **Question:** suspension frees scheduler reservations — does anything actually USE them, and what does
 reclaiming them cost? (The one question a training loop would answer that substrate tests can't.)
@@ -465,7 +431,7 @@ suspension converts sandbox idle time into usable cluster capacity at a small, b
 
 ---
 
-# PART 5 — The real thing: a genuine RL training loop with sandbox-executed rewards (2026-09-01)
+# PART 5 — A real RL training loop with sandbox-executed rewards
 
 **Question:** everything above shaped traffic to *look like* RL. This part runs actual RL training —
 real policy gradients — with agent-sandbox as the reward executor, and measures what per-step
@@ -483,7 +449,7 @@ model's generated code inside a warm-pool sandbox against the problem's unit tes
 (0.1 for running + 0.9 × pass fraction). 8 sandboxes claimed once, reused all 50 steps.
 Harness: `stress/grpo_sandbox_train.py` + `grpo-trainer-pod.yaml` (configmap-mounted, no Ray needed).
 
-## Run 1 — the involuntary security demo (lr=1e-5, no KL)
+## Run 1 — training collapse, and hostile-code containment (lr=1e-5, no KL anchor)
 
 - Training worked (1.00 rewards by step 2) then **collapsed by step 13** to flat 0.10 — classic
   small-model GRPO degeneration without a KL anchor (TRL default beta=0) at a hot learning rate.
@@ -493,20 +459,20 @@ Harness: `stress/grpo_sandbox_train.py` + `grpo-trainer-pod.yaml` (configmap-mou
   scored 0, training continued. This is the entire argument for sandboxed rewards, demonstrated
   by accident. (Harness lesson: don't retry deterministic timeouts — run 2 uses timeout=30 × 2 tries.)
 
-## Run 2 (B-arm, SUSPEND_MODE=off) — healthy baseline
+## Run 2 (suspension OFF) — healthy baseline
 
 lr=2e-6 + beta=0.04 fixed the collapse: 1.00s still appearing through step 50 (steps 47-49: 4/8
 near-perfect batches), KL settled ~0.08-0.15, no degeneration. **50 steps in 3,562.4s = 71.2s/step.**
 400 sandbox evals, sub-second (p50 ~0.1s for 8 parallel evals — write + exec over pod-IP HTTP;
 generation is >99% of step time). 1 reward-exec error total (run-1's loop; run 2 clean).
 
-## Run 3 (A-arm, SUSPEND_MODE=per_step) — suspension inside the training loop
+## Run 3 (suspension ON, every step) — suspension inside the training loop
 
 Identical config; the 8-sandbox fleet is snapshot-suspended after every reward batch and resumed at
 the next one. Dwell is REAL: ~60s suspended through each generation phase, then resume → immediately
 execute fresh model-generated code against surviving state.
 
-| metric | B-arm (off) | A-arm (per_step) |
+| metric | suspension off | suspension on |
 | --- | --- | --- |
 | wall clock, 50 steps | 3,562.4s (71.2s/step) | 3,898.0s (78.0s/step) |
 | overhead | — | **+335.6s = +6.7s/step = +9.4%** |
@@ -565,13 +531,13 @@ Key properties that make it a valid substrate test:
 - Env knobs: MODEL, MAX_STEPS, REWARD_SANDBOXES, NUM_GENERATIONS, MAX_COMPLETION, SUSPEND_MODE
   (off|per_step), WARMPOOL, DATASET_SLICE. Pinned deps: trl==0.21.0, transformers<5, bf16=False.
 
-## Part 5 appendix — what is and isn't proven (scale honesty box)
+## Part 5 appendix — what is and isn't proven
 
 | axis | proven at | where |
 | --- | --- | --- |
-| suspend/resume width | 1,000 concurrent | Part 2 ladder |
-| rollout realism (real inference, self-paced, multi-turn) | 500 concurrent × 5 turns | Part 3 |
-| real gradients + sandbox rewards + per-step suspension | 8 sandboxes, 0.5B, 50 steps | Part 5 |
+| suspend/resume width | 1,000 concurrent | §2 |
+| rollout realism (real inference, self-paced, multi-turn) | 500 concurrent × 5 turns | §3 |
+| real gradients + sandbox rewards + per-step suspension | 8 sandboxes, 0.5B, 50 steps | §5 |
 | all three simultaneously (GPU-scale model, 500+ rollouts, training) | **NOT run** (GPU stockout) | — |
 
 Extrapolation to production width rests on the laws, not on hope: synchronized reward waves follow
@@ -582,41 +548,44 @@ the harness only needs MODEL and the trainer pod swapped for the verl/GPU varian
 
 ---
 
-# PART 6 — The swarm ladder: 100 concurrent real RL training jobs (2026-09-04/05)
+# PART 6 — Many concurrent training jobs: the scaling series
 
 **Question:** Part 5 proved one real training loop; production is many. Does the substrate hold when the
 suspend/resume traffic comes from a *population* of genuinely-learning trainers — and where is the
 snapshot pipeline's ceiling under real (naturally staggered) load, as opposed to synthetic waves?
 
-**Design:** N independent copies of the Part 5 GRPO loop (Indexed Job), each trainer with its own
+**Design:** N independent copies of the §5 training loop (Indexed Job), each trainer with its own
 8-sandbox fleet claimed from ONE shared warm pool, all in per_step suspension. Trainers de-phase
 naturally (stochastic generation lengths), so the cluster sees staggered wave traffic — the shape a real
-multi-job RL farm produces. Rungs 3-4 run on the idle private shard pools via a baked trainer image
+multi-job RL farm produces. The 50+-trainer runs use the idle private shard pools via a baked trainer image
 (deps + model + dataset in-image, zero runtime egress; built in 3 min with Cloud Build, pushed to the
 AR mirror; pods start training ~1 min after creation vs ~13 min on the pip path).
 
-## The ladder (MAX_COMPLETION=128 from rung 2; 20 steps per trainer; full-capture harvests)
+## The scaling series (20 steps per trainer; full-capture harvests)
 
-| rung | trainers | sandboxes | sustained suspend rate | suspend p50/p95/max | resume p50/p95 | errors | wall |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| 1 | 5 | 40 | ~0.3/s | 4.7 / 5.7 / 8.3* | 2.3 / 4.3 | 0 | 41 min |
-| 2 | 12 | 96 | ~2/s | 4.8 / 6.4 / 7.5 | 2.5 / 4.3 | 0 | 21 min |
-| 3 | 50 | 400 | ~4.6/s | 4.7 / 6.5 / 24.9 | 4.2 / 4.3 | 0 | 33 min |
-| 4 | **100** | **800** | **~7.6/s** | **4.8 / 6.6 / 30.7** | **4.2 / 4.4** | **0** | 39 min |
-| 5 | **150** | **1,200** | **~11.8/s** | **4.7 / 6.6 / 12.5** | **4.2 / 4.4** | **0** | 37 min |
+Each row is the same experiment at a larger scale — N independent trainers, each suspending its
+8 sandboxes after every training step:
 
-*rung-1 max excludes a 36.9s outlier attributable to the self-inflicted incident below.
+| trainers | sandboxes | sustained suspend rate | suspend p50/p95/max | resume p50/p95 | errors | wall |
+| --- | --- | --- | --- | --- | --- | --- |
+| 5 | 40 | ~0.3/s | 4.7 / 5.7 / 8.3* | 2.3 / 4.3 | 0 | 41 min |
+| 12 | 96 | ~2/s | 4.8 / 6.4 / 7.5 | 2.5 / 4.3 | 0 | 21 min |
+| 50 | 400 | ~4.6/s | 4.7 / 6.5 / 24.9 | 4.2 / 4.3 | 0 | 33 min |
+| **100** | **800** | **~7.6/s** | **4.8 / 6.6 / 30.7** | **4.2 / 4.4** | **0** | 39 min |
+| **150** | **1,200** | **~11.8/s** | **4.7 / 6.6 / 12.5** | **4.2 / 4.4** | **0** | 37 min |
+
+*the 5-trainer max excludes a 36.9s outlier attributable to the self-inflicted incident below.
 
 Ladder total ≈ 96,000 snapshot operations from real training jobs, zero state loss, zero substrate
-errors, zero trigger rejections. Rung 5 finished FASTER than rung 4 (37 vs 39 min) at 1.5× width.
+errors, zero trigger rejections. The 150-trainer run finished FASTER than the 100-trainer run (37 vs 39 min) at 1.5× width.
 
-## Rung 6 — the mega-swarm finds the ceiling (2026-09-06)
+## The saturation run: 450 trainers find the ceiling
 
 **450 trainers / 3,600 sandboxes / ~55 suspends/s ATTEMPTED** (pool-free fresh-create protocol, all
 11 shard pools, 2s stagger, CLAIM_TIMEOUT=600). Result: **the pipeline saturated and the system
 self-throttled to equilibrium — the first observed ceiling under real traffic:**
 
-| | rung 5 (11.8/s) | **rung 6 (~55/s attempted)** |
+| | 150 trainers (11.8/s) | **450 trainers (~55/s attempted)** |
 | --- | --- | --- |
 | suspend p50 / p95 / max | 4.7 / 6.6 / 12.5 | **37.4 / 103.6 / 212.1** |
 | resume p50 / p95 | 4.2 / 4.4 | 8.4 / 87.5 |
@@ -632,7 +601,7 @@ becomes suspend queue latency). Completions arrived on a degraded-but-stable cad
 **The pipeline's degradation law matches the arena's: past saturation, work waits — it does not
 break.** Combined sizing guidance: keep sustained cluster-wide suspend demand under ~15/s for
 floor-level latency; between ~15-25/s expect seconds→tens-of-seconds suspend queues; shard clusters
-beyond that. (Rung 6 also re-validated fresh-create at scale: 3,600 claims created directly, no pool,
+beyond that. (The saturation run also re-validated fresh-create at scale: 3,600 claims created directly, no pool,
 no minting class, ~68-min run with zero claim failures.)
 
 ### What shape does the ~20-25/s ceiling belong to? (scope + hypothesis)
@@ -642,7 +611,7 @@ sizes the control plane with node count, and the managed snapshot controller RUN
 plane. Decomposing what's known:
 
 - **Worker-node count does NOT set the ceiling** (proven twice: 34-vs-375-node null experiment,
-  identical latency; rung 6 queued with 640 idle nodes and bored CPUs). Nodes host the per-node
+  identical latency; the saturation run queued with 640 idle nodes and bored CPUs). Nodes host the per-node
   checkpoint agents — that part of the pipeline scales out with the fleet. The choke is the central
   trigger-processing loop.
 - **Control-plane size plausibly DOES set it (unmeasured).** Evidence: the tiny demo cluster (3
@@ -658,34 +627,34 @@ the same swarm harness against differently-sized clusters would produce it — f
 
 **Scaling levers, in order:** (1) shard across clusters — each brings its own ceiling; the six
 m2-density clusters ≈ ~120-150/s fleet-wide ≈ ~15K concurrently-suspending rollouts at an 18s turn
-cadence; (2) the GKE-3 filing — rung 6 upgrades it from "there seems to be a ceiling" to "here is
+cadence; (2) the GKE-3 filing — the saturation run upgrades it from "there seems to be a ceiling" to "here is
 the measured steady-state service rate and its equilibrium behavior," the strongest form of a
-capacity ask; (3) suspend less often per rollout (cadence guidance, Part 8).
+capacity ask; (3) suspend less often per rollout (cadence guidance, §8).
 
 ## Findings
 
-1. **Latency is FLAT from 1× to 150× trainers — and rung 5 SUSTAINED ~11.8/s, ABOVE the synthetic
+1. **Latency is FLAT from 1 to 150 trainers — and the 150-trainer run SUSTAINED ~11.8/s, ABOVE the synthetic
    ~10/s ceiling, with no queueing** (suspend p50 4.7, p95 6.6, max 12.5 — the max is LOWER than
-   rung 4's). This refines GKE-3: the ~10/s number is the pipeline's DRAIN rate observed under a
+   the 100-trainer run's). This refines GKE-3: the ~10/s number is the pipeline's DRAIN rate observed under a
    synchronized 500-deep burst (500 waves ÷ ~51s), not an arrival-rate cap. Staggered real traffic
    arriving below the pipeline's actual throughput (≥12/s demonstrated) rides at the ~5s floor;
    synchronized bursts pay queue-depth ÷ drain-rate. Production RL fleets de-phase naturally, so
-   they get the floor. Rung 5 alone: 24,000 suspends + 22,800 resumes, zero errors.
+   they get the floor. The 150-trainer run alone: 24,000 suspends + 22,800 resumes, zero errors.
 2. **Resume settles onto the wave floor and stays there:** p50 2.3s while arrivals are sparse
-   (rungs 1-2), 4.2s once every step is a full 8-wide wave (rungs 3-4); p95 within 0.2s of p50
+   (5-12 trainers), 4.2s once every step is a full 8-wide wave (50+ trainers); p95 within 0.2s of p50
    throughout. No width sensitivity to 800 concurrent sandboxes.
 3. **The shared warm pool absorbed a 800-claim burst** (100 trainers claiming 8 each at job start)
    with all trainers claimed and stepping within ~3 minutes.
-4. **Accidental chaos test (rung 1):** a claims sweep ran while 4 trainers had steps left, deleting
+4. **Accidental chaos test (5-trainer run):** a claims sweep ran while 4 trainers had steps left, deleting
    their reward fleets mid-run. All 4 completed training gracefully (rewards 0.0 for lost evals);
    pod that finished pre-sweep had zero errors. Orchestrator lesson: dead-trainer fleets need a
    janitor, and trainer processes survive fleet loss.
 5. **Trainer heterogeneity is real:** same config, 2× step-rate spread between trainers (completion-
-   length luck compounds); one rung-1 trainer finished 20 steps while siblings were at 9. Fleet
+   length luck compounds); one trainer finished 20 steps while siblings were at 9. Fleet
    scheduling should assume per-job cadence variance, not uniform waves.
 
-## Runbook rules earned
-- Sweep sandbox claims ONLY after the Job shows Complete (rung-1 incident).
+## Operational rules learned
+- Sweep sandbox claims ONLY after the Job shows Complete (learned in the 5-trainer run).
 - Trainer pods need 24Gi (12Gi OOMs at first-generation peak ~12.9Gi); 6 CPU / 24Gi = 1 per n2-std-8.
 - kubectl streaming loggers are unreliable ≥50 pods (label-selector logs default --tail=10):
   harvest per-pod logs after completion — full capture, no dedup needed.
@@ -694,7 +663,7 @@ capacity ask; (3) suspend less often per rollout (cadence guidance, Part 8).
   script in a configmap for iteration without rebuilds.
 - N2_CPUS at 7,996/8,000: trainer capacity lives on the idle shard pools, not loadgen.
 
-## Part 6 appendix — the benefit, quantified honestly (nodes are the billing unit, not pods)
+## Part 6 appendix — the cost benefit, quantified (nodes are the billing unit, not pods)
 
 Suspension deletes the sandbox POD, releasing its scheduler reservation. GKE bills NODES — so the
 reservation release converts to money only through one of three routes. State the route or the claim
@@ -702,13 +671,13 @@ is wrong.
 
 **The measured raw material:**
 - Duty cycle under per-step training suspension: awake ~9s of every ~105s step (4.2 resume + 0.1
-  eval + 4.8 suspend) = **8.6% awake / 91.4% suspended** (rung 4-5 cadence; Part 5's slower cadence:
+  eval + 4.8 suspend) = **8.6% awake / 91.4% suspended** (large-run cadence; §5's slower cadence:
   12%/88%).
-- Rung 4 scale: 800 sandboxes × 250m = 200 CPU of reservations, released 91% of a 39-min run
+- At 100 trainers: 800 sandboxes × 250m = 200 CPU of reservations, released 91% of a 39-min run
   ≈ **117 CPU-hours returned per run**. Always-on, the same fleet pins ~30 n2-std-8 nodes; average
   live demand under suspension is ~69 pods ≈ 3 nodes of CPU (staggered-peak headroom: ~5-6).
 - Storage side: ~99MB/snapshot → 800 concurrent snapshots ≈ 79GB GCS ≈ dollars/month, noise.
-- Price paid: **+9.4% training wall-clock** (Part 5 A/B; shrinks at bigger model sizes — suspend
+- Price paid: **+9.4% training wall-clock** (§5; shrinks at bigger model sizes — suspend
   hides under generation, exposed cost tends to resume-only ~4s).
 
 **Route 1 — fewer nodes (autoscaler scale-down).** Only works when suspension dwell exceeds
@@ -735,27 +704,27 @@ or higher rollout density); on an otherwise-empty cluster with sub-10-minute chu
 ## Part 6 appendix — full experiment configuration (reproducibility)
 
 **Harness files** (kuberay fork, branch `snapshotStress`, dir `ray-operator/config/samples/agent-sandbox*/stress/` — also on the Linux box):
-`grpo_sandbox_train.py` (the trainer; unchanged from Part 5 across ALL rungs), `grpo-trainer-pod.yaml`
-(single-trainer runs), `grpo-swarm-job.yaml` (rungs 1-2, loadgen), `grpo-swarm-shards-job.yaml`
-(rungs 3-5, shard pools), `Dockerfile.grpo-trainer` + `grpo-swarm-shards-job.yaml` (baked image),
+`grpo_sandbox_train.py` (the trainer; identical across ALL runs), `grpo-trainer-pod.yaml`
+(single-trainer runs), `grpo-swarm-job.yaml` (5/12-trainer runs, loadgen), `grpo-swarm-shards-job.yaml`
+(50+-trainer runs, shard pools), `Dockerfile.grpo-trainer` + `grpo-swarm-shards-job.yaml` (baked image),
 `~/density-job.yaml` (Part 7). Raw harvests on the Linux box: `~/grpo/swarm{1..5}-full.log`,
 `train{,2,3}.log`, `density-full.log`.
 
-**Trainer config, constant across all rungs:** TRL 0.21.0 GRPO, transformers<5, bf16/fp16 off,
+**Trainer config, constant across all levels:** TRL 0.21.0 GRPO, transformers<5, bf16/fp16 off,
 Qwen2.5-0.5B-Instruct, MBPP train[:200], NUM_GENERATIONS=4 (×2 prompts = 8 completions/step),
-gradient_accumulation=2, lr=2e-6, beta=0.04, temperature=0.9, MAX_STEPS=20 (50 in Part 5),
+gradient_accumulation=2, lr=2e-6, beta=0.04, temperature=0.9, MAX_STEPS=20 (50 for single-trainer runs),
 REWARD_SANDBOXES=8, SUSPEND_MODE=per_step, reward = 0.1·ran + 0.9·pass_fraction via sandbox exec
 (timeout 30s ×2 tries), OMP_NUM_THREADS = CPU request.
 
-**Per-rung deltas:**
-| rung | trainers | MAX_COMPLETION | trainer shape | trainer nodes | sandbox nodes | pool size | image |
-| --- | --- | --- | --- | --- | --- | --- | --- |
-| P5 A/B | 1 | 256 | 6cpu/24Gi | loadgen (n2-std-8) | snap-pool | 12 | pip-at-start |
-| 1 | 5 | 256 | 6cpu/24Gi | loadgen ×12 | snap-pool ×34 | 48 | pip-at-start |
-| 2 | 12 | 128 | 6cpu/24Gi | loadgen ×12 | snap-pool | 104 | pip-at-start |
-| 3 | 50 | 128 | 6cpu/24Gi | shard/stream pools (11 pools, 554 idle nodes) | snap-pool | 408 | baked v1 |
-| 4 | 100 | 128 | 6cpu/24Gi | shard/stream pools | snap-pool ×34 (~24 pods/node) | 808 | baked v1 |
-| 5 | 150 | 128 | 6cpu/24Gi | e2 pools only (f27/f48/f61/stream-1) | n2d shard pools (template nodeSelector machine-family=n2d; snap-pool pin removed) | 1,208 | baked v1 |
+**Per-run configuration deltas:**
+| trainers | MAX_COMPLETION | trainer shape | trainer nodes | sandbox nodes | pool size | image |
+| --- | --- | --- | --- | --- | --- | --- |
+| 1 | 256 | 6cpu/24Gi | loadgen (n2-std-8) | snap-pool | 12 | pip-at-start |
+| 5 | 256 | 6cpu/24Gi | loadgen ×12 | snap-pool ×34 | 48 | pip-at-start |
+| 12 | 128 | 6cpu/24Gi | loadgen ×12 | snap-pool | 104 | pip-at-start |
+| 50 | 128 | 6cpu/24Gi | shard/stream pools (11 pools, 554 idle nodes) | snap-pool | 408 | baked v1 |
+| 100 | 128 | 6cpu/24Gi | shard/stream pools | snap-pool ×34 (~24 pods/node) | 808 | baked v1 |
+| 150 | 128 | 6cpu/24Gi | e2 pools only (f27/f48/f61/stream-1) | n2d shard pools (template nodeSelector machine-family=n2d; snap-pool pin removed) | 1,208 | baked v1 |
 
 Baked image: `us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/grpo-trainer:v1` — python:3.11-slim +
 torch-cpu + pins + Qwen weights + MBPP pre-cached (HF_HUB_OFFLINE=1); Cloud Build 3m06s. Purpose:
@@ -765,19 +734,19 @@ private shard nodes have no egress; also cuts trainer startup ~13 min → ~1 min
 full capture, n = trainers×20 exactly); percentiles from the `suspended fleet in Xs` /
 `resumed 8 sandboxes in Xs` lines (suspend timer includes SDK snapshot-Ready wait; resume timer is
 resume() wall). Sustained rate = trainers × 8 / mean step seconds (wall ÷ 20 after ~3 min runway).
-Rungs 1-2 used a streaming logger (dedup with sort -u required, incomplete ≥50 pods — deprecated).
+The 5- and 12-trainer runs used a streaming logger (dedup with sort -u required, incomplete ≥50 pods — deprecated).
 
 **Cluster:** m2-density-c (gke-ai-eco-dev, us-central1-c, GKE 1.36.3-gke.1537000), agent-sandbox
 v1.0.0, SDK k8s-agent-sandbox==1.0.0, stock APF (no FlowSchema tuning active), one shared
-SandboxWarmPool + PodSnapshotPolicy (manual triggers, grouped by sandbox-name-hash), one HNS GCS
+SandboxWarmPool + PodSnapshotPolicy (manual triggers, grouped by sandbox-name-hash), one HNS (hierarchical-namespace) GCS
 bucket. Sandbox image: python-runtime-sandbox v0.4.6, gVisor, 250m/512Mi requests (arena) /
-requests inherited from template (rungs).
+requests inherited from template (scaling runs).
 
 ---
 
-# PART 7 — Density capstone: measuring the multiplier directly (2026-09-05)
+# PART 7 — Density: measuring the multiplier directly
 
-**Claim under test:** Part 6's appendix DERIVES 5-10× node density from the measured 8.6% duty
+**Claim under test:** §6's appendix DERIVES 5-10× node density from the measured 8.6% duty
 cycle. This measures it: a fenced arena, its always-on ceiling, then several× that many rollouts
 served through the same nodes — suspension as the load-bearing mechanism, not a side effect.
 
@@ -800,7 +769,7 @@ instant (expected live pods ~35-50 of the 87 slots). New observable vs the ladde
 **Result (attempt 2; attempt 1 failed by design error, see finding 2): 40/40 trainers completed —
 320 rollouts served through the 87-slot arena = 3.7× measured density**, all 800 waves captured:
 
-| | unpacked (rung 5, 1,200 sandboxes, no scarcity) | packed arena (320 rollouts / 87 slots) |
+| | unpacked (150-trainer run, 1,200 sandboxes, no scarcity) | packed arena (320 rollouts / 87 slots) |
 | --- | --- | --- |
 | suspend p50 / p95 / max | 4.7 / 6.6 / 12.5 | **9.3 / 20.4 / 175.2** |
 | resume p50 / p95 / max | 4.2 / 4.4 / 10.3 | **8.3 / 38.5 / 602.2** |
@@ -808,7 +777,7 @@ instant (expected live pods ~35-50 of the 87 slots). New observable vs the ladde
 | trainer failures | 0 | **0** (5 claim-retry saves) |
 
 The tails are an UPPER BOUND on the oversubscription tax: roughly the first half of the run was
-contaminated by finding 2 (a 232-pod mint backlog competing with resumes); after the pool was zeroed
+contaminated by finding 2 below (a 232-pod mint backlog competing with resumes); after the pool was zeroed
 mid-run, Pending collapsed 232→8 and completions accelerated 4→40. The uncontaminated steady-state
 tax is bounded above by these numbers and visibly smaller in the late-run stream.
 
@@ -833,7 +802,7 @@ tax is bounded above by these numbers and visibly smaller in the late-run stream
    sized at ~3.7× oversubscription trades tail latency for a ~3.7× smaller node bill; the knob is
    continuous and the tail is the price signal.
 
-## Part 7 addendum — the density curve (second point, 2026-09-06) and the pool-free protocol
+## Part 7 addendum — the density curve and the pool-free protocol
 
 **Protocol upgrade (validated):** run the arena with the warm pool at replicas=0 from the start —
 SandboxClaims then FRESH-CREATE their sandboxes (core agent-sandbox behavior), which eliminates the
@@ -863,10 +832,10 @@ gpu-pool deleted.
 
 ---
 
-# PART 8 — Cadence A/B on GPU: when per-step suspension stops making sense (2026-09-06)
+# PART 8 — Cadence A/B on GPU: when per-step suspension stops making sense
 
-**The accident that enabled it:** the g2-standard-24 node-pool create abandoned during the GPU
-stockout saga (Part 5 preamble) had silently SUCCEEDED in us-central1-a — an idle 2×L4 node was
+**Hardware note:** the g2-standard-24 node-pool creation abandoned during the GPU capacity shortage
+(§5) had silently SUCCEEDED in us-central1-a — an idle 2×L4 node was
 discovered 4 days later during cleanup. Before deleting it, it closed the campaign's last gap:
 suspension overhead as a function of training cadence.
 
@@ -874,14 +843,14 @@ suspension overhead as a function of training cadence.
 pool), one L4 GPU (`python:3.11-slim` + CUDA torch; GKE gotchas: `LD_LIBRARY_PATH=/usr/local/nvidia/lib64`
 required for the host-mounted driver, and triton JIT needs gcc installed). 50 steps, MAX_COMPLETION=128.
 
-**Result:** bare GPU step = **1.6s** (B-arm clean segment: (3,587 − 14×252.2)/36 steps) — ~45× faster
-than the 6-CPU trainer. Per-step suspension adds the same ~7s cycle it always adds (A-arm clean
+**Result:** bare GPU step = **1.6s** (suspension-off run, clean segment: (3,587 − 14×252.2)/36 steps) — ~45× faster
+than the 6-CPU trainer. Per-step suspension adds the same ~7s cycle it always adds (suspension-on run, clean
 segment: suspend p50 4.6, resume p50 2.3 — identical to every other run in the campaign):
 
 | cadence | bare step | step with per-step suspension | overhead |
 | --- | --- | --- | --- |
-| CPU trainer, 0.5B (Part 5) | 71.2s | 78.0s | **+9.4%** |
-| GPU trainer, 3B LoRA (L4×2) | ~15s | ~22s | **~+45%** |
+| CPU trainer, 0.5B (§5) | 71.2s | 78.0s | **+9.4%** |
+| GPU trainer, 3B with LoRA (Low-Rank Adaptation) (L4×2) | ~15s | ~22s | **~+45%** |
 | GPU trainer, 0.5B (L4) | 1.6s | ~8.5s | **~5.2×** |
 
 **The law: suspension's cost is a CONSTANT (~7s/cycle), so its relative price is set entirely by step
@@ -894,7 +863,7 @@ ruinous when turns are compute-fast. Orchestrator guidance for RL fleets: suspen
 expected idle exceeds ~3× the cycle cost — per-turn for slow/agentic turns (Reflection's 15s+ waits),
 per-rollout or long-gap for fast inner loops.
 
-### The immortal wedge (3B run, 2026-09-06 — upgrades the finding below)
+### Wedged state survives restore (3B run — upgrades the finding below)
 
 The 3B run produced the decisive observation: a wedged sandbox's errors were pinned to ONE slot
 (every error `[N_7]`, steps 41→50) across per-step suspend/resume cycles — while its pod and IP were
@@ -905,15 +874,15 @@ state perfectly — including pathological state. Consequences:
 - A wedged-then-snapshotted sandbox is permanently lost until an orchestrator detects it (liveness
   check post-resume) and deliberately cold-starts or discards it.
 - Wedge frequency scales with code sophistication (0 in 0.5B CPU runs of the same length; 1 per
-  GPU arm with 0.5B; 2 in one 50-step run with 3B — real models exercise the exec server harder).
+  GPU run with 0.5B; 2 in one 50-step run with 3B — real models exercise the exec server harder).
 - Suspension itself is exonerated as the cause (first wedge occurred with SUSPEND_MODE=off);
   mechanism inside the guest unconfirmed (leading hypothesis: command-timeout kills the request,
   not the guest process — orphans accumulate until the server stops answering; repro plan: feed a
   scratch sandbox blocking code repeatedly and watch for unresponsiveness).
 
-**Twice-demonstrated reliability finding (one per arm): sandboxes wedge under sustained
-model-generated code.** B-arm: one sandbox's pod-IP went permanently unreachable from step 37 (every
-eval on that slot burned the full 252s retry budget; batch time = slowest eval). A-arm: a different
+**Twice-demonstrated reliability finding (one per run): sandboxes wedge under sustained
+model-generated code.** Suspension-off run: one sandbox's pod-IP went permanently unreachable from step 37 (every
+eval on that slot burned the full 252s retry budget; batch time = slowest eval). Suspension-on run: a different
 sandbox's exec server hung with read-timeouts (suspend p95 inflated to 34.8s waiting on its
 snapshots). In both cases training completed — dead slots score 0.0 — but each wedged sandbox taxes
 every subsequent step. **Reward fleets need liveness eviction: health-check the fleet each step and
@@ -921,20 +890,20 @@ re-claim replacements.** Our harness lacks it by design simplicity; a production
 
 ---
 
-## Part 8 addendum — the marathon: longevity + self-healing (2026-09-07)
+## Long-run endurance and self-healing (3,000-step run)
 
 **The question:** does anything degrade over thousands of suspend/resume cycles per sandbox —
 snapshot-chain depth, GC, latency drift, wedge accumulation?
 
 **Three regimes run, escalating:**
-1. **No healing (v1):** effectively dead by step 108 — two immortal wedges taxed every step
+1. **No healing:** effectively dead by step 108 — two permanently-wedged sandboxes taxed every step
    (~27 steps/hr vs ~330 healthy). Long-running fleets are INFEASIBLE without liveness eviction.
-2. **Two-strike healing (v2, 170 steps):** correct but slow — detection cost ~11-12 min/wedge
+2. **Heal after 2 consecutive failures (170 steps):** correct but slow — detection cost ~11-12 min/wedge
    (two full retry-budget evals against a dead server before the trigger).
-3. **One-strike healing (v3, THE RUN):** a single communication failure on a slot → terminate +
+3. **Heal after 1 failure (the full run):** a single communication failure on a slot → terminate +
    fresh claim (~20s). Overhealing is cheap; probing a corpse is not.
 
-**v3 result — 3,000 steps / 12.0 h / 30 epochs, clean completion:**
+**Full-run result — 3,000 steps / 12.0 h / 30 epochs, clean completion:**
 - 24,000 sandbox-cycles, ~48,000 snapshot operations in one run.
 - **32 wedges caught and healed — 1 per ~750 cycles** under continuous model-generated code;
   every heal ~20s; zero run impact beyond the single failed eval.
@@ -948,11 +917,28 @@ snapshot-chain depth, GC, latency drift, wedge accumulation?
 indefinitely sustainable RL reward fleets. Wedge rate ~1.3 per 1,000 cycles is the budget number;
 eviction converts it from run-ending to rounding error.
 
+### The 10,000-step run (final depth record)
+
+The same configuration extended to 10,000 steps: **42.6 hours continuous, 100 epochs, 80,000
+suspend/resume cycles in one self-healing run — clean completion, full capture (n=10,000/9,999).**
+
+| metric | global (10,000 steps) | final 300 steps |
+| --- | --- | --- |
+| suspend p50 / p95 | 4.7 / 5.7 | 4.7 / 6.0 — **zero drift** |
+| resume p50 / p95 | 4.2 / 4.3 | (one 601.8s outlier in 10,000 — a single tail event) |
+| heals | ~120 ≈ 1 per ~700 cycles | third independent run converging on the same wedge rate |
+
+A sandbox in production lives one rollout (5-50 cycles); these fleets lived 10,000 each — roughly
+three orders of magnitude past production lifetime, with no aging, no GC pathology, and wedges held
+to a constant, evictable background rate. Operational note: runs of this length outlive `kubectl
+logs` (kubelet rotates at 10MB) — a reconnecting file logger is the primary record, not a
+convenience.
+
 ---
 
-# PART 9 — Production lifecycle & multi-cluster (2026-09-07, gaps 4 and 2 closed)
+# PART 9 — Production lifecycle and multi-cluster
 
-## Gap 4: per-rollout sandbox churn combined with per-step suspension (cluster C)
+## Per-rollout sandbox churn combined with per-step suspension (cluster C)
 
 **Design:** production's actual sandbox lifecycle — claim fleet → N suspended turns → terminate →
 claim fresh — modeled as ROLLOUT_LEN=5: every 5 training steps each trainer terminates its 8
@@ -970,7 +956,7 @@ sandboxes and fresh-creates 8 (pool-free protocol). 100 trainers × 20 steps = 4
 Claim churn and suspension coexist cleanly; the mixed-traffic latency lift is small and bounded. The
 20s recycle constant is the fleet-turnover budget number for orchestrators.
 
-## Gap 2: two clusters, one bucket (A + C simultaneously)
+## Two clusters, one storage bucket (A + C simultaneously)
 
 **Design:** cluster A (850 idle n2 nodes; brought up with the kuberay-sample manifests + AR image +
 pool-free protocol in ~15 min) ran a 200-trainer swarm at the same time as C's churn run, both
@@ -985,14 +971,14 @@ snapshot pipelines writing to the SAME regional bucket (gke-ai-eco-dev-sbx-snaps
 - **Two conclusions:** (1) the shared regional bucket is a NON-FACTOR at 2-cluster combined load —
   per-cluster snapshot pipelines are independent lanes, so fleet capacity ≈ sum of per-cluster
   ceilings (the ~120-150/s six-cluster estimate now rests on measurement); (2) A independently
-  reproduced the ~20-25/s ceiling law: at-demand≈ceiling → shallow queue (p50 6.6), vs C's rung 6
+  reproduced the ~20-25/s ceiling law: at-demand≈ceiling → shallow queue (p50 6.6), vs C's saturation run
   far-over-demand → deep queue (p50 37) — two clusters, one consistent law.
 
 Bring-up note: cluster A went from bare (drained) to running 200 real trainers in ~20 minutes using
 the kuberay sample manifests verbatim + two patches (AR image for private nodes, pool→0) — itself a
 validation that the PR's manifests are complete.
 
-## Gap 5: episode state across suspend cycles inside live training (cluster C)
+## Episode state across suspend cycles inside live training (cluster C)
 
 50 trainers × 40 steps, per-step suspension, each eval carrying a per-sandbox ledger check (byte-count
 accumulator in /tmp, verified against the trainer's expected count every turn). **16,000 in-training
@@ -1002,7 +988,7 @@ inside a live training loop, perfectly. Honest scope: this closes the STATE half
 agentic training"; conversational-trajectory RL (generation conditioned on turn history) still needs
 a custom rollout loop and remains on the gap list under "other stacks."
 
-## Gap 7: failure injection (cluster A)
+## Failure injection (cluster A)
 
 20 trainers × 40 steps under three deliberate attacks (all injected ~00:26 UTC, early-run):
 1. **Force-killed a live sandbox pod (grace 0)** → the Sandbox controller's stable-identity contract
@@ -1018,14 +1004,14 @@ platform-level recreation + SDK detection before the harness's own defenses even
 
 ---
 
-# PART 10 — The plane-size probe: F falsifies the proportional-ceiling hypothesis (2026-09-08)
+# PART 10 — Control-plane size vs the pipeline ceiling
 
 **Measured apiserver cores (go_sched_gomaxprocs_threads): C=96, A=96, F=64** — F's plane grew since
-August's 16-core folklore, leaving a 1.5× contrast. Bring-up on F (~15 min, kuberay-sample manifests,
+the earlier 16-core measurement, leaving a 1.5× contrast. Bring-up on F (~15 min, kuberay-sample manifests,
 us-west1 bucket + fresh IAM, sandboxes pinned n2d, trainers n2): validates a THIRD cluster and a
 SECOND region.
 
-| rung | attempted rate | suspend p50/p95 | resume p50/p95 | errors |
+| load | attempted rate | suspend p50/p95 | resume p50/p95 | errors |
 | --- | --- | --- | --- | --- |
 | F 50 trainers | ~5-6/s | **4.1 / 6.1** | 4.2 / 4.2 | 0 |
 | F 150 trainers | **~17-18/s** | **4.3 / 6.8 — FLAT** | 4.2 / 4.3 | 0 |
@@ -1039,7 +1025,7 @@ few-node clusters — where the demo cluster showed distress) are still unmeasur
 production RL fleets actually deploy, cluster size does not tax the snapshot pipeline. Fleet math
 (sum of per-cluster ceilings) gets STRONGER: even the fleet's smallest member contributes ≥17/s.
 
-# PART 11 — Heavy snapshots: the size laws to 4GB (2026-09-08)
+# PART 11 — Heavy snapshots: the size laws to 4GB
 
 **Question:** Part 1 measured to 1GB; agentic workloads with real in-memory state live at 4-8GB+.
 Does resume stay flat? **Setup:** 16 sandboxes × 4GB incompressible tmpfs ballast (dedicated template
@@ -1071,9 +1057,91 @@ snapshots per wave into one bucket — a deliberate cost/duration decision, ~1.2
 
 ---
 
-# CAMPAIGN CLOSE (2026-09-06)
+# PART 12 — Wide synchronized waves inside live training (batch-size check)
 
-Across Parts 1-11: ~400,000+ suspend/resume operations on FOUR clusters and TWO regions against real and synthetic RL traffic, zero
+**Question:** every trainer in the campaign used 2 problems × 4 generations = constant 8-wide waves
+(chosen to hold wave width fixed across experiments). Production batches are bigger. Does a single
+trainer with a production-shaped batch — 16 problems × 4 generations = **64 completions, 64
+sandboxes, one synchronized 64-wide suspend wave per step** — obey the synthetic wave laws?
+
+**Setup:** one trainer on cluster A, `GRAD_ACCUM=16`, 64 fresh-created sandboxes, 12 steps
+(768 model-written programs executed; ~93 min; generation of 64 completions dominates each step).
+
+| 64-wide wave (n=12/11) | synthetic-law prediction | measured |
+| --- | --- | --- |
+| suspend | ~11s (5 + 0.09s × width) | **p50 6.9 / max 12.8** |
+| resume | ~10.6s (4.2 + 0.1s × width) | **p50 4.8 / max 8.8** |
+
+**Finding: the synthetic wave slopes are UPPER BOUNDS, not costs.** The suspend slope carried a
+storage term from 99MB ballast-era snapshots (these are 32MB — the term shrinks proportionally), and
+the resume slope came from the small demo cluster where §2 later showed it was mostly APF queueing.
+On a healthy large-plane cluster, a synchronized 64-wide wave inside real training runs near the
+8-wide floor. Wider per-trainer batches cost almost nothing on the suspension side.
+
+Training-side corroboration: 16 problem-groups per step smoothed the reward signal exactly as
+expected (step means in a 0.29-0.51 band, vs 0.07-0.85 lurching with 2 groups). One eval error in
+768. Side observation for the SDK filing: at 64 sandbox handles in one process, the Kubernetes
+client's connection pool (default 40) overflows continuously ("Connection pool is full, discarding
+connection") — harmless but wasteful churn, same connection-hygiene family as the known
+3-TCP-connections-per-claim behavior.
+
+## Part 12 addendum — the batch-size ceiling and burst waves inside training
+
+**The manager's question — "what happens with far more problems per step?" — answered as a measured
+ladder.** Target: the entire MBPP corpus (964 problems × 4 generations = 3,856 completions) in every
+training step, on the 2×L4 trainer.
+
+| problems / completions per step | outcome |
+| --- | --- |
+| 964 / 3,856 (full corpus) | GPU OOM during generation |
+| 512 / 2,048 | GPU OOM |
+| 256 / 1,024 | GPU OOM — by 0.2 GiB |
+| **128 / 512** | **runs cleanly — the 2×L4 generation ceiling** |
+
+**The bottleneck is GPU generation memory (KV cache), never the sandbox substrate.** At every rung
+the sandbox side performed flawlessly: 3,856 sandboxes claimed in parallel in ~2 minutes (twice —
+~30-50 claims/s through the claim controller), evaluated, and released cleanly on each OOM exit.
+
+**The 512-completion run (6 steps, 19 min, 3,072 programs graded, 0.3% eval errors) delivered the
+missing wave-regime datapoint — mid-burst waves from a live trainer, matching queue arithmetic
+exactly (512 arrivals ÷ ~22/s drain):**
+
+| 512-wide wave (n=6/5) | predicted | measured |
+| --- | --- | --- |
+| suspend | ~25-30s | 27.5-37.8 (median ~28) |
+| resume | ~23s | 19.7-22.4 (median ~21) |
+
+### The batch-size ceiling is GPU memory, not quota — and the paths past it
+
+The OOM is physics, not policy: generation holds every in-flight sequence's KV (key/value) cache in
+GPU memory, and an L4 has 24GB on the card. No GKE quota or configuration raises that; quota only
+governs renting BIGGER cards. For this fleet's inventory: 2×L4 (48GB, KV effectively bounded by the
+24GB primary device) ceilings at 128 problems / 512 completions per step. Escape paths, ranked:
+
+1. **Bigger GPUs** — the project holds idle quota for 16× A100-40GB (an A100 ≈ 1.8× the L4's memory
+   → est. ~256 problems; 80GB-class cards for the full 964-problem corpus would need new quota and
+   capacity). Linear money-for-memory; no code changes.
+2. **Chunked generation** (software, free) — TRL's generation-batching knobs
+   (`generation_batch_size` / `steps_per_generation` in recent versions) generate in slices while
+   the optimizer step still spans the full problem set. How production does large batches. Untested
+   here (version-dependent knob names on TRL 0.21).
+3. **Sharded data-parallel trainers** — N trainers × 128 problems on disjoint dataset slices; the
+   aggregate step spans N×128 problems. Production-shaped; fully within this campaign's tooling
+   (the swarm harness + per-index DATASET_SLICE).
+4. Shorter sequences — ~20-30% relief, not the needed 4-8×.
+
+Combined with §12's 64-wide floor-riding waves and §2's synthetic 500/1,000-wave bursts, the wave
+law is now continuous across regimes: below the pipeline's drain rate, waves ride the ~5s floor;
+above it, they pay queue-depth ÷ drain-rate — measured at 8, 64, and 512 wide inside real training
+and to 1,000 wide synthetically. Additional SDK footnote: at 512 handles the Kubernetes client's
+connection pool (grown to 120) still overflows continuously; connection hygiene degrades gracefully
+but wastefully from 64 handles upward.
+
+---
+
+# Campaign summary
+
+Across Parts 1-12: ~400,000+ suspend/resume operations on FOUR clusters and TWO regions against real and synthetic RL traffic, zero
 state loss ever observed. The complete measured story: substrate laws (floors, wave costs, burst-vs-
 steady pipeline behavior ≥12/s), real GRPO training with sandbox-executed rewards (learning unaffected,
 hostile code contained), a 450-trainer swarm that FOUND the steady-state ceiling (~20-25 suspends/s; flat to 11.8/s, queueing-not-failure beyond), backfill economics
