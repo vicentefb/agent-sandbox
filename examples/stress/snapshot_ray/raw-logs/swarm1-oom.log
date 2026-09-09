@@ -1,0 +1,189 @@
+[pod/grpo-swarm-0-n5z9d/trainer] Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+[pod/grpo-swarm-0-n5z9d/trainer] Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+[pod/grpo-swarm-0-n5z9d/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 246.3/246.3 kB 390.1 MB/s eta 0:00:00
+[pod/grpo-swarm-0-n5z9d/trainer] Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+[pod/grpo-swarm-0-n5z9d/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 384.3 MB/s eta 0:00:00
+[pod/grpo-swarm-0-n5z9d/trainer] Downloading propcache-0.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (58 kB)
+[pod/grpo-swarm-0-n5z9d/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.9/58.9 kB 306.4 MB/s eta 0:00:00
+[pod/grpo-swarm-0-n5z9d/trainer] Downloading yarl-1.24.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (111 kB)
+[pod/grpo-swarm-0-n5z9d/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.9/111.9 kB 369.5 MB/s eta 0:00:00
+[pod/grpo-swarm-0-n5z9d/trainer] Installing collected packages: durationpy, xxhash, websocket-client, urllib3, typing-inspection, tqdm, six, safetensors, regex, pyyaml, pydantic-core, pyarrow, psutil, propcache, prometheus-client, oauthlib, numpy, multidict, idna, hf-xet, h11, fsspec, frozenlist, dill, charset_normalizer, certifi, attrs, annotated-types, aiohappyeyeballs, yarl, requests, python-dateutil, pydantic, multiprocess, httpcore, anyio, aiosignal, requests-oauthlib, pandas, huggingface-hub, httpx, aiohttp, tokenizers, kubernetes, accelerate, transformers, k8s-agent-sandbox, datasets, trl
+[pod/grpo-swarm-4-qv6h9/trainer] Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+[pod/grpo-swarm-4-qv6h9/trainer] Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+[pod/grpo-swarm-4-qv6h9/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 246.3/246.3 kB 355.9 MB/s eta 0:00:00
+[pod/grpo-swarm-4-qv6h9/trainer] Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+[pod/grpo-swarm-4-qv6h9/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 379.4 MB/s eta 0:00:00
+[pod/grpo-swarm-4-qv6h9/trainer] Downloading propcache-0.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (58 kB)
+[pod/grpo-swarm-4-qv6h9/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.9/58.9 kB 310.0 MB/s eta 0:00:00
+[pod/grpo-swarm-4-qv6h9/trainer] Downloading yarl-1.24.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (111 kB)
+[pod/grpo-swarm-4-qv6h9/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.9/111.9 kB 348.2 MB/s eta 0:00:00
+[pod/grpo-swarm-4-qv6h9/trainer] Installing collected packages: durationpy, xxhash, websocket-client, urllib3, typing-inspection, tqdm, six, safetensors, regex, pyyaml, pydantic-core, pyarrow, psutil, propcache, prometheus-client, oauthlib, numpy, multidict, idna, hf-xet, h11, fsspec, frozenlist, dill, charset_normalizer, certifi, attrs, annotated-types, aiohappyeyeballs, yarl, requests, python-dateutil, pydantic, multiprocess, httpcore, anyio, aiosignal, requests-oauthlib, pandas, huggingface-hub, httpx, aiohttp, tokenizers, kubernetes, accelerate, transformers, k8s-agent-sandbox, datasets, trl
+[pod/grpo-swarm-1-rrfwp/trainer] Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+[pod/grpo-swarm-1-rrfwp/trainer] Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+[pod/grpo-swarm-1-rrfwp/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 246.3/246.3 kB 389.6 MB/s eta 0:00:00
+[pod/grpo-swarm-1-rrfwp/trainer] Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+[pod/grpo-swarm-1-rrfwp/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 376.6 MB/s eta 0:00:00
+[pod/grpo-swarm-1-rrfwp/trainer] Downloading propcache-0.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (58 kB)
+[pod/grpo-swarm-1-rrfwp/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.9/58.9 kB 176.0 MB/s eta 0:00:00
+[pod/grpo-swarm-1-rrfwp/trainer] Downloading yarl-1.24.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (111 kB)
+[pod/grpo-swarm-1-rrfwp/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.9/111.9 kB 90.0 MB/s eta 0:00:00
+[pod/grpo-swarm-1-rrfwp/trainer] Installing collected packages: durationpy, xxhash, websocket-client, urllib3, typing-inspection, tqdm, six, safetensors, regex, pyyaml, pydantic-core, pyarrow, psutil, propcache, prometheus-client, oauthlib, numpy, multidict, idna, hf-xet, h11, fsspec, frozenlist, dill, charset_normalizer, certifi, attrs, annotated-types, aiohappyeyeballs, yarl, requests, python-dateutil, pydantic, multiprocess, httpcore, anyio, aiosignal, requests-oauthlib, pandas, huggingface-hub, httpx, aiohttp, tokenizers, kubernetes, accelerate, transformers, k8s-agent-sandbox, datasets, trl
+[pod/grpo-swarm-2-22bl4/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 231.1/231.1 kB 359.7 MB/s eta 0:00:00
+[pod/grpo-swarm-2-22bl4/trainer] Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+[pod/grpo-swarm-2-22bl4/trainer] Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+[pod/grpo-swarm-2-22bl4/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 246.3/246.3 kB 347.9 MB/s eta 0:00:00
+[pod/grpo-swarm-2-22bl4/trainer] Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+[pod/grpo-swarm-2-22bl4/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 364.4 MB/s eta 0:00:00
+[pod/grpo-swarm-2-22bl4/trainer] Downloading propcache-0.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (58 kB)
+[pod/grpo-swarm-2-22bl4/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.9/58.9 kB 274.0 MB/s eta 0:00:00
+[pod/grpo-swarm-2-22bl4/trainer] Downloading yarl-1.24.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (111 kB)
+[pod/grpo-swarm-2-22bl4/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.9/111.9 kB 321.8 MB/s eta 0:00:00
+[pod/grpo-swarm-3-jfdvb/trainer] Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+[pod/grpo-swarm-3-jfdvb/trainer] Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+[pod/grpo-swarm-3-jfdvb/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 246.3/246.3 kB 369.3 MB/s eta 0:00:00
+[pod/grpo-swarm-3-jfdvb/trainer] Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+[pod/grpo-swarm-3-jfdvb/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 315.2 MB/s eta 0:00:00
+[pod/grpo-swarm-3-jfdvb/trainer] Downloading propcache-0.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (58 kB)
+[pod/grpo-swarm-3-jfdvb/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.9/58.9 kB 293.5 MB/s eta 0:00:00
+[pod/grpo-swarm-3-jfdvb/trainer] Downloading yarl-1.24.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (111 kB)
+[pod/grpo-swarm-3-jfdvb/trainer]    ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.9/111.9 kB 334.0 MB/s eta 0:00:00
+[pod/grpo-swarm-3-jfdvb/trainer] Installing collected packages: durationpy, xxhash, websocket-client, urllib3, typing-inspection, tqdm, six, safetensors, regex, pyyaml, pydantic-core, pyarrow, psutil, propcache, prometheus-client, oauthlib, numpy, multidict, idna, hf-xet, h11, fsspec, frozenlist, dill, charset_normalizer, certifi, attrs, annotated-types, aiohappyeyeballs, yarl, requests, python-dateutil, pydantic, multiprocess, httpcore, anyio, aiosignal, requests-oauthlib, pandas, huggingface-hub, httpx, aiohttp, tokenizers, kubernetes, accelerate, transformers, k8s-agent-sandbox, datasets, trl
+[pod/grpo-swarm-2-22bl4/trainer] Installing collected packages: durationpy, xxhash, websocket-client, urllib3, typing-inspection, tqdm, six, safetensors, regex, pyyaml, pydantic-core, pyarrow, psutil, propcache, prometheus-client, oauthlib, numpy, multidict, idna, hf-xet, h11, fsspec, frozenlist, dill, charset_normalizer, certifi, attrs, annotated-types, aiohappyeyeballs, yarl, requests, python-dateutil, pydantic, multiprocess, httpcore, anyio, aiosignal, requests-oauthlib, pandas, huggingface-hub, httpx, aiohttp, tokenizers, kubernetes, accelerate, transformers, k8s-agent-sandbox, datasets, trl
+[pod/grpo-swarm-4-qv6h9/trainer]   Attempting uninstall: fsspec
+[pod/grpo-swarm-4-qv6h9/trainer]     Found existing installation: fsspec 2026.7.0
+[pod/grpo-swarm-4-qv6h9/trainer]     Uninstalling fsspec-2026.7.0:
+[pod/grpo-swarm-4-qv6h9/trainer]       Successfully uninstalled fsspec-2026.7.0
+[pod/grpo-swarm-0-n5z9d/trainer]   Attempting uninstall: fsspec
+[pod/grpo-swarm-0-n5z9d/trainer]     Found existing installation: fsspec 2026.7.0
+[pod/grpo-swarm-0-n5z9d/trainer]     Uninstalling fsspec-2026.7.0:
+[pod/grpo-swarm-0-n5z9d/trainer]       Successfully uninstalled fsspec-2026.7.0
+[pod/grpo-swarm-1-rrfwp/trainer]   Attempting uninstall: fsspec
+[pod/grpo-swarm-1-rrfwp/trainer]     Found existing installation: fsspec 2026.7.0
+[pod/grpo-swarm-1-rrfwp/trainer]     Uninstalling fsspec-2026.7.0:
+[pod/grpo-swarm-1-rrfwp/trainer]       Successfully uninstalled fsspec-2026.7.0
+[pod/grpo-swarm-3-jfdvb/trainer]   Attempting uninstall: fsspec
+[pod/grpo-swarm-3-jfdvb/trainer]     Found existing installation: fsspec 2026.7.0
+[pod/grpo-swarm-3-jfdvb/trainer]     Uninstalling fsspec-2026.7.0:
+[pod/grpo-swarm-3-jfdvb/trainer]       Successfully uninstalled fsspec-2026.7.0
+[pod/grpo-swarm-2-22bl4/trainer]   Attempting uninstall: fsspec
+[pod/grpo-swarm-2-22bl4/trainer]     Found existing installation: fsspec 2026.7.0
+[pod/grpo-swarm-2-22bl4/trainer]     Uninstalling fsspec-2026.7.0:
+[pod/grpo-swarm-2-22bl4/trainer]       Successfully uninstalled fsspec-2026.7.0
+[pod/grpo-swarm-4-qv6h9/trainer] Successfully installed accelerate-1.14.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.3 aiosignal-1.4.0 annotated-types-0.8.0 anyio-4.15.0 attrs-26.1.0 certifi-2026.7.22 charset_normalizer-3.5.1 datasets-5.0.1 dill-0.4.1 durationpy-0.11 frozenlist-1.8.0 fsspec-2026.6.0 h11-0.16.0 hf-xet-1.6.0 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-0.36.2 idna-3.19 k8s-agent-sandbox-1.0.0 kubernetes-36.0.3 multidict-6.7.1 multiprocess-0.70.19 numpy-2.4.6 oauthlib-3.3.1 pandas-3.0.5 prometheus-client-0.26.0 propcache-0.5.2 psutil-7.2.2 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 python-dateutil-2.9.0.post0 pyyaml-6.0.3 regex-2026.9.3 requests-2.34.2 requests-oauthlib-2.0.0 safetensors-0.8.0 six-1.17.0 tokenizers-0.22.2 tqdm-4.70.0 transformers-4.57.6 trl-0.21.0 typing-inspection-0.4.4 urllib3-2.7.0 websocket-client-1.9.2 xxhash-4.0.1 yarl-1.24.5
+[pod/grpo-swarm-4-qv6h9/trainer] WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[pod/grpo-swarm-4-qv6h9/trainer] 
+[pod/grpo-swarm-4-qv6h9/trainer] [notice] A new release of pip is available: 24.0 -> 26.2.1
+[pod/grpo-swarm-4-qv6h9/trainer] [notice] To update, run: pip install --upgrade pip
+[pod/grpo-swarm-0-n5z9d/trainer] Successfully installed accelerate-1.14.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.3 aiosignal-1.4.0 annotated-types-0.8.0 anyio-4.15.0 attrs-26.1.0 certifi-2026.7.22 charset_normalizer-3.5.1 datasets-5.0.1 dill-0.4.1 durationpy-0.11 frozenlist-1.8.0 fsspec-2026.6.0 h11-0.16.0 hf-xet-1.6.0 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-0.36.2 idna-3.19 k8s-agent-sandbox-1.0.0 kubernetes-36.0.3 multidict-6.7.1 multiprocess-0.70.19 numpy-2.4.6 oauthlib-3.3.1 pandas-3.0.5 prometheus-client-0.26.0 propcache-0.5.2 psutil-7.2.2 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 python-dateutil-2.9.0.post0 pyyaml-6.0.3 regex-2026.9.3 requests-2.34.2 requests-oauthlib-2.0.0 safetensors-0.8.0 six-1.17.0 tokenizers-0.22.2 tqdm-4.70.0 transformers-4.57.6 trl-0.21.0 typing-inspection-0.4.4 urllib3-2.7.0 websocket-client-1.9.2 xxhash-4.0.1 yarl-1.24.5
+[pod/grpo-swarm-0-n5z9d/trainer] WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[pod/grpo-swarm-0-n5z9d/trainer] 
+[pod/grpo-swarm-0-n5z9d/trainer] [notice] A new release of pip is available: 24.0 -> 26.2.1
+[pod/grpo-swarm-0-n5z9d/trainer] [notice] To update, run: pip install --upgrade pip
+[pod/grpo-swarm-4-qv6h9/trainer] + python /work/grpo_sandbox_train.py
+[pod/grpo-swarm-0-n5z9d/trainer] + python /work/grpo_sandbox_train.py
+[pod/grpo-swarm-1-rrfwp/trainer] Successfully installed accelerate-1.14.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.3 aiosignal-1.4.0 annotated-types-0.8.0 anyio-4.15.0 attrs-26.1.0 certifi-2026.7.22 charset_normalizer-3.5.1 datasets-5.0.1 dill-0.4.1 durationpy-0.11 frozenlist-1.8.0 fsspec-2026.6.0 h11-0.16.0 hf-xet-1.6.0 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-0.36.2 idna-3.19 k8s-agent-sandbox-1.0.0 kubernetes-36.0.3 multidict-6.7.1 multiprocess-0.70.19 numpy-2.4.6 oauthlib-3.3.1 pandas-3.0.5 prometheus-client-0.26.0 propcache-0.5.2 psutil-7.2.2 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 python-dateutil-2.9.0.post0 pyyaml-6.0.3 regex-2026.9.3 requests-2.34.2 requests-oauthlib-2.0.0 safetensors-0.8.0 six-1.17.0 tokenizers-0.22.2 tqdm-4.70.0 transformers-4.57.6 trl-0.21.0 typing-inspection-0.4.4 urllib3-2.7.0 websocket-client-1.9.2 xxhash-4.0.1 yarl-1.24.5
+[pod/grpo-swarm-1-rrfwp/trainer] WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[pod/grpo-swarm-1-rrfwp/trainer] 
+[pod/grpo-swarm-1-rrfwp/trainer] [notice] A new release of pip is available: 24.0 -> 26.2.1
+[pod/grpo-swarm-1-rrfwp/trainer] [notice] To update, run: pip install --upgrade pip
+[pod/grpo-swarm-3-jfdvb/trainer] Successfully installed accelerate-1.14.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.3 aiosignal-1.4.0 annotated-types-0.8.0 anyio-4.15.0 attrs-26.1.0 certifi-2026.7.22 charset_normalizer-3.5.1 datasets-5.0.1 dill-0.4.1 durationpy-0.11 frozenlist-1.8.0 fsspec-2026.6.0 h11-0.16.0 hf-xet-1.6.0 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-0.36.2 idna-3.19 k8s-agent-sandbox-1.0.0 kubernetes-36.0.3 multidict-6.7.1 multiprocess-0.70.19 numpy-2.4.6 oauthlib-3.3.1 pandas-3.0.5 prometheus-client-0.26.0 propcache-0.5.2 psutil-7.2.2 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 python-dateutil-2.9.0.post0 pyyaml-6.0.3 regex-2026.9.3 requests-2.34.2 requests-oauthlib-2.0.0 safetensors-0.8.0 six-1.17.0 tokenizers-0.22.2 tqdm-4.70.0 transformers-4.57.6 trl-0.21.0 typing-inspection-0.4.4 urllib3-2.7.0 websocket-client-1.9.2 xxhash-4.0.1 yarl-1.24.5
+[pod/grpo-swarm-3-jfdvb/trainer] WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[pod/grpo-swarm-3-jfdvb/trainer] 
+[pod/grpo-swarm-3-jfdvb/trainer] [notice] A new release of pip is available: 24.0 -> 26.2.1
+[pod/grpo-swarm-3-jfdvb/trainer] [notice] To update, run: pip install --upgrade pip
+[pod/grpo-swarm-1-rrfwp/trainer] + python /work/grpo_sandbox_train.py
+[pod/grpo-swarm-3-jfdvb/trainer] + python /work/grpo_sandbox_train.py
+[pod/grpo-swarm-2-22bl4/trainer] Successfully installed accelerate-1.14.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.3 aiosignal-1.4.0 annotated-types-0.8.0 anyio-4.15.0 attrs-26.1.0 certifi-2026.7.22 charset_normalizer-3.5.1 datasets-5.0.1 dill-0.4.1 durationpy-0.11 frozenlist-1.8.0 fsspec-2026.6.0 h11-0.16.0 hf-xet-1.6.0 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-0.36.2 idna-3.19 k8s-agent-sandbox-1.0.0 kubernetes-36.0.3 multidict-6.7.1 multiprocess-0.70.19 numpy-2.4.6 oauthlib-3.3.1 pandas-3.0.5 prometheus-client-0.26.0 propcache-0.5.2 psutil-7.2.2 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 python-dateutil-2.9.0.post0 pyyaml-6.0.3 regex-2026.9.3 requests-2.34.2 requests-oauthlib-2.0.0 safetensors-0.8.0 six-1.17.0 tokenizers-0.22.2 tqdm-4.70.0 transformers-4.57.6 trl-0.21.0 typing-inspection-0.4.4 urllib3-2.7.0 websocket-client-1.9.2 xxhash-4.0.1 yarl-1.24.5
+[pod/grpo-swarm-2-22bl4/trainer] WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+[pod/grpo-swarm-2-22bl4/trainer] 
+[pod/grpo-swarm-2-22bl4/trainer] [notice] A new release of pip is available: 24.0 -> 26.2.1
+[pod/grpo-swarm-2-22bl4/trainer] [notice] To update, run: pip install --upgrade pip
+[pod/grpo-swarm-0-n5z9d/trainer] claiming 8 reward sandboxes from warmpool python-snapshot-pool...
+[pod/grpo-swarm-0-n5z9d/trainer]   sandbox 0 ready
+[pod/grpo-swarm-0-n5z9d/trainer]   sandbox 1 ready
+[pod/grpo-swarm-0-n5z9d/trainer]   sandbox 2 ready
+[pod/grpo-swarm-0-n5z9d/trainer]   sandbox 3 ready
+[pod/grpo-swarm-0-n5z9d/trainer]   sandbox 4 ready
+[pod/grpo-swarm-0-n5z9d/trainer]   sandbox 5 ready
+[pod/grpo-swarm-0-n5z9d/trainer]   sandbox 6 ready
+[pod/grpo-swarm-0-n5z9d/trainer]   sandbox 7 ready
+[pod/grpo-swarm-0-n5z9d/trainer] Generating train split:   0%|          | 0/374 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 374/374 [00:00<00:00, 61671.24 examples/s]
+[pod/grpo-swarm-0-n5z9d/trainer] Generating test split:   0%|          | 0/500 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 500/500 [00:00<00:00, 123923.18 examples/s]
+[pod/grpo-swarm-0-n5z9d/trainer] Generating validation split:   0%|          | 0/90 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 90/90 [00:00<00:00, 36842.41 examples/s]
+[pod/grpo-swarm-0-n5z9d/trainer] Generating prompt split:   0%|          | 0/10 [00:00<?, ? examples/s]Generating prompt split: 100%|██████████| 10/10 [00:00<00:00, 4614.70 examples/s]
+[pod/grpo-swarm-4-qv6h9/trainer] claiming 8 reward sandboxes from warmpool python-snapshot-pool...
+[pod/grpo-swarm-4-qv6h9/trainer]   sandbox 0 ready
+[pod/grpo-swarm-4-qv6h9/trainer]   sandbox 1 ready
+[pod/grpo-swarm-4-qv6h9/trainer]   sandbox 2 ready
+[pod/grpo-swarm-4-qv6h9/trainer]   sandbox 3 ready
+[pod/grpo-swarm-4-qv6h9/trainer]   sandbox 4 ready
+[pod/grpo-swarm-4-qv6h9/trainer]   sandbox 5 ready
+[pod/grpo-swarm-4-qv6h9/trainer]   sandbox 6 ready
+[pod/grpo-swarm-4-qv6h9/trainer]   sandbox 7 ready
+[pod/grpo-swarm-0-n5z9d/trainer] Map:   0%|          | 0/200 [00:00<?, ? examples/s]Map: 100%|██████████| 200/200 [00:00<00:00, 15174.21 examples/s]
+[pod/grpo-swarm-4-qv6h9/trainer] Generating train split:   0%|          | 0/374 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 374/374 [00:00<00:00, 64084.88 examples/s]
+[pod/grpo-swarm-4-qv6h9/trainer] Generating test split:   0%|          | 0/500 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 500/500 [00:00<00:00, 114893.55 examples/s]
+[pod/grpo-swarm-4-qv6h9/trainer] Generating validation split:   0%|          | 0/90 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 90/90 [00:00<00:00, 37176.22 examples/s]
+[pod/grpo-swarm-4-qv6h9/trainer] Generating prompt split:   0%|          | 0/10 [00:00<?, ? examples/s]Generating prompt split: 100%|██████████| 10/10 [00:00<00:00, 4787.47 examples/s]
+[pod/grpo-swarm-4-qv6h9/trainer] Map:   0%|          | 0/200 [00:00<?, ? examples/s]Map: 100%|██████████| 200/200 [00:00<00:00, 14490.35 examples/s]
+[pod/grpo-swarm-2-22bl4/trainer] + python /work/grpo_sandbox_train.py
+[pod/grpo-swarm-1-rrfwp/trainer] claiming 8 reward sandboxes from warmpool python-snapshot-pool...
+[pod/grpo-swarm-1-rrfwp/trainer]   sandbox 0 ready
+[pod/grpo-swarm-1-rrfwp/trainer]   sandbox 1 ready
+[pod/grpo-swarm-1-rrfwp/trainer]   sandbox 2 ready
+[pod/grpo-swarm-1-rrfwp/trainer]   sandbox 3 ready
+[pod/grpo-swarm-1-rrfwp/trainer]   sandbox 4 ready
+[pod/grpo-swarm-1-rrfwp/trainer]   sandbox 5 ready
+[pod/grpo-swarm-1-rrfwp/trainer]   sandbox 6 ready
+[pod/grpo-swarm-1-rrfwp/trainer]   sandbox 7 ready
+[pod/grpo-swarm-1-rrfwp/trainer] Generating train split:   0%|          | 0/374 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 374/374 [00:00<00:00, 56303.42 examples/s]
+[pod/grpo-swarm-1-rrfwp/trainer] Generating test split:   0%|          | 0/500 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 500/500 [00:00<00:00, 96567.30 examples/s]
+[pod/grpo-swarm-1-rrfwp/trainer] Generating validation split:   0%|          | 0/90 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 90/90 [00:00<00:00, 30732.51 examples/s]
+[pod/grpo-swarm-1-rrfwp/trainer] Generating prompt split:   0%|          | 0/10 [00:00<?, ? examples/s]Generating prompt split: 100%|██████████| 10/10 [00:00<00:00, 3722.98 examples/s]
+[pod/grpo-swarm-1-rrfwp/trainer] Map:   0%|          | 0/200 [00:00<?, ? examples/s]Map: 100%|██████████| 200/200 [00:00<00:00, 13205.83 examples/s]
+[pod/grpo-swarm-3-jfdvb/trainer] claiming 8 reward sandboxes from warmpool python-snapshot-pool...
+[pod/grpo-swarm-3-jfdvb/trainer]   sandbox 0 ready
+[pod/grpo-swarm-3-jfdvb/trainer]   sandbox 1 ready
+[pod/grpo-swarm-3-jfdvb/trainer]   sandbox 2 ready
+[pod/grpo-swarm-3-jfdvb/trainer]   sandbox 3 ready
+[pod/grpo-swarm-3-jfdvb/trainer]   sandbox 4 ready
+[pod/grpo-swarm-3-jfdvb/trainer]   sandbox 5 ready
+[pod/grpo-swarm-3-jfdvb/trainer]   sandbox 6 ready
+[pod/grpo-swarm-3-jfdvb/trainer]   sandbox 7 ready
+[pod/grpo-swarm-3-jfdvb/trainer] Generating train split:   0%|          | 0/374 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 374/374 [00:00<00:00, 58591.48 examples/s]
+[pod/grpo-swarm-3-jfdvb/trainer] Generating test split:   0%|          | 0/500 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 500/500 [00:00<00:00, 120901.19 examples/s]
+[pod/grpo-swarm-3-jfdvb/trainer] Generating validation split:   0%|          | 0/90 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 90/90 [00:00<00:00, 33599.23 examples/s]
+[pod/grpo-swarm-3-jfdvb/trainer] Generating prompt split:   0%|          | 0/10 [00:00<?, ? examples/s]Generating prompt split: 100%|██████████| 10/10 [00:00<00:00, 4456.81 examples/s]
+[pod/grpo-swarm-3-jfdvb/trainer] Map:   0%|          | 0/200 [00:00<?, ? examples/s]Map: 100%|██████████| 200/200 [00:00<00:00, 14560.27 examples/s]
+[pod/grpo-swarm-2-22bl4/trainer] claiming 8 reward sandboxes from warmpool python-snapshot-pool...
+[pod/grpo-swarm-2-22bl4/trainer]   sandbox 0 ready
+[pod/grpo-swarm-2-22bl4/trainer]   sandbox 1 ready
+[pod/grpo-swarm-2-22bl4/trainer]   sandbox 2 ready
+[pod/grpo-swarm-2-22bl4/trainer]   sandbox 3 ready
+[pod/grpo-swarm-2-22bl4/trainer]   sandbox 4 ready
+[pod/grpo-swarm-2-22bl4/trainer]   sandbox 5 ready
+[pod/grpo-swarm-2-22bl4/trainer]   sandbox 6 ready
+[pod/grpo-swarm-2-22bl4/trainer]   sandbox 7 ready
+[pod/grpo-swarm-2-22bl4/trainer] Generating train split:   0%|          | 0/374 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 374/374 [00:00<00:00, 56362.09 examples/s]
+[pod/grpo-swarm-2-22bl4/trainer] Generating test split:   0%|          | 0/500 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 500/500 [00:00<00:00, 102011.48 examples/s]
+[pod/grpo-swarm-2-22bl4/trainer] Generating validation split:   0%|          | 0/90 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 90/90 [00:00<00:00, 30093.06 examples/s]
+[pod/grpo-swarm-2-22bl4/trainer] Generating prompt split:   0%|          | 0/10 [00:00<?, ? examples/s]Generating prompt split: 100%|██████████| 10/10 [00:00<00:00, 3254.43 examples/s]
+[pod/grpo-swarm-2-22bl4/trainer] Map:   0%|          | 0/200 [00:00<?, ? examples/s]Map: 100%|██████████| 200/200 [00:00<00:00, 12495.32 examples/s]
+[pod/grpo-swarm-4-qv6h9/trainer] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+[pod/grpo-swarm-4-qv6h9/trainer]   0%|          | 0/20 [00:00<?, ?it/s]/usr/local/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+[pod/grpo-swarm-4-qv6h9/trainer]   super().__init__(loader)
+[pod/grpo-swarm-0-n5z9d/trainer] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+[pod/grpo-swarm-0-n5z9d/trainer]   0%|          | 0/20 [00:00<?, ?it/s]/usr/local/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+[pod/grpo-swarm-0-n5z9d/trainer]   super().__init__(loader)
+[pod/grpo-swarm-1-rrfwp/trainer] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+[pod/grpo-swarm-1-rrfwp/trainer]   0%|          | 0/20 [00:00<?, ?it/s]/usr/local/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+[pod/grpo-swarm-1-rrfwp/trainer]   super().__init__(loader)
+[pod/grpo-swarm-2-22bl4/trainer] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+[pod/grpo-swarm-2-22bl4/trainer]   0%|          | 0/20 [00:00<?, ?it/s]/usr/local/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+[pod/grpo-swarm-2-22bl4/trainer]   super().__init__(loader)
+[pod/grpo-swarm-3-jfdvb/trainer] The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+[pod/grpo-swarm-3-jfdvb/trainer]   0%|          | 0/20 [00:00<?, ?it/s]/usr/local/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+[pod/grpo-swarm-3-jfdvb/trainer]   super().__init__(loader)
+Unable to connect to the server: dial tcp 34.66.33.18:443: connect: connection timed out
+No resources found in default namespace.
+No resources found in default namespace.

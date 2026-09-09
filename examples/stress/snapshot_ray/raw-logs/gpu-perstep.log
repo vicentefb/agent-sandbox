@@ -1,0 +1,656 @@
+nohup: ignoring input
++ apt-get update -qq
++ apt-get install -y -qq --no-install-recommends gcc python3-dev
+debconf: unable to initialize frontend: Dialog
+debconf: (TERM is not set, so the dialog frontend is not usable.)
+debconf: falling back to frontend: Readline
+debconf: unable to initialize frontend: Readline
+debconf: (Can't locate Term/ReadLine.pm in @INC (you may need to install the Term::ReadLine module) (@INC entries checked: /etc/perl /usr/local/lib/x86_64-linux-gnu/perl/5.40.1 /usr/local/share/perl/5.40.1 /usr/lib/x86_64-linux-gnu/perl5/5.40 /usr/share/perl5 /usr/lib/x86_64-linux-gnu/perl-base /usr/lib/x86_64-linux-gnu/perl/5.40 /usr/share/perl/5.40 /usr/local/lib/site_perl) at /usr/share/perl5/Debconf/FrontEnd/Readline.pm line 8, <STDIN> line 55.)
+debconf: falling back to frontend: Teletype
+debconf: unable to initialize frontend: Teletype
+debconf: (This frontend requires a controlling tty.)
+debconf: falling back to frontend: Noninteractive
++ pip install --no-cache-dir torch
+Collecting torch
+  Downloading torch-2.14.0-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (37 kB)
+Collecting filelock (from torch)
+  Downloading filelock-3.32.5-py3-none-any.whl.metadata (2.0 kB)
+Collecting typing-extensions>=4.10.0 (from torch)
+  Downloading typing_extensions-4.16.0-py3-none-any.whl.metadata (3.3 kB)
+Requirement already satisfied: setuptools>=77.0.3 in /usr/local/lib/python3.11/site-packages (from torch) (79.0.1)
+Collecting sympy>=1.13.3 (from torch)
+  Downloading sympy-1.14.0-py3-none-any.whl.metadata (12 kB)
+Collecting networkx>=2.5.1 (from torch)
+  Downloading networkx-3.6.1-py3-none-any.whl.metadata (6.8 kB)
+Collecting jinja2 (from torch)
+  Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+Collecting fsspec>=0.8.5 (from torch)
+  Downloading fsspec-2026.7.0-py3-none-any.whl.metadata (10 kB)
+Collecting cuda-toolkit==13.0.3 (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading cuda_toolkit-13.0.3.0-py2.py3-none-any.whl.metadata (17 kB)
+Collecting cuda-bindings<14,>=13.0.3 (from torch)
+  Downloading cuda_bindings-13.3.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (2.5 kB)
+Collecting nvidia-cudnn-cu13==9.24.0.43 (from torch)
+  Downloading nvidia_cudnn_cu13-9.24.0.43-py3-none-manylinux_2_27_x86_64.whl.metadata (1.9 kB)
+Collecting nvidia-cusparselt-cu13==0.8.1 (from torch)
+  Downloading nvidia_cusparselt_cu13-0.8.1-py3-none-manylinux2014_x86_64.whl.metadata (12 kB)
+Collecting nvidia-nccl-cu13==2.30.7 (from torch)
+  Downloading nvidia_nccl_cu13-2.30.7-py3-none-manylinux_2_18_x86_64.whl.metadata (2.1 kB)
+Collecting nvidia-nvshmem-cu13==3.4.5 (from torch)
+  Downloading nvidia_nvshmem_cu13-3.4.5-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (2.1 kB)
+Collecting triton~=3.8.0 (from torch)
+  Downloading triton-3.8.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (978 bytes)
+Collecting nvidia-cublas==13.1.1.3.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_cublas-13.1.1.3-py3-none-manylinux_2_27_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-cuda-nvrtc==13.0.88.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_cuda_nvrtc-13.0.88-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cuda-runtime==13.0.96.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_cuda_runtime-13.0.96-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cufft==12.0.0.61.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_cufft-12.0.0.61-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvjitlink<14,>=13.0.88 (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_nvjitlink-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-cufile==1.15.1.6.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_cufile-1.15.1.6-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cuda-cupti==13.0.85.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_cuda_cupti-13.0.85-py3-none-manylinux_2_25_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-curand==10.4.0.35.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_curand-10.4.0.35-py3-none-manylinux_2_27_x86_64.whl.metadata (1.7 kB)
+Collecting nvidia-cusolver==12.0.4.66.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_cusolver-12.0.4.66-py3-none-manylinux_2_27_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-cusparse==12.6.3.3.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_cusparse-12.6.3.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (1.8 kB)
+Collecting nvidia-nvtx==13.0.85.* (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch)
+  Downloading nvidia_nvtx-13.0.85-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl.metadata (1.8 kB)
+Collecting cuda-pathfinder>=1.4.2 (from cuda-bindings<14,>=13.0.3->torch)
+  Downloading cuda_pathfinder-1.8.1-py3-none-any.whl.metadata (1.9 kB)
+Collecting mpmath<1.4,>=1.1.0 (from sympy>=1.13.3->torch)
+  Downloading mpmath-1.3.0-py3-none-any.whl.metadata (8.6 kB)
+Collecting MarkupSafe>=2.0 (from jinja2->torch)
+  Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+Downloading torch-2.14.0-cp311-cp311-manylinux_2_28_x86_64.whl (554.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 554.6/554.6 MB 169.9 MB/s eta 0:00:00
+Downloading cuda_toolkit-13.0.3.0-py2.py3-none-any.whl (2.5 kB)
+Downloading nvidia_cudnn_cu13-9.24.0.43-py3-none-manylinux_2_27_x86_64.whl (553.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 553.1/553.1 MB 135.2 MB/s eta 0:00:00
+Downloading nvidia_cusparselt_cu13-0.8.1-py3-none-manylinux2014_x86_64.whl (170.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 170.1/170.1 MB 53.7 MB/s eta 0:00:00
+Downloading nvidia_nccl_cu13-2.30.7-py3-none-manylinux_2_18_x86_64.whl (216.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 216.0/216.0 MB 50.0 MB/s eta 0:00:00
+Downloading nvidia_nvshmem_cu13-3.4.5-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (60.4 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 60.4/60.4 MB 42.8 MB/s eta 0:00:00
+Downloading nvidia_cublas-13.1.1.3-py3-none-manylinux_2_27_x86_64.whl (423.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 423.1/423.1 MB 58.4 MB/s eta 0:00:00
+Downloading nvidia_cuda_cupti-13.0.85-py3-none-manylinux_2_25_x86_64.whl (10.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 10.7/10.7 MB 59.4 MB/s eta 0:00:00
+Downloading nvidia_cuda_nvrtc-13.0.88-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (90.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 90.2/90.2 MB 69.2 MB/s eta 0:00:00
+Downloading nvidia_cuda_runtime-13.0.96-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (2.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.2/2.2 MB 74.0 MB/s eta 0:00:00
+Downloading nvidia_cufft-12.0.0.61-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (214.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 214.1/214.1 MB 65.0 MB/s eta 0:00:00
+Downloading nvidia_cufile-1.15.1.6-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (1.2 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.2/1.2 MB 75.0 MB/s eta 0:00:00
+Downloading nvidia_curand-10.4.0.35-py3-none-manylinux_2_27_x86_64.whl (59.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 59.5/59.5 MB 70.7 MB/s eta 0:00:00
+Downloading nvidia_cusolver-12.0.4.66-py3-none-manylinux_2_27_x86_64.whl (200.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 200.9/200.9 MB 86.3 MB/s eta 0:00:00
+Downloading nvidia_cusparse-12.6.3.3-py3-none-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (145.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 145.9/145.9 MB 93.5 MB/s eta 0:00:00
+Downloading nvidia_nvtx-13.0.85-py3-none-manylinux1_x86_64.manylinux_2_5_x86_64.whl (148 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 148.0/148.0 kB 192.6 MB/s eta 0:00:00
+Downloading cuda_bindings-13.3.1-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (6.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.7/6.7 MB 97.4 MB/s eta 0:00:00
+Downloading fsspec-2026.7.0-py3-none-any.whl (206 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 206.6/206.6 kB 283.8 MB/s eta 0:00:00
+Downloading networkx-3.6.1-py3-none-any.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 107.2 MB/s eta 0:00:00
+Downloading sympy-1.14.0-py3-none-any.whl (6.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 6.3/6.3 MB 97.3 MB/s eta 0:00:00
+Downloading triton-3.8.0-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (247.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 247.9/247.9 MB 109.6 MB/s eta 0:00:00
+Downloading typing_extensions-4.16.0-py3-none-any.whl (45 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.6/45.6 kB 248.2 MB/s eta 0:00:00
+Downloading filelock-3.32.5-py3-none-any.whl (100 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 100.0/100.0 kB 286.6 MB/s eta 0:00:00
+Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 134.9/134.9 kB 308.0 MB/s eta 0:00:00
+Downloading cuda_pathfinder-1.8.1-py3-none-any.whl (62 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 62.6/62.6 kB 290.0 MB/s eta 0:00:00
+Downloading markupsafe-3.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+Downloading mpmath-1.3.0-py3-none-any.whl (536 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 536.2/536.2 kB 178.5 MB/s eta 0:00:00
+Downloading nvidia_nvjitlink-13.3.33-py3-none-manylinux2010_x86_64.manylinux_2_12_x86_64.whl (40.7 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.7/40.7 MB 110.9 MB/s eta 0:00:00
+Installing collected packages: nvidia-cusparselt-cu13, mpmath, cuda-toolkit, typing-extensions, triton, sympy, nvidia-nvtx, nvidia-nvshmem-cu13, nvidia-nvjitlink, nvidia-nccl-cu13, nvidia-curand, nvidia-cufile, nvidia-cuda-runtime, nvidia-cuda-nvrtc, nvidia-cuda-cupti, networkx, MarkupSafe, fsspec, filelock, cuda-pathfinder, nvidia-cusparse, nvidia-cufft, nvidia-cublas, jinja2, cuda-bindings, nvidia-cusolver, nvidia-cudnn-cu13, torch
+Successfully installed MarkupSafe-3.0.3 cuda-bindings-13.3.1 cuda-pathfinder-1.8.1 cuda-toolkit-13.0.3.0 filelock-3.32.5 fsspec-2026.7.0 jinja2-3.1.6 mpmath-1.3.0 networkx-3.6.1 nvidia-cublas-13.1.1.3 nvidia-cuda-cupti-13.0.85 nvidia-cuda-nvrtc-13.0.88 nvidia-cuda-runtime-13.0.96 nvidia-cudnn-cu13-9.24.0.43 nvidia-cufft-12.0.0.61 nvidia-cufile-1.15.1.6 nvidia-curand-10.4.0.35 nvidia-cusolver-12.0.4.66 nvidia-cusparse-12.6.3.3 nvidia-cusparselt-cu13-0.8.1 nvidia-nccl-cu13-2.30.7 nvidia-nvjitlink-13.3.33 nvidia-nvshmem-cu13-3.4.5 nvidia-nvtx-13.0.85 sympy-1.14.0 torch-2.14.0 triton-3.8.0 typing-extensions-4.16.0
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
++ pip install --no-cache-dir trl==0.21.0 'transformers<5' datasets accelerate k8s-agent-sandbox==1.0.0
+Collecting trl==0.21.0
+  Downloading trl-0.21.0-py3-none-any.whl.metadata (11 kB)
+Collecting transformers<5
+  Downloading transformers-4.57.6-py3-none-any.whl.metadata (43 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 44.0/44.0 kB 5.7 MB/s eta 0:00:00
+Collecting datasets
+  Downloading datasets-5.0.1-py3-none-any.whl.metadata (23 kB)
+Collecting accelerate
+  Downloading accelerate-1.14.0-py3-none-any.whl.metadata (19 kB)
+Collecting k8s-agent-sandbox==1.0.0
+  Downloading k8s_agent_sandbox-1.0.0-py3-none-any.whl.metadata (15 kB)
+Collecting kubernetes (from k8s-agent-sandbox==1.0.0)
+  Downloading kubernetes-36.0.3-py2.py3-none-any.whl.metadata (1.8 kB)
+Collecting requests (from k8s-agent-sandbox==1.0.0)
+  Downloading requests-2.34.2-py3-none-any.whl.metadata (4.8 kB)
+Collecting pydantic (from k8s-agent-sandbox==1.0.0)
+  Downloading pydantic-2.13.5-py3-none-any.whl.metadata (110 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 110.2/110.2 kB 10.4 MB/s eta 0:00:00
+Collecting prometheus-client (from k8s-agent-sandbox==1.0.0)
+  Downloading prometheus_client-0.26.0-py3-none-any.whl.metadata (2.1 kB)
+Requirement already satisfied: filelock in /usr/local/lib/python3.11/site-packages (from transformers<5) (3.32.5)
+Collecting huggingface-hub<1.0,>=0.34.0 (from transformers<5)
+  Downloading huggingface_hub-0.36.2-py3-none-any.whl.metadata (15 kB)
+Collecting numpy>=1.17 (from transformers<5)
+  Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl.metadata (6.6 kB)
+Requirement already satisfied: packaging>=20.0 in /usr/local/lib/python3.11/site-packages (from transformers<5) (26.3)
+Collecting pyyaml>=5.1 (from transformers<5)
+  Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.4 kB)
+Collecting regex!=2019.12.17 (from transformers<5)
+  Downloading regex-2026.9.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (40 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 40.6/40.6 kB 233.2 MB/s eta 0:00:00
+Collecting tokenizers<=0.23.0,>=0.22.0 (from transformers<5)
+  Downloading tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (7.3 kB)
+Collecting safetensors>=0.4.3 (from transformers<5)
+  Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (4.2 kB)
+Collecting tqdm>=4.27 (from transformers<5)
+  Downloading tqdm-4.70.0-py3-none-any.whl.metadata (57 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 57.3/57.3 kB 257.7 MB/s eta 0:00:00
+Collecting pyarrow>=21.0.0 (from datasets)
+  Downloading pyarrow-25.0.1-cp311-cp311-manylinux_2_28_x86_64.whl.metadata (3.0 kB)
+Collecting dill<0.4.2,>=0.3.0 (from datasets)
+  Downloading dill-0.4.1-py3-none-any.whl.metadata (10 kB)
+Collecting pandas (from datasets)
+  Downloading pandas-3.0.5-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl.metadata (79 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 79.5/79.5 kB 227.5 MB/s eta 0:00:00
+Collecting httpx<1.0.0 (from datasets)
+  Downloading httpx-0.28.1-py3-none-any.whl.metadata (7.1 kB)
+Collecting xxhash (from datasets)
+  Downloading xxhash-4.0.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (17 kB)
+Collecting multiprocess<0.70.20 (from datasets)
+  Downloading multiprocess-0.70.19-py311-none-any.whl.metadata (7.5 kB)
+Collecting fsspec<=2026.6.0,>=2023.1.0 (from fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading fsspec-2026.6.0-py3-none-any.whl.metadata (10 kB)
+Collecting psutil (from accelerate)
+  Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl.metadata (22 kB)
+Requirement already satisfied: torch>=2.0.0 in /usr/local/lib/python3.11/site-packages (from accelerate) (2.14.0)
+Collecting aiohttp!=4.0.0a0,!=4.0.0a1 (from fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading aiohttp-3.14.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (8.3 kB)
+Collecting anyio (from httpx<1.0.0->datasets)
+  Downloading anyio-4.15.1-py3-none-any.whl.metadata (4.7 kB)
+Collecting certifi (from httpx<1.0.0->datasets)
+  Downloading certifi-2026.7.22-py3-none-any.whl.metadata (2.5 kB)
+Collecting httpcore==1.* (from httpx<1.0.0->datasets)
+  Downloading httpcore-1.0.9-py3-none-any.whl.metadata (21 kB)
+Collecting idna (from httpx<1.0.0->datasets)
+  Downloading idna-3.19-py3-none-any.whl.metadata (9.2 kB)
+Collecting h11>=0.16 (from httpcore==1.*->httpx<1.0.0->datasets)
+  Downloading h11-0.16.0-py3-none-any.whl.metadata (8.3 kB)
+Collecting hf-xet<2.0.0,>=1.1.3 (from huggingface-hub<1.0,>=0.34.0->transformers<5)
+  Downloading hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl.metadata (4.9 kB)
+Requirement already satisfied: typing-extensions>=3.7.4.3 in /usr/local/lib/python3.11/site-packages (from huggingface-hub<1.0,>=0.34.0->transformers<5) (4.16.0)
+Collecting charset_normalizer<4,>=2 (from requests->k8s-agent-sandbox==1.0.0)
+  Downloading charset_normalizer-3.5.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (45 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 45.9/45.9 kB 136.0 MB/s eta 0:00:00
+Collecting urllib3<3,>=1.26 (from requests->k8s-agent-sandbox==1.0.0)
+  Downloading urllib3-2.7.0-py3-none-any.whl.metadata (6.9 kB)
+Requirement already satisfied: setuptools>=77.0.3 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (79.0.1)
+Requirement already satisfied: sympy>=1.13.3 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (1.14.0)
+Requirement already satisfied: networkx>=2.5.1 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (3.6.1)
+Requirement already satisfied: jinja2 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (3.1.6)
+Requirement already satisfied: cuda-toolkit==13.0.3 in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (13.0.3.0)
+Requirement already satisfied: cuda-bindings<14,>=13.0.3 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (13.3.1)
+Requirement already satisfied: nvidia-cudnn-cu13==9.24.0.43 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (9.24.0.43)
+Requirement already satisfied: nvidia-cusparselt-cu13==0.8.1 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (0.8.1)
+Requirement already satisfied: nvidia-nccl-cu13==2.30.7 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (2.30.7)
+Requirement already satisfied: nvidia-nvshmem-cu13==3.4.5 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (3.4.5)
+Requirement already satisfied: triton~=3.8.0 in /usr/local/lib/python3.11/site-packages (from torch>=2.0.0->accelerate) (3.8.0)
+Requirement already satisfied: nvidia-cublas==13.1.1.3.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (13.1.1.3)
+Requirement already satisfied: nvidia-cuda-nvrtc==13.0.88.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (13.0.88)
+Requirement already satisfied: nvidia-cuda-runtime==13.0.96.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (13.0.96)
+Requirement already satisfied: nvidia-cufft==12.0.0.61.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (12.0.0.61)
+Requirement already satisfied: nvidia-nvjitlink<14,>=13.0.88 in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (13.3.33)
+Requirement already satisfied: nvidia-cufile==1.15.1.6.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (1.15.1.6)
+Requirement already satisfied: nvidia-cuda-cupti==13.0.85.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (13.0.85)
+Requirement already satisfied: nvidia-curand==10.4.0.35.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (10.4.0.35)
+Requirement already satisfied: nvidia-cusolver==12.0.4.66.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (12.0.4.66)
+Requirement already satisfied: nvidia-cusparse==12.6.3.3.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (12.6.3.3)
+Requirement already satisfied: nvidia-nvtx==13.0.85.* in /usr/local/lib/python3.11/site-packages (from cuda-toolkit[cublas,cudart,cufft,cufile,cupti,curand,cusolver,cusparse,nvjitlink,nvrtc,nvtx]==13.0.3; platform_system == "Linux"->torch>=2.0.0->accelerate) (13.0.85)
+Collecting six>=1.9.0 (from kubernetes->k8s-agent-sandbox==1.0.0)
+  Downloading six-1.17.0-py2.py3-none-any.whl.metadata (1.7 kB)
+Collecting python-dateutil>=2.5.3 (from kubernetes->k8s-agent-sandbox==1.0.0)
+  Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl.metadata (8.4 kB)
+Collecting websocket-client!=0.40.0,!=0.41.*,!=0.42.*,>=0.32.0 (from kubernetes->k8s-agent-sandbox==1.0.0)
+  Downloading websocket_client-1.9.2-py3-none-any.whl.metadata (8.3 kB)
+Collecting requests-oauthlib (from kubernetes->k8s-agent-sandbox==1.0.0)
+  Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl.metadata (11 kB)
+Collecting durationpy>=0.7 (from kubernetes->k8s-agent-sandbox==1.0.0)
+  Downloading durationpy-0.11-py3-none-any.whl.metadata (474 bytes)
+Collecting annotated-types>=0.6.0 (from pydantic->k8s-agent-sandbox==1.0.0)
+  Downloading annotated_types-0.8.0-py3-none-any.whl.metadata (15 kB)
+Collecting pydantic-core==2.46.5 (from pydantic->k8s-agent-sandbox==1.0.0)
+  Downloading pydantic_core-2.46.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl.metadata (6.6 kB)
+Collecting typing-inspection>=0.4.2 (from pydantic->k8s-agent-sandbox==1.0.0)
+  Downloading typing_inspection-0.4.4-py3-none-any.whl.metadata (2.6 kB)
+Collecting aiohappyeyeballs>=2.5.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl.metadata (5.9 kB)
+Collecting aiosignal>=1.4.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading aiosignal-1.4.0-py3-none-any.whl.metadata (3.7 kB)
+Collecting attrs>=17.3.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading attrs-26.1.0-py3-none-any.whl.metadata (8.8 kB)
+Collecting frozenlist>=1.1.1 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl.metadata (20 kB)
+Collecting multidict<7.0,>=4.5 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (5.3 kB)
+Collecting propcache>=0.2.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading propcache-0.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (16 kB)
+Collecting yarl<2.0,>=1.17.0 (from aiohttp!=4.0.0a0,!=4.0.0a1->fsspec[http]<=2026.6.0,>=2023.1.0->datasets)
+  Downloading yarl-1.24.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (103 kB)
+     ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 104.0/104.0 kB 123.3 MB/s eta 0:00:00
+Requirement already satisfied: cuda-pathfinder>=1.4.2 in /usr/local/lib/python3.11/site-packages (from cuda-bindings<14,>=13.0.3->torch>=2.0.0->accelerate) (1.8.1)
+Requirement already satisfied: mpmath<1.4,>=1.1.0 in /usr/local/lib/python3.11/site-packages (from sympy>=1.13.3->torch>=2.0.0->accelerate) (1.3.0)
+Requirement already satisfied: MarkupSafe>=2.0 in /usr/local/lib/python3.11/site-packages (from jinja2->torch>=2.0.0->accelerate) (3.0.3)
+Collecting oauthlib>=3.0.0 (from requests-oauthlib->kubernetes->k8s-agent-sandbox==1.0.0)
+  Downloading oauthlib-3.3.1-py3-none-any.whl.metadata (7.9 kB)
+Downloading trl-0.21.0-py3-none-any.whl (511 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 511.9/511.9 kB 34.9 MB/s eta 0:00:00
+Downloading k8s_agent_sandbox-1.0.0-py3-none-any.whl (96 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 96.2/96.2 kB 276.6 MB/s eta 0:00:00
+Downloading transformers-4.57.6-py3-none-any.whl (12.0 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 12.0/12.0 MB 204.6 MB/s eta 0:00:00
+Downloading datasets-5.0.1-py3-none-any.whl (559 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 559.1/559.1 kB 325.8 MB/s eta 0:00:00
+Downloading accelerate-1.14.0-py3-none-any.whl (389 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 389.2/389.2 kB 323.5 MB/s eta 0:00:00
+Downloading dill-0.4.1-py3-none-any.whl (120 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 120.0/120.0 kB 319.2 MB/s eta 0:00:00
+Downloading fsspec-2026.6.0-py3-none-any.whl (203 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 203.9/203.9 kB 319.8 MB/s eta 0:00:00
+Downloading httpx-0.28.1-py3-none-any.whl (73 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.5/73.5 kB 192.3 MB/s eta 0:00:00
+Downloading httpcore-1.0.9-py3-none-any.whl (78 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 78.8/78.8 kB 270.5 MB/s eta 0:00:00
+Downloading huggingface_hub-0.36.2-py3-none-any.whl (566 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 566.4/566.4 kB 303.1 MB/s eta 0:00:00
+Downloading multiprocess-0.70.19-py311-none-any.whl (144 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 144.5/144.5 kB 256.5 MB/s eta 0:00:00
+Downloading numpy-2.4.6-cp311-cp311-manylinux_2_27_x86_64.manylinux_2_28_x86_64.whl (16.9 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 16.9/16.9 MB 321.1 MB/s eta 0:00:00
+Downloading pyarrow-25.0.1-cp311-cp311-manylinux_2_28_x86_64.whl (50.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 50.1/50.1 MB 330.8 MB/s eta 0:00:00
+Downloading pyyaml-6.0.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (806 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 806.6/806.6 kB 319.3 MB/s eta 0:00:00
+Downloading regex-2026.9.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (801 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 801.1/801.1 kB 322.0 MB/s eta 0:00:00
+Downloading requests-2.34.2-py3-none-any.whl (73 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 73.1/73.1 kB 265.5 MB/s eta 0:00:00
+Downloading safetensors-0.8.0-cp310-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (516 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 516.0/516.0 kB 328.1 MB/s eta 0:00:00
+Downloading tokenizers-0.22.2-cp39-abi3-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (3.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 3.3/3.3 MB 299.3 MB/s eta 0:00:00
+Downloading tqdm-4.70.0-py3-none-any.whl (80 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 80.2/80.2 kB 226.3 MB/s eta 0:00:00
+Downloading kubernetes-36.0.3-py2.py3-none-any.whl (4.6 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.6/4.6 MB 198.0 MB/s eta 0:00:00
+Downloading pandas-3.0.5-cp311-cp311-manylinux_2_24_x86_64.manylinux_2_28_x86_64.whl (11.3 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 11.3/11.3 MB 245.1 MB/s eta 0:00:00
+Downloading prometheus_client-0.26.0-py3-none-any.whl (64 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 64.5/64.5 kB 246.2 MB/s eta 0:00:00
+Downloading psutil-7.2.2-cp36-abi3-manylinux2010_x86_64.manylinux_2_12_x86_64.manylinux_2_28_x86_64.whl (155 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 155.6/155.6 kB 305.4 MB/s eta 0:00:00
+Downloading pydantic-2.13.5-py3-none-any.whl (472 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 472.6/472.6 kB 323.5 MB/s eta 0:00:00
+Downloading pydantic_core-2.46.5-cp311-cp311-manylinux_2_17_x86_64.manylinux2014_x86_64.whl (2.1 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 2.1/2.1 MB 111.3 MB/s eta 0:00:00
+Downloading xxhash-4.0.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (261 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 261.0/261.0 kB 332.1 MB/s eta 0:00:00
+Downloading aiohttp-3.14.3-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (1.8 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 1.8/1.8 MB 247.7 MB/s eta 0:00:00
+Downloading annotated_types-0.8.0-py3-none-any.whl (13 kB)
+Downloading certifi-2026.7.22-py3-none-any.whl (136 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 137.0/137.0 kB 328.7 MB/s eta 0:00:00
+Downloading charset_normalizer-3.5.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (262 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 262.3/262.3 kB 327.9 MB/s eta 0:00:00
+Downloading durationpy-0.11-py3-none-any.whl (4.1 kB)
+Downloading hf_xet-1.6.0-cp38-abi3-manylinux2014_x86_64.manylinux_2_17_x86_64.whl (4.5 MB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 4.5/4.5 MB 143.4 MB/s eta 0:00:00
+Downloading idna-3.19-py3-none-any.whl (68 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 68.5/68.5 kB 294.3 MB/s eta 0:00:00
+Downloading python_dateutil-2.9.0.post0-py2.py3-none-any.whl (229 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 229.9/229.9 kB 340.9 MB/s eta 0:00:00
+Downloading six-1.17.0-py2.py3-none-any.whl (11 kB)
+Downloading typing_inspection-0.4.4-py3-none-any.whl (14 kB)
+Downloading urllib3-2.7.0-py3-none-any.whl (131 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 131.1/131.1 kB 293.5 MB/s eta 0:00:00
+Downloading websocket_client-1.9.2-py3-none-any.whl (95 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 95.8/95.8 kB 295.9 MB/s eta 0:00:00
+Downloading anyio-4.15.1-py3-none-any.whl (132 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 132.1/132.1 kB 299.1 MB/s eta 0:00:00
+Downloading requests_oauthlib-2.0.0-py2.py3-none-any.whl (24 kB)
+Downloading aiohappyeyeballs-2.7.1-py3-none-any.whl (15 kB)
+Downloading aiosignal-1.4.0-py3-none-any.whl (7.5 kB)
+Downloading attrs-26.1.0-py3-none-any.whl (67 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 67.5/67.5 kB 295.6 MB/s eta 0:00:00
+Downloading frozenlist-1.8.0-cp311-cp311-manylinux1_x86_64.manylinux_2_28_x86_64.manylinux_2_5_x86_64.whl (231 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 231.1/231.1 kB 315.2 MB/s eta 0:00:00
+Downloading h11-0.16.0-py3-none-any.whl (37 kB)
+Downloading multidict-6.7.1-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (246 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 246.3/246.3 kB 269.1 MB/s eta 0:00:00
+Downloading oauthlib-3.3.1-py3-none-any.whl (160 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 160.1/160.1 kB 280.4 MB/s eta 0:00:00
+Downloading propcache-0.5.2-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (58 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 58.9/58.9 kB 180.0 MB/s eta 0:00:00
+Downloading yarl-1.24.5-cp311-cp311-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (111 kB)
+   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ 111.9/111.9 kB 232.9 MB/s eta 0:00:00
+Installing collected packages: durationpy, xxhash, websocket-client, urllib3, typing-inspection, tqdm, six, safetensors, regex, pyyaml, pydantic-core, pyarrow, psutil, propcache, prometheus-client, oauthlib, numpy, multidict, idna, hf-xet, h11, fsspec, frozenlist, dill, charset_normalizer, certifi, attrs, annotated-types, aiohappyeyeballs, yarl, requests, python-dateutil, pydantic, multiprocess, httpcore, anyio, aiosignal, requests-oauthlib, pandas, huggingface-hub, httpx, aiohttp, tokenizers, kubernetes, transformers, k8s-agent-sandbox, datasets, accelerate, trl
+  Attempting uninstall: fsspec
+    Found existing installation: fsspec 2026.7.0
+    Uninstalling fsspec-2026.7.0:
+      Successfully uninstalled fsspec-2026.7.0
+Successfully installed accelerate-1.14.0 aiohappyeyeballs-2.7.1 aiohttp-3.14.3 aiosignal-1.4.0 annotated-types-0.8.0 anyio-4.15.1 attrs-26.1.0 certifi-2026.7.22 charset_normalizer-3.5.1 datasets-5.0.1 dill-0.4.1 durationpy-0.11 frozenlist-1.8.0 fsspec-2026.6.0 h11-0.16.0 hf-xet-1.6.0 httpcore-1.0.9 httpx-0.28.1 huggingface-hub-0.36.2 idna-3.19 k8s-agent-sandbox-1.0.0 kubernetes-36.0.3 multidict-6.7.1 multiprocess-0.70.19 numpy-2.4.6 oauthlib-3.3.1 pandas-3.0.5 prometheus-client-0.26.0 propcache-0.5.2 psutil-7.2.2 pyarrow-25.0.1 pydantic-2.13.5 pydantic-core-2.46.5 python-dateutil-2.9.0.post0 pyyaml-6.0.3 regex-2026.9.3 requests-2.34.2 requests-oauthlib-2.0.0 safetensors-0.8.0 six-1.17.0 tokenizers-0.22.2 tqdm-4.70.0 transformers-4.57.6 trl-0.21.0 typing-inspection-0.4.4 urllib3-2.7.0 websocket-client-1.9.2 xxhash-4.0.1 yarl-1.24.5
+WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv
+
+[notice] A new release of pip is available: 24.0 -> 26.2.1
+[notice] To update, run: pip install --upgrade pip
++ python -c 'import torch; print('\''CUDA:'\'', torch.cuda.is_available(), torch.cuda.get_device_name(0))'
+CUDA: True NVIDIA L4
++ python /work/grpo_sandbox_train.py
+claiming 8 reward sandboxes from warmpool python-snapshot-pool...
+  sandbox 0 ready
+  sandbox 1 ready
+  sandbox 2 ready
+  sandbox 3 ready
+  sandbox 4 ready
+  sandbox 5 ready
+  sandbox 6 ready
+  sandbox 7 ready
+Generating train split:   0%|          | 0/374 [00:00<?, ? examples/s]Generating train split: 100%|██████████| 374/374 [00:00<00:00, 45476.60 examples/s]
+Generating test split:   0%|          | 0/500 [00:00<?, ? examples/s]Generating test split: 100%|██████████| 500/500 [00:00<00:00, 111901.82 examples/s]
+Generating validation split:   0%|          | 0/90 [00:00<?, ? examples/s]Generating validation split: 100%|██████████| 90/90 [00:00<00:00, 33110.02 examples/s]
+Generating prompt split:   0%|          | 0/10 [00:00<?, ? examples/s]Generating prompt split: 100%|██████████| 10/10 [00:00<00:00, 4689.52 examples/s]
+Map:   0%|          | 0/200 [00:00<?, ? examples/s]Map: 100%|██████████| 200/200 [00:00<00:00, 13619.64 examples/s]
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+  0%|          | 0/50 [00:00<?, ?it/s]  2%|▏         | 1/50 [00:14<11:54, 14.58s/it]                                                2%|▏         | 1/50 [00:14<11:54, 14.58s/it]  4%|▍         | 2/50 [00:29<11:59, 14.99s/it]                                                4%|▍         | 2/50 [00:29<11:59, 14.99s/it]  6%|▌         | 3/50 [00:45<11:54, 15.20s/it]                                                6%|▌         | 3/50 [00:45<11:54, 15.20s/it]  8%|▊         | 4/50 [00:58<10:54, 14.23s/it]                                                8%|▊         | 4/50 [00:58<10:54, 14.23s/it] 10%|█         | 5/50 [01:11<10:28, 13.96s/it]                                               10%|█         | 5/50 [01:11<10:28, 13.96s/it] 12%|█▏        | 6/50 [01:25<10:08, 13.83s/it]                                               12%|█▏        | 6/50 [01:25<10:08, 13.83s/it]ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'python-snapshot-pool-bmpm8' was not restored from snapshot '0eece932-b69c-4ef2-be35-09fa82dcfe54': Pod was started as a fresh instance
+ 14%|█▍        | 7/50 [01:40<10:16, 14.35s/it]                                               14%|█▍        | 7/50 [01:40<10:16, 14.35s/it]ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'python-snapshot-pool-8hzqd' was not restored from snapshot '81e04711-0ec9-40a9-8acf-8be024776d77': Pod was started as a fresh instance
+[step 1] 8 sandbox evals in 0.2s rewards=['0.00', '0.00', '0.00', '0.00', '0.10', '0.10', '1.00', '0.10']
+[step 1] suspended fleet in 4.6s
+{'loss': -0.0117, 'grad_norm': 3.9003233909606934, 'learning_rate': 2e-06, 'num_tokens': 2371.0, 'completions/mean_length': 94.875, 'completions/min_length': 43.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.5, 'completions/mean_terminated_length': 61.75, 'completions/min_terminated_length': 43.0, 'completions/max_terminated_length': 79.0, 'rewards/sandbox_reward/mean': 0.16250000894069672, 'rewards/sandbox_reward/std': 0.34200042486190796, 'reward': 0.16250000894069672, 'reward_std': 0.22499999403953552, 'frac_reward_zero_std': 0.5, 'kl': 0.0, 'entropy': 0.3579636365175247, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.01}
+[step 2] resumed 8 sandboxes in 4.3s
+[step 2] 8 sandbox evals in 0.1s rewards=['0.00', '0.10', '0.00', '0.00', '1.00', '1.00', '0.00', '1.00']
+[step 2] suspended fleet in 4.6s
+{'loss': 0.2327, 'grad_norm': 10.89395809173584, 'learning_rate': 1.96e-06, 'num_tokens': 3996.0, 'completions/mean_length': 86.625, 'completions/min_length': 27.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.5, 'completions/mean_terminated_length': 45.25, 'completions/min_terminated_length': 27.0, 'completions/max_terminated_length': 99.0, 'rewards/sandbox_reward/mean': 0.38749998807907104, 'rewards/sandbox_reward/std': 0.508323609828949, 'reward': 0.38749998807907104, 'reward_std': 0.2750000059604645, 'frac_reward_zero_std': 0.0, 'kl': 0.016250490676611662, 'entropy': 0.3280462920665741, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.02}
+[step 3] resumed 8 sandboxes in 4.3s
+[step 3] 8 sandbox evals in 0.1s rewards=['1.00', '0.40', '0.40', '0.40', '0.40', '0.00', '0.00', '0.00']
+[step 3] suspended fleet in 4.6s
+{'loss': 0.0575, 'grad_norm': 9.163125991821289, 'learning_rate': 1.92e-06, 'num_tokens': 5873.0, 'completions/mean_length': 82.125, 'completions/min_length': 34.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.375, 'completions/mean_terminated_length': 54.60000228881836, 'completions/min_terminated_length': 34.0, 'completions/max_terminated_length': 124.0, 'rewards/sandbox_reward/mean': 0.32499998807907104, 'rewards/sandbox_reward/std': 0.337003618478775, 'reward': 0.32500001788139343, 'reward_std': 0.25, 'frac_reward_zero_std': 0.0, 'kl': 0.01115673640742898, 'entropy': 0.44395147264003754, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.03}
+[step 4] resumed 8 sandboxes in 2.2s
+[step 4] 8 sandbox evals in 0.1s rewards=['0.10', '1.00', '1.00', '1.00', '0.10', '0.10', '0.70', '0.10']
+[step 4] suspended fleet in 4.4s
+{'loss': -0.1131, 'grad_norm': 8.511573791503906, 'learning_rate': 1.8799999999999998e-06, 'num_tokens': 7462.0, 'completions/mean_length': 85.625, 'completions/min_length': 33.0, 'completions/max_length': 123.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 85.625, 'completions/min_terminated_length': 33.0, 'completions/max_terminated_length': 123.0, 'rewards/sandbox_reward/mean': 0.5125000476837158, 'rewards/sandbox_reward/std': 0.4517821967601776, 'reward': 0.512499988079071, 'reward_std': 0.375, 'frac_reward_zero_std': 0.0, 'kl': 0.027471208944916725, 'entropy': 0.23585769534111023, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.04}
+[step 5] resumed 8 sandboxes in 2.3s
+[step 5] 8 sandbox evals in 0.1s rewards=['1.00', '0.10', '0.10', '0.70', '0.10', '0.10', '0.00', '0.10']
+[step 5] suspended fleet in 4.5s
+{'loss': 0.0897, 'grad_norm': 10.762870788574219, 'learning_rate': 1.84e-06, 'num_tokens': 9612.0, 'completions/mean_length': 101.25, 'completions/min_length': 58.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.25, 'completions/mean_terminated_length': 92.33333587646484, 'completions/min_terminated_length': 58.0, 'completions/max_terminated_length': 125.0, 'rewards/sandbox_reward/mean': 0.2750000059604645, 'rewards/sandbox_reward/std': 0.36547428369522095, 'reward': 0.2750000059604645, 'reward_std': 0.25, 'frac_reward_zero_std': 0.0, 'kl': 0.03172950353473425, 'entropy': 0.5183109790086746, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.05}
+[step 6] resumed 8 sandboxes in 2.3s
+[step 6] 8 sandbox evals in 0.1s rewards=['0.00', '0.00', '0.10', '0.00', '1.00', '0.70', '1.00', '1.00']
+[step 6] suspended fleet in 4.6s
+{'loss': 0.0477, 'grad_norm': 10.887375831604004, 'learning_rate': 1.8e-06, 'num_tokens': 12011.0, 'completions/mean_length': 87.875, 'completions/min_length': 35.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.375, 'completions/mean_terminated_length': 63.79999923706055, 'completions/min_terminated_length': 35.0, 'completions/max_terminated_length': 110.0, 'rewards/sandbox_reward/mean': 0.4749999940395355, 'rewards/sandbox_reward/std': 0.49208012223243713, 'reward': 0.4749999940395355, 'reward_std': 0.09999999403953552, 'frac_reward_zero_std': 0.0, 'kl': 0.05466369725763798, 'entropy': 0.4299246817827225, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.06}
+[step 7] resumed 8 sandboxes in 4.3s
+[step 7] 8 sandbox evals in 0.1s rewards=['0.10', '0.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.00']
+[step 7] suspended fleet in 4.4s
+{'loss': 0.1038, 'grad_norm': 13.486480712890625, 'learning_rate': 1.7599999999999999e-06, 'num_tokens': 14227.0, 'completions/mean_length': 108.0, 'completions/min_length': 42.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.5, 'completions/mean_terminated_length': 88.0, 'completions/min_terminated_length': 42.0, 'completions/max_terminated_length': 120.0, 'rewards/sandbox_reward/mean': 0.07500000298023224, 'rewards/sandbox_reward/std': 0.04629100486636162, 'reward': 0.07500000298023224, 'reward_std': 0.05000000074505806, 'frac_reward_zero_std': 0.0, 'kl': 0.08335854671895504, 'entropy': 0.4892807602882385, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.07}
+[step 8] resumed 8 sandboxes in 4.2s
+[step 8] 8 sandbox evals in 0.1s rewards=['0.70', '0.10', '0.70', '0.00', '0.10', '0.10', '0.10', '0.10']
+[step 8] suspended fleet in 4.8s
+{'loss': -0.1237, 'grad_norm': 16.446229934692383, 'learning_rate': 1.7199999999999998e-06, 'num_tokens': 15479.0, 'completions/mean_length': 41.0, 'completions/min_length': 17.0, 'completions/max_length': 63.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 41.0, 'completions/min_terminated_length': 17.0, 'completions/max_terminated_length': 63.0, 'rewards/sandbox_reward/mean': 0.23750001192092896, 'rewards/sandbox_reward/std': 0.2875388264656067, 'reward': 0.23749999701976776, 'reward_std': 0.18874585628509521, 'frac_reward_zero_std': 0.5, 'kl': 0.08726121112704277, 'entropy': 0.44401025772094727, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.08}
+[step 9] resumed 8 sandboxes in 2.2s
+[step 9] 8 sandbox evals in 0.1s rewards=['1.00', '1.00', '1.00', '1.00', '0.00', '0.10', '0.00', '0.10']
+[step 9] suspended fleet in 4.5s
+{'loss': 0.0001, 'grad_norm': 16.984375, 'learning_rate': 1.6799999999999998e-06, 'num_tokens': 17028.0, 'completions/mean_length': 39.125, 'completions/min_length': 10.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.125, 'completions/mean_terminated_length': 26.428571701049805, 'completions/min_terminated_length': 10.0, 'completions/max_terminated_length': 101.0, 'rewards/sandbox_reward/mean': 0.5249999761581421, 'rewards/sandbox_reward/std': 0.5092010498046875, 'reward': 0.5249999761581421, 'reward_std': 0.028867514804005623, 'frac_reward_zero_std': 0.5, 'kl': 0.26636041700839996, 'entropy': 0.6444607079029083, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.09}
+[step 10] resumed 8 sandboxes in 2.2s
+[step 10] 8 sandbox evals in 0.1s rewards=['0.10', '0.40', '0.10', '0.70', '0.10', '0.10', '0.10', '0.10']
+[step 10] suspended fleet in 4.8s
+{'loss': 0.0244, 'grad_norm': 13.845306396484375, 'learning_rate': 1.6399999999999998e-06, 'num_tokens': 18668.0, 'completions/mean_length': 28.0, 'completions/min_length': 18.0, 'completions/max_length': 47.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 28.0, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 47.0, 'rewards/sandbox_reward/mean': 0.21249999105930328, 'rewards/sandbox_reward/std': 0.22320714592933655, 'reward': 0.21250000596046448, 'reward_std': 0.14361406862735748, 'frac_reward_zero_std': 0.5, 'kl': 0.2450590804219246, 'entropy': 0.5787203311920166, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.1}
+[step 11] resumed 8 sandboxes in 2.3s
+[step 11] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00']
+[step 11] suspended fleet in 4.3s
+{'loss': -0.0374, 'grad_norm': 10.157242774963379, 'learning_rate': 1.6e-06, 'num_tokens': 20332.0, 'completions/mean_length': 36.0, 'completions/min_length': 17.0, 'completions/max_length': 60.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 36.0, 'completions/min_terminated_length': 17.0, 'completions/max_terminated_length': 60.0, 'rewards/sandbox_reward/mean': 0.21250000596046448, 'rewards/sandbox_reward/std': 0.3181980848312378, 'reward': 0.21250000596046448, 'reward_std': 0.22499999403953552, 'frac_reward_zero_std': 0.5, 'kl': 0.26455406099557877, 'entropy': 0.4960489422082901, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.11}
+[step 12] resumed 8 sandboxes in 2.2s
+[step 12] 8 sandbox evals in 0.1s rewards=['0.10', '1.00', '0.10', '0.10', '0.40', '0.40', '0.70', '0.40']
+[step 12] suspended fleet in 4.4s
+{'loss': -0.2195, 'grad_norm': 17.243385314941406, 'learning_rate': 1.5599999999999999e-06, 'num_tokens': 22834.0, 'completions/mean_length': 60.75, 'completions/min_length': 28.0, 'completions/max_length': 125.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 60.75, 'completions/min_terminated_length': 28.0, 'completions/max_terminated_length': 125.0, 'rewards/sandbox_reward/mean': 0.3999999761581421, 'rewards/sandbox_reward/std': 0.32071349024772644, 'reward': 0.40000003576278687, 'reward_std': 0.29999998211860657, 'frac_reward_zero_std': 0.0, 'kl': 0.23002371937036514, 'entropy': 0.3464345633983612, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.12}
+[step 13] resumed 8 sandboxes in 4.2s
+[step 13] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '0.10', '0.40']
+[step 13] suspended fleet in 8.0s
+{'loss': 0.2128, 'grad_norm': 32.576210021972656, 'learning_rate': 1.5199999999999998e-06, 'num_tokens': 23864.0, 'completions/mean_length': 20.25, 'completions/min_length': 12.0, 'completions/max_length': 39.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 20.25, 'completions/min_terminated_length': 12.0, 'completions/max_terminated_length': 39.0, 'rewards/sandbox_reward/mean': 0.4750000238418579, 'rewards/sandbox_reward/std': 0.4464142918586731, 'reward': 0.4750000238418579, 'reward_std': 0.44999998807907104, 'frac_reward_zero_std': 0.0, 'kl': 0.5381477028131485, 'entropy': 0.5068420320749283, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.13}
+[step 14] resumed 8 sandboxes in 2.2s
+[step 14] 8 sandbox evals in 0.1s rewards=['0.40', '0.40', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10']
+[step 14] suspended fleet in 4.4s
+{'loss': 0.2951, 'grad_norm': 10.478885650634766, 'learning_rate': 1.48e-06, 'num_tokens': 26124.0, 'completions/mean_length': 35.0, 'completions/min_length': 14.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 35.0, 'completions/min_terminated_length': 14.0, 'completions/max_terminated_length': 128.0, 'rewards/sandbox_reward/mean': 0.2874999940395355, 'rewards/sandbox_reward/std': 0.3181980550289154, 'reward': 0.2874999940395355, 'reward_std': 0.1887458860874176, 'frac_reward_zero_std': 0.5, 'kl': 0.32795335352420807, 'entropy': 0.529100701212883, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.14}
+[step 15] resumed 8 sandboxes in 2.3s
+[step 15] 8 sandbox evals in 0.1s rewards=['1.00', '1.00', '0.40', '1.00', '0.10', '0.10', '0.10', '0.10']
+[step 15] suspended fleet in 4.6s
+{'loss': -0.0121, 'grad_norm': 5.627810001373291, 'learning_rate': 1.44e-06, 'num_tokens': 27667.0, 'completions/mean_length': 39.375, 'completions/min_length': 13.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 39.375, 'completions/min_terminated_length': 13.0, 'completions/max_terminated_length': 128.0, 'rewards/sandbox_reward/mean': 0.4750000238418579, 'rewards/sandbox_reward/std': 0.4464142918586731, 'reward': 0.4750000238418579, 'reward_std': 0.15000000596046448, 'frac_reward_zero_std': 0.5, 'kl': 0.34499014914035797, 'entropy': 0.4411904662847519, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.15}
+[step 16] resumed 8 sandboxes in 2.2s
+[step 16] 8 sandbox evals in 0.1s rewards=['0.10', '1.00', '0.10', '0.10', '0.10', '0.00', '0.00', '0.10']
+[step 16] suspended fleet in 4.5s
+{'loss': -0.0797, 'grad_norm': 26.563610076904297, 'learning_rate': 1.4e-06, 'num_tokens': 29430.0, 'completions/mean_length': 31.375, 'completions/min_length': 9.0, 'completions/max_length': 68.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 31.375, 'completions/min_terminated_length': 9.0, 'completions/max_terminated_length': 68.0, 'rewards/sandbox_reward/mean': 0.1875, 'rewards/sandbox_reward/std': 0.33139318227767944, 'reward': 0.1875000149011612, 'reward_std': 0.253867506980896, 'frac_reward_zero_std': 0.0, 'kl': 0.55604188144207, 'entropy': 0.5847266912460327, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.16}
+[step 17] resumed 8 sandboxes in 2.2s
+[step 17] 8 sandbox evals in 0.1s rewards=['1.00', '0.10', '0.10', '0.00', '0.10', '1.00', '1.00', '1.00']
+[step 17] suspended fleet in 4.7s
+{'loss': 0.079, 'grad_norm': 33.40211868286133, 'learning_rate': 1.3600000000000001e-06, 'num_tokens': 31277.0, 'completions/mean_length': 26.375, 'completions/min_length': 9.0, 'completions/max_length': 40.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 26.375, 'completions/min_terminated_length': 9.0, 'completions/max_terminated_length': 40.0, 'rewards/sandbox_reward/mean': 0.5375000238418579, 'rewards/sandbox_reward/std': 0.4955156147480011, 'reward': 0.5375000238418579, 'reward_std': 0.45952075719833374, 'frac_reward_zero_std': 0.0, 'kl': 0.5967434048652649, 'entropy': 0.372362345457077, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.17}
+[step 18] resumed 8 sandboxes in 2.2s
+[step 18] 8 sandbox evals in 0.1s rewards=['1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '1.00', '1.00']
+[step 18] suspended fleet in 4.6s
+{'loss': -0.0356, 'grad_norm': 32.890769958496094, 'learning_rate': 1.32e-06, 'num_tokens': 32400.0, 'completions/mean_length': 18.875, 'completions/min_length': 14.0, 'completions/max_length': 24.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.875, 'completions/min_terminated_length': 14.0, 'completions/max_terminated_length': 24.0, 'rewards/sandbox_reward/mean': 0.6625000238418579, 'rewards/sandbox_reward/std': 0.46579426527023315, 'reward': 0.6625000238418579, 'reward_std': 0.4848076105117798, 'frac_reward_zero_std': 0.0, 'kl': 0.719357430934906, 'entropy': 0.2794453650712967, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.18}
+[step 19] resumed 8 sandboxes in 2.5s
+[step 19] 8 sandbox evals in 0.1s rewards=['0.10', '1.00', '0.10', '0.10', '0.00', '0.00', '1.00', '0.10']
+[step 19] suspended fleet in 4.4s
+{'loss': -0.0954, 'grad_norm': 14.680426597595215, 'learning_rate': 1.28e-06, 'num_tokens': 33779.0, 'completions/mean_length': 33.375, 'completions/min_length': 12.0, 'completions/max_length': 70.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 33.375, 'completions/min_terminated_length': 12.0, 'completions/max_terminated_length': 70.0, 'rewards/sandbox_reward/mean': 0.30000001192092896, 'rewards/sandbox_reward/std': 0.4342481195926666, 'reward': 0.30000001192092896, 'reward_std': 0.4678133726119995, 'frac_reward_zero_std': 0.0, 'kl': 0.4824678301811218, 'entropy': 0.20632236450910568, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.19}
+[step 20] resumed 8 sandboxes in 2.3s
+[step 20] 8 sandbox evals in 0.1s rewards=['0.40', '0.40', '0.40', '0.10', '0.10', '0.10', '0.10', '0.10']
+[step 20] suspended fleet in 4.3s
+{'loss': -0.0244, 'grad_norm': 10.753965377807617, 'learning_rate': 1.24e-06, 'num_tokens': 35048.0, 'completions/mean_length': 30.125, 'completions/min_length': 14.0, 'completions/max_length': 53.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 30.125, 'completions/min_terminated_length': 14.0, 'completions/max_terminated_length': 53.0, 'rewards/sandbox_reward/mean': 0.21250000596046448, 'rewards/sandbox_reward/std': 0.15526476502418518, 'reward': 0.21249999105930328, 'reward_std': 0.07500000298023224, 'frac_reward_zero_std': 0.5, 'kl': 0.44928862154483795, 'entropy': 0.24658029526472092, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.2}
+[step 21] resumed 8 sandboxes in 2.2s
+[step 21] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '0.10', '0.10', '0.00', '0.10', '0.10']
+[step 21] suspended fleet in 4.6s
+{'loss': -0.0008, 'grad_norm': 13.399401664733887, 'learning_rate': 1.2e-06, 'num_tokens': 36509.0, 'completions/mean_length': 24.125, 'completions/min_length': 19.0, 'completions/max_length': 37.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 24.125, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 37.0, 'rewards/sandbox_reward/mean': 0.08750000596046448, 'rewards/sandbox_reward/std': 0.0353553406894207, 'reward': 0.08750000596046448, 'reward_std': 0.02500000037252903, 'frac_reward_zero_std': 0.5, 'kl': 0.5885208249092102, 'entropy': 0.33510859310626984, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.21}
+[step 22] resumed 8 sandboxes in 4.3s
+[step 22] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10']
+[step 22] suspended fleet in 4.3s
+{'loss': 0.0281, 'grad_norm': 3.485445022583008, 'learning_rate': 1.16e-06, 'num_tokens': 38500.0, 'completions/mean_length': 19.375, 'completions/min_length': 16.0, 'completions/max_length': 22.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 19.375, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 22.0, 'rewards/sandbox_reward/mean': 0.10000000149011612, 'rewards/sandbox_reward/std': 0.0, 'reward': 0.10000000149011612, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'kl': 0.7022258639335632, 'entropy': 0.31947416067123413, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.22}
+[step 23] resumed 8 sandboxes in 2.2s
+[step 23] 8 sandbox evals in 0.1s rewards=['1.00', '1.00', '1.00', '1.00', '1.00', '0.40', '1.00', '0.10']
+[step 23] suspended fleet in 4.4s
+{'loss': -0.0002, 'grad_norm': 23.593952178955078, 'learning_rate': 1.12e-06, 'num_tokens': 39724.0, 'completions/mean_length': 27.0, 'completions/min_length': 19.0, 'completions/max_length': 47.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 27.0, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 47.0, 'rewards/sandbox_reward/mean': 0.8125, 'rewards/sandbox_reward/std': 0.35632047057151794, 'reward': 0.8125, 'reward_std': 0.22499999403953552, 'frac_reward_zero_std': 0.5, 'kl': 0.3725384473800659, 'entropy': 0.1415293738245964, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.23}
+[step 24] resumed 8 sandboxes in 2.2s
+[step 24] 8 sandbox evals in 0.1s rewards=['1.00', '0.10', '0.10', '0.10', '0.40', '0.10', '0.40', '0.40']
+[step 24] suspended fleet in 4.5s
+{'loss': -0.0042, 'grad_norm': 17.122180938720703, 'learning_rate': 1.08e-06, 'num_tokens': 41734.0, 'completions/mean_length': 35.75, 'completions/min_length': 19.0, 'completions/max_length': 79.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 35.75, 'completions/min_terminated_length': 19.0, 'completions/max_terminated_length': 79.0, 'rewards/sandbox_reward/mean': 0.32499998807907104, 'rewards/sandbox_reward/std': 0.31052953004837036, 'reward': 0.32499998807907104, 'reward_std': 0.30000001192092896, 'frac_reward_zero_std': 0.0, 'kl': 0.41767363250255585, 'entropy': 0.4202091693878174, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.24}
+[step 25] resumed 8 sandboxes in 2.2s
+[step 25] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '0.00', '0.10', '0.10', '0.10', '0.10']
+[step 25] suspended fleet in 4.6s
+{'loss': 0.0146, 'grad_norm': 13.244672775268555, 'learning_rate': 1.04e-06, 'num_tokens': 42977.0, 'completions/mean_length': 29.375, 'completions/min_length': 15.0, 'completions/max_length': 45.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 29.375, 'completions/min_terminated_length': 15.0, 'completions/max_terminated_length': 45.0, 'rewards/sandbox_reward/mean': 0.08750000596046448, 'rewards/sandbox_reward/std': 0.0353553406894207, 'reward': 0.08750000596046448, 'reward_std': 0.02500000037252903, 'frac_reward_zero_std': 0.5, 'kl': 0.5083712339401245, 'entropy': 0.2688128426671028, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.25}
+[step 26] resumed 8 sandboxes in 2.2s
+[step 26] 8 sandbox evals in 0.1s rewards=['1.00', '0.70', '0.40', '0.10', '1.00', '0.70', '1.00', '1.00']
+[step 26] suspended fleet in 4.4s
+{'loss': -0.1179, 'grad_norm': 13.389690399169922, 'learning_rate': 1e-06, 'num_tokens': 44351.0, 'completions/mean_length': 54.25, 'completions/min_length': 14.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.125, 'completions/mean_terminated_length': 43.71428680419922, 'completions/min_terminated_length': 14.0, 'completions/max_terminated_length': 108.0, 'rewards/sandbox_reward/mean': 0.737500011920929, 'rewards/sandbox_reward/std': 0.33779749274253845, 'reward': 0.737500011920929, 'reward_std': 0.268649160861969, 'frac_reward_zero_std': 0.0, 'kl': 0.12551425397396088, 'entropy': 0.28003354370594025, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.26}
+[step 27] resumed 8 sandboxes in 2.3s
+[step 27] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '0.10', '0.10']
+[step 27] suspended fleet in 4.6s
+{'loss': 0.1492, 'grad_norm': 11.679902076721191, 'learning_rate': 9.6e-07, 'num_tokens': 46379.0, 'completions/mean_length': 25.0, 'completions/min_length': 12.0, 'completions/max_length': 52.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 25.0, 'completions/min_terminated_length': 12.0, 'completions/max_terminated_length': 52.0, 'rewards/sandbox_reward/mean': 0.21250000596046448, 'rewards/sandbox_reward/std': 0.3181980848312378, 'reward': 0.21250000596046448, 'reward_std': 0.22499999403953552, 'frac_reward_zero_std': 0.5, 'kl': 0.24114539474248886, 'entropy': 0.3260544240474701, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.27}
+[step 28] resumed 8 sandboxes in 4.2s
+[step 28] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00']
+[step 28] suspended fleet in 4.4s
+{'loss': 0.0065, 'grad_norm': 1.731313943862915, 'learning_rate': 9.2e-07, 'num_tokens': 48382.0, 'completions/mean_length': 44.875, 'completions/min_length': 28.0, 'completions/max_length': 94.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 44.875, 'completions/min_terminated_length': 28.0, 'completions/max_terminated_length': 94.0, 'rewards/sandbox_reward/mean': 0.550000011920929, 'rewards/sandbox_reward/std': 0.48107025027275085, 'reward': 0.550000011920929, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'kl': 0.16329987347126007, 'entropy': 0.23962754011154175, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.28}
+[step 29] resumed 8 sandboxes in 2.3s
+[step 29] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.40', '0.10', '0.10', '0.10', '0.10', '0.10']
+[step 29] suspended fleet in 4.5s
+{'loss': -0.1175, 'grad_norm': 9.880721092224121, 'learning_rate': 8.799999999999999e-07, 'num_tokens': 50136.0, 'completions/mean_length': 61.75, 'completions/min_length': 38.0, 'completions/max_length': 93.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 61.75, 'completions/min_terminated_length': 38.0, 'completions/max_terminated_length': 93.0, 'rewards/sandbox_reward/mean': 0.13750000298023224, 'rewards/sandbox_reward/std': 0.1060660183429718, 'reward': 0.13750000298023224, 'reward_std': 0.07500000298023224, 'frac_reward_zero_std': 0.5, 'kl': 0.12055246904492378, 'entropy': 0.26021913439035416, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.29}
+[step 30] resumed 8 sandboxes in 2.3s
+[step 30] 8 sandbox evals in 0.1s rewards=['1.00', '0.70', '0.10', '1.00', '0.00', '0.10', '0.10', '0.70']
+[step 30] suspended fleet in 4.4s
+{'loss': -0.0333, 'grad_norm': 15.264562606811523, 'learning_rate': 8.399999999999999e-07, 'num_tokens': 51658.0, 'completions/mean_length': 61.75, 'completions/min_length': 25.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.125, 'completions/mean_terminated_length': 52.28571701049805, 'completions/min_terminated_length': 25.0, 'completions/max_terminated_length': 78.0, 'rewards/sandbox_reward/mean': 0.4625000059604645, 'rewards/sandbox_reward/std': 0.4307385981082916, 'reward': 0.46250003576278687, 'reward_std': 0.37221014499664307, 'frac_reward_zero_std': 0.0, 'kl': 0.10116071254014969, 'entropy': 0.33011092245578766, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.3}
+[step 31] resumed 8 sandboxes in 2.3s
+[step 31] 8 sandbox evals in 0.1s rewards=['1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10']
+[step 31] suspended fleet in 4.3s
+{'loss': 0.0083, 'grad_norm': 1.2825697660446167, 'learning_rate': 8e-07, 'num_tokens': 53153.0, 'completions/mean_length': 39.875, 'completions/min_length': 21.0, 'completions/max_length': 99.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 39.875, 'completions/min_terminated_length': 21.0, 'completions/max_terminated_length': 99.0, 'rewards/sandbox_reward/mean': 0.550000011920929, 'rewards/sandbox_reward/std': 0.48107025027275085, 'reward': 0.550000011920929, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'kl': 0.20784249901771545, 'entropy': 0.30043884366750717, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.31}
+[step 32] resumed 8 sandboxes in 4.3s
+[step 32] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00']
+[step 32] suspended fleet in 4.5s
+{'loss': 0.2737, 'grad_norm': 11.484213829040527, 'learning_rate': 7.599999999999999e-07, 'num_tokens': 54538.0, 'completions/mean_length': 43.625, 'completions/min_length': 20.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.125, 'completions/mean_terminated_length': 31.571430206298828, 'completions/min_terminated_length': 20.0, 'completions/max_terminated_length': 63.0, 'rewards/sandbox_reward/mean': 0.4375, 'rewards/sandbox_reward/std': 0.46579426527023315, 'reward': 0.4375, 'reward_std': 0.22499999403953552, 'frac_reward_zero_std': 0.5, 'kl': 0.12990081310272217, 'entropy': 0.2812410444021225, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.32}
+[step 33] resumed 8 sandboxes in 2.2s
+[step 33] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '0.10', '0.10', '0.70', '0.70', '0.70', '0.70']
+[step 33] suspended fleet in 5.3s
+{'loss': 0.0173, 'grad_norm': 13.177268028259277, 'learning_rate': 7.2e-07, 'num_tokens': 55786.0, 'completions/mean_length': 18.0, 'completions/min_length': 13.0, 'completions/max_length': 23.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 18.0, 'completions/min_terminated_length': 13.0, 'completions/max_terminated_length': 23.0, 'rewards/sandbox_reward/mean': 0.4000000059604645, 'rewards/sandbox_reward/std': 0.32071349024772644, 'reward': 0.4000000059604645, 'reward_std': 0.0, 'frac_reward_zero_std': 1.0, 'kl': 0.4315480589866638, 'entropy': 0.10113828629255295, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.33}
+[step 34] resumed 8 sandboxes in 2.2s
+[step 34] 8 sandbox evals in 0.1s rewards=['0.10', '0.10', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10']
+[step 34] suspended fleet in 4.3s
+{'loss': -0.0236, 'grad_norm': 8.821073532104492, 'learning_rate': 6.800000000000001e-07, 'num_tokens': 57781.0, 'completions/mean_length': 40.375, 'completions/min_length': 15.0, 'completions/max_length': 68.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 40.375, 'completions/min_terminated_length': 15.0, 'completions/max_terminated_length': 68.0, 'rewards/sandbox_reward/mean': 0.21250000596046448, 'rewards/sandbox_reward/std': 0.3181980848312378, 'reward': 0.21250000596046448, 'reward_std': 0.22499999403953552, 'frac_reward_zero_std': 0.5, 'kl': 0.22577440738677979, 'entropy': 0.24019303172826767, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.34}
+[step 35] resumed 8 sandboxes in 4.1s
+[step 35] 8 sandbox evals in 0.1s rewards=['0.70', '0.70', '1.00', '0.70', '0.10', '0.40', '0.10', '0.40']
+[step 35] suspended fleet in 4.4s
+{'loss': 0.0445, 'grad_norm': 13.427145957946777, 'learning_rate': 6.4e-07, 'num_tokens': 59454.0, 'completions/mean_length': 46.125, 'completions/min_length': 35.0, 'completions/max_length': 65.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 46.125, 'completions/min_terminated_length': 35.0, 'completions/max_terminated_length': 65.0, 'rewards/sandbox_reward/mean': 0.5125000476837158, 'rewards/sandbox_reward/std': 0.3181980550289154, 'reward': 0.512499988079071, 'reward_std': 0.16160254180431366, 'frac_reward_zero_std': 0.0, 'kl': 0.11450276896357536, 'entropy': 0.16816312819719315, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.35}
+[step 36] resumed 8 sandboxes in 2.3s
+[step 36] 8 sandbox evals in 0.1s rewards=['1.00', '0.10', '1.00', '0.10', '1.00', '1.00', '0.70', '0.70']
+[step 36] suspended fleet in 4.4s
+ 16%|█▌        | 8/50 [01:52<09:36, 13.72s/it]                                               16%|█▌        | 8/50 [01:52<09:36, 13.72s/it] 18%|█▊        | 9/50 [02:06<09:16, 13.57s/it]                                               18%|█▊        | 9/50 [02:06<09:16, 13.57s/it] 20%|██        | 10/50 [02:16<08:21, 12.55s/it]                                                20%|██        | 10/50 [02:16<08:21, 12.55s/it] 22%|██▏       | 11/50 [02:26<07:43, 11.87s/it]                                                22%|██▏       | 11/50 [02:26<07:43, 11.87s/it] 24%|██▍       | 12/50 [02:40<07:55, 12.52s/it]                                                24%|██▍       | 12/50 [02:40<07:55, 12.52s/it] 26%|██▌       | 13/50 [02:55<08:07, 13.18s/it]                                                26%|██▌       | 13/50 [02:55<08:07, 13.18s/it] 28%|██▊       | 14/50 [03:09<08:01, 13.36s/it]                                                28%|██▊       | 14/50 [03:09<08:01, 13.36s/it] 30%|███       | 15/50 [03:22<07:51, 13.47s/it]                                                30%|███       | 15/50 [03:23<07:51, 13.47s/it] 32%|███▏      | 16/50 [03:33<07:11, 12.68s/it]                                                32%|███▏      | 16/50 [03:33<07:11, 12.68s/it] 34%|███▍      | 17/50 [03:43<06:32, 11.89s/it]                                                34%|███▍      | 17/50 [03:43<06:32, 11.89s/it] 36%|███▌      | 18/50 [03:52<05:49, 10.93s/it]                                                36%|███▌      | 18/50 [03:52<05:49, 10.93s/it] 38%|███▊      | 19/50 [04:03<05:39, 10.95s/it]                                                38%|███▊      | 19/50 [04:03<05:39, 10.95s/it] 40%|████      | 20/50 [04:13<05:17, 10.57s/it]                                                40%|████      | 20/50 [04:13<05:17, 10.57s/it] 42%|████▏     | 21/50 [04:22<04:56, 10.23s/it]                                                42%|████▏     | 21/50 [04:22<04:56, 10.23s/it] 44%|████▍     | 22/50 [04:33<04:53, 10.47s/it]                                                44%|████▍     | 22/50 [04:33<04:53, 10.47s/it] 46%|████▌     | 23/50 [04:43<04:34, 10.16s/it]                                                46%|████▌     | 23/50 [04:43<04:34, 10.16s/it] 48%|████▊     | 24/50 [04:54<04:35, 10.58s/it]                                                48%|████▊     | 24/50 [04:54<04:35, 10.58s/it] 50%|█████     | 25/50 [05:04<04:16, 10.28s/it]                                                50%|█████     | 25/50 [05:04<04:16, 10.28s/it] 52%|█████▏    | 26/50 [05:17<04:26, 11.08s/it]                                                52%|█████▏    | 26/50 [05:17<04:26, 11.08s/it] 54%|█████▍    | 27/50 [05:27<04:10, 10.91s/it]                                                54%|█████▍    | 27/50 [05:27<04:10, 10.91s/it] 56%|█████▌    | 28/50 [05:41<04:19, 11.81s/it]                                                56%|█████▌    | 28/50 [05:41<04:19, 11.81s/it] 58%|█████▊    | 29/50 [05:53<04:08, 11.82s/it]                                                58%|█████▊    | 29/50 [05:53<04:08, 11.82s/it] 60%|██████    | 30/50 [06:06<04:04, 12.22s/it]                                                60%|██████    | 30/50 [06:06<04:04, 12.22s/it] 62%|██████▏   | 31/50 [06:18<03:50, 12.13s/it]                                                62%|██████▏   | 31/50 [06:18<03:50, 12.13s/it] 64%|██████▍   | 32/50 [06:33<03:55, 13.08s/it]                                                64%|██████▍   | 32/50 [06:33<03:55, 13.08s/it] 66%|██████▌   | 33/50 [06:43<03:23, 11.95s/it]                                                66%|██████▌   | 33/50 [06:43<03:23, 11.95s/it] 68%|██████▊   | 34/50 [06:53<03:05, 11.61s/it]                                                68%|██████▊   | 34/50 [06:54<03:05, 11.61s/it] 70%|███████   | 35/50 [07:06<02:57, 11.86s/it]                                                70%|███████   | 35/50 [07:06<02:57, 11.86s/it] 72%|███████▏  | 36/50 [07:15<02:34, 11.07s/it]                                                72%|███████▏  | 36/50 [07:15<02:34, 11.07s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.67', port=8888): Read timed out. (read timeout=30)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.67', port=8888): Read timed out. (read timeout=30)
+ 74%|███████▍  | 37/50 [09:03<08:42, 40.17s/it]                                                74%|███████▍  | 37/50 [09:03<08:42, 40.17s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.18', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.18', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.18', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.18', port=8888): Read timed out. (read timeout=60)
+ 76%|███████▌  | 38/50 [13:57<23:14, 116.22s/it]                                                 76%|███████▌  | 38/50 [13:57<23:14, 116.22s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.19', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.19', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.19', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.19', port=8888): Read timed out. (read timeout=60)
+ 78%|███████▊  | 39/50 [18:49<30:58, 168.96s/it]                                                 78%|███████▊  | 39/50 [18:49<30:58, 168.96s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.20', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.20', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.20', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.20', port=8888): Read timed out. (read timeout=60)
+ 80%|████████  | 40/50 [23:42<34:20, 206.08s/it]                                                 80%|████████  | 40/50 [23:42<34:20, 206.08s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.45.80', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.45.80', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.45.80', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.45.80', port=8888): Read timed out. (read timeout=60)
+ 82%|████████▏ | 41/50 [28:39<35:01, 233.53s/it]                                                 82%|████████▏ | 41/50 [28:39<35:01, 233.53s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.22', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.22', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.22', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.22', port=8888): Read timed out. (read timeout=60)
+ 84%|████████▍ | 42/50 [33:35<33:37, 252.21s/it]                                                 84%|████████▍ | 42/50 [33:35<33:37, 252.21s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.9.55', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.9.55', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.9.55', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.9.55', port=8888): Read timed out. (read timeout=60)
+ 86%|████████▌ | 43/50 [38:29<30:53, 264.81s/it]                                                 86%|████████▌ | 43/50 [38:29<30:53, 264.81s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.29.99', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.29.99', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.29.99', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.29.99', port=8888): Read timed out. (read timeout=60)
+{'loss': -0.0657, 'grad_norm': 19.757335662841797, 'learning_rate': 6e-07, 'num_tokens': 60874.0, 'completions/mean_length': 23.0, 'completions/min_length': 17.0, 'completions/max_length': 33.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 23.0, 'completions/min_terminated_length': 17.0, 'completions/max_terminated_length': 33.0, 'rewards/sandbox_reward/mean': 0.7000000476837158, 'rewards/sandbox_reward/std': 0.3927921950817108, 'reward': 0.7000000476837158, 'reward_std': 0.3464101552963257, 'frac_reward_zero_std': 0.0, 'kl': 0.19165264070034027, 'entropy': 0.1937478929758072, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.36}
+[step 37] resumed 8 sandboxes in 2.2s
+  reward-exec error [37_2]: Failed to communicate with the sandbox at http://10.117.24.67:8888/execute.
+[step 37] 8 sandbox evals in 66.1s rewards=['1.00', '0.40', '0.00', '1.00', '0.10', '0.10', '0.10', '0.40']
+[step 37] suspended fleet in 34.7s
+{'loss': 0.0897, 'grad_norm': 13.045449256896973, 'learning_rate': 5.6e-07, 'num_tokens': 62552.0, 'completions/mean_length': 69.25, 'completions/min_length': 44.0, 'completions/max_length': 94.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 69.25, 'completions/min_terminated_length': 44.0, 'completions/max_terminated_length': 94.0, 'rewards/sandbox_reward/mean': 0.38749998807907104, 'rewards/sandbox_reward/std': 0.40510138869285583, 'reward': 0.38750001788139343, 'reward_std': 0.3199489712715149, 'frac_reward_zero_std': 0.0, 'kl': 0.10412542894482613, 'entropy': 0.3090455085039139, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.37}
+[step 38] resumed 8 sandboxes in 2.3s
+  reward-exec error [38_7]: Failed to communicate with the sandbox at http://10.117.37.18:8888/upload.
+[step 38] 8 sandbox evals in 252.3s rewards=['0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.00']
+[step 38] suspended fleet in 34.7s
+{'loss': -0.0255, 'grad_norm': 4.735550880432129, 'learning_rate': 5.2e-07, 'num_tokens': 64349.0, 'completions/mean_length': 42.125, 'completions/min_length': 18.0, 'completions/max_length': 78.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 42.125, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 78.0, 'rewards/sandbox_reward/mean': 0.08750000596046448, 'rewards/sandbox_reward/std': 0.0353553406894207, 'reward': 0.08750000596046448, 'reward_std': 0.02500000037252903, 'frac_reward_zero_std': 0.5, 'kl': 0.12844513729214668, 'entropy': 0.19789564609527588, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.38}
+[step 39] resumed 8 sandboxes in 2.3s
+  reward-exec error [39_7]: Failed to communicate with the sandbox at http://10.117.37.19:8888/upload.
+[step 39] 8 sandbox evals in 252.2s rewards=['1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '1.00', '0.00']
+[step 39] suspended fleet in 34.7s
+{'loss': -0.0238, 'grad_norm': 13.107661247253418, 'learning_rate': 4.8e-07, 'num_tokens': 66004.0, 'completions/mean_length': 30.375, 'completions/min_length': 15.0, 'completions/max_length': 45.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 30.375, 'completions/min_terminated_length': 15.0, 'completions/max_terminated_length': 45.0, 'rewards/sandbox_reward/mean': 0.6499999761581421, 'rewards/sandbox_reward/std': 0.48403069376945496, 'reward': 0.6499999761581421, 'reward_std': 0.2345207780599594, 'frac_reward_zero_std': 0.5, 'kl': 0.187998428940773, 'entropy': 0.23642776161432266, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.39}
+[step 40] resumed 8 sandboxes in 2.3s
+  reward-exec error [40_7]: Failed to communicate with the sandbox at http://10.117.37.20:8888/upload.
+[step 40] 8 sandbox evals in 252.2s rewards=['1.00', '1.00', '1.00', '1.00', '0.10', '0.00', '0.10', '0.00']
+[step 40] suspended fleet in 34.6s
+{'loss': -0.0532, 'grad_norm': 17.01589012145996, 'learning_rate': 4.3999999999999997e-07, 'num_tokens': 67312.0, 'completions/mean_length': 35.0, 'completions/min_length': 14.0, 'completions/max_length': 64.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 35.0, 'completions/min_terminated_length': 14.0, 'completions/max_terminated_length': 64.0, 'rewards/sandbox_reward/mean': 0.5249999761581421, 'rewards/sandbox_reward/std': 0.5092010498046875, 'reward': 0.5249999761581421, 'reward_std': 0.028867514804005623, 'frac_reward_zero_std': 0.5, 'kl': 0.1828010082244873, 'entropy': 0.17847955226898193, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.4}
+[step 41] resumed 8 sandboxes in 4.3s
+  reward-exec error [41_7]: Failed to communicate with the sandbox at http://10.117.45.80:8888/upload.
+[step 41] 8 sandbox evals in 252.3s rewards=['0.10', '0.10', '0.10', '0.10', '0.70', '0.10', '0.10', '0.00']
+[step 41] suspended fleet in 34.7s
+{'loss': 0.0172, 'grad_norm': 7.485673427581787, 'learning_rate': 4e-07, 'num_tokens': 68975.0, 'completions/mean_length': 87.375, 'completions/min_length': 40.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.25, 'completions/mean_terminated_length': 73.83333587646484, 'completions/min_terminated_length': 40.0, 'completions/max_terminated_length': 108.0, 'rewards/sandbox_reward/mean': 0.16249999403953552, 'rewards/sandbox_reward/std': 0.219983771443367, 'reward': 0.16250000894069672, 'reward_std': 0.16007809340953827, 'frac_reward_zero_std': 0.5, 'kl': 0.07658672705292702, 'entropy': 0.3294021338224411, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.41}
+[step 42] resumed 8 sandboxes in 2.2s
+  reward-exec error [42_7]: Failed to communicate with the sandbox at http://10.117.37.22:8888/upload.
+[step 42] 8 sandbox evals in 252.2s rewards=['0.10', '0.00', '0.00', '0.10', '0.10', '0.70', '0.10', '0.00']
+[step 42] suspended fleet in 34.8s
+{'loss': -0.0443, 'grad_norm': 16.960620880126953, 'learning_rate': 3.6e-07, 'num_tokens': 70503.0, 'completions/mean_length': 69.0, 'completions/min_length': 21.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.125, 'completions/mean_terminated_length': 60.57143020629883, 'completions/min_terminated_length': 21.0, 'completions/max_terminated_length': 98.0, 'rewards/sandbox_reward/mean': 0.13750000298023224, 'rewards/sandbox_reward/std': 0.23260942101478577, 'reward': 0.13750000298023224, 'reward_std': 0.18894562125205994, 'frac_reward_zero_std': 0.0, 'kl': 0.07905105501413345, 'entropy': 0.4136815443634987, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.42}
+[step 43] resumed 8 sandboxes in 2.3s
+  reward-exec error [43_7]: Failed to communicate with the sandbox at http://10.117.9.55:8888/upload.
+[step 43] 8 sandbox evals in 252.3s rewards=['0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.00']
+[step 43] suspended fleet in 34.4s
+{'loss': 0.0117, 'grad_norm': 8.492809295654297, 'learning_rate': 3.2e-07, 'num_tokens': 72490.0, 'completions/mean_length': 62.375, 'completions/min_length': 35.0, 'completions/max_length': 96.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 62.375, 'completions/min_terminated_length': 35.0, 'completions/max_terminated_length': 96.0, 'rewards/sandbox_reward/mean': 0.08750000596046448, 'rewards/sandbox_reward/std': 0.0353553406894207, 'reward': 0.08750000596046448, 'reward_std': 0.02500000037252903, 'frac_reward_zero_std': 0.5, 'kl': 0.12022672593593597, 'entropy': 0.33747854828834534, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.43}
+[step 44] resumed 8 sandboxes in 4.3s
+  reward-exec error [44_7]: Failed to communicate with the sandbox at http://10.117.29.99:8888/upload.
+[step 44] 8 sandbox evals in 252.2s rewards=['0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '0.00']
+[step 44] suspended fleet in 34.8s
+ 88%|████████▊ | 44/50 [43:24<27:22, 273.78s/it]                                                 88%|████████▊ | 44/50 [43:24<27:22, 273.78s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.17.97', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.17.97', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.17.97', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.17.97', port=8888): Read timed out. (read timeout=60)
+ 90%|█████████ | 45/50 [48:22<23:24, 280.96s/it]                                                 90%|█████████ | 45/50 [48:22<23:24, 280.96s/it]ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'python-snapshot-pool-824g8' was not restored from snapshot 'd3476f9b-6c53-4811-95a7-360c836ee150': Pod was started as a fresh instance
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.76', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.76', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.76', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.76', port=8888): Read timed out. (read timeout=60)
+ 92%|█████████▏| 46/50 [53:18<19:02, 285.52s/it]                                                 92%|█████████▏| 46/50 [53:18<19:02, 285.52s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.26', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.26', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.26', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.37.26', port=8888): Read timed out. (read timeout=60)
+ 94%|█████████▍| 47/50 [58:15<14:27, 289.11s/it]                                                 94%|█████████▍| 47/50 [58:15<14:27, 289.11s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.34.95', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.34.95', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.34.95', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.34.95', port=8888): Read timed out. (read timeout=60)
+ 96%|█████████▌| 48/50 [1:03:11<09:42, 291.17s/it]                                                   96%|█████████▌| 48/50 [1:03:11<09:42, 291.17s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.34.96', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.34.96', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.34.96', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.34.96', port=8888): Read timed out. (read timeout=60)
+ 98%|█████████▊| 49/50 [1:08:07<04:52, 292.50s/it]                                                   98%|█████████▊| 49/50 [1:08:07<04:52, 292.50s/it]ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.80', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.80', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.80', port=8888): Read timed out. (read timeout=60)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.117.24.80', port=8888): Read timed out. (read timeout=60)
+100%|██████████| 50/50 [1:13:01<00:00, 292.92s/it]                                                  100%|██████████| 50/50 [1:13:01<00:00, 292.92s/it]                                                  100%|██████████| 50/50 [1:13:01<00:00, 292.92s/it]100%|██████████| 50/50 [1:13:01<00:00, 87.63s/it] 
+{'loss': 0.1089, 'grad_norm': 11.139176368713379, 'learning_rate': 2.8e-07, 'num_tokens': 74163.0, 'completions/mean_length': 26.625, 'completions/min_length': 13.0, 'completions/max_length': 45.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 26.625, 'completions/min_terminated_length': 13.0, 'completions/max_terminated_length': 45.0, 'rewards/sandbox_reward/mean': 0.20000001788139343, 'rewards/sandbox_reward/std': 0.32513731718063354, 'reward': 0.20000000298023224, 'reward_std': 0.2345207780599594, 'frac_reward_zero_std': 0.5, 'kl': 0.24715686589479446, 'entropy': 0.1531827077269554, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.44}
+[step 45] resumed 8 sandboxes in 4.3s
+  reward-exec error [45_7]: Failed to communicate with the sandbox at http://10.117.17.97:8888/upload.
+[step 45] 8 sandbox evals in 252.4s rewards=['0.10', '1.00', '1.00', '0.40', '0.00', '0.40', '0.10', '0.00']
+[step 45] suspended fleet in 34.6s
+{'loss': 0.1575, 'grad_norm': 8.502660751342773, 'learning_rate': 2.4e-07, 'num_tokens': 75817.0, 'completions/mean_length': 78.25, 'completions/min_length': 40.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.25, 'completions/mean_terminated_length': 61.66666793823242, 'completions/min_terminated_length': 40.0, 'completions/max_terminated_length': 72.0, 'rewards/sandbox_reward/mean': 0.375, 'rewards/sandbox_reward/std': 0.41661906242370605, 'reward': 0.375, 'reward_std': 0.31964847445487976, 'frac_reward_zero_std': 0.0, 'kl': 0.05949151888489723, 'entropy': 0.24950280785560608, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.45}
+[step 46] resumed 8 sandboxes in 2.2s
+  reward-exec error [46_7]: Failed to communicate with the sandbox at http://10.117.24.76:8888/upload.
+[step 46] 8 sandbox evals in 252.3s rewards=['0.10', '0.10', '0.10', '0.10', '0.10', '0.00', '0.10', '0.00']
+[step 46] suspended fleet in 34.5s
+{'loss': -0.07, 'grad_norm': 11.225800514221191, 'learning_rate': 2e-07, 'num_tokens': 78768.0, 'completions/mean_length': 92.375, 'completions/min_length': 37.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.5, 'completions/mean_terminated_length': 56.75, 'completions/min_terminated_length': 37.0, 'completions/max_terminated_length': 71.0, 'rewards/sandbox_reward/mean': 0.07500000298023224, 'rewards/sandbox_reward/std': 0.04629100486636162, 'reward': 0.07500000298023224, 'reward_std': 0.028867514804005623, 'frac_reward_zero_std': 0.5, 'kl': 0.0804399661719799, 'entropy': 0.36671894788742065, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.46}
+[step 47] resumed 8 sandboxes in 4.3s
+  reward-exec error [47_7]: Failed to communicate with the sandbox at http://10.117.37.26:8888/upload.
+[step 47] 8 sandbox evals in 252.2s rewards=['0.70', '0.70', '0.70', '0.70', '0.10', '1.00', '1.00', '0.00']
+[step 47] suspended fleet in 34.7s
+{'loss': 0.0554, 'grad_norm': 4.451968193054199, 'learning_rate': 1.6e-07, 'num_tokens': 80661.0, 'completions/mean_length': 60.625, 'completions/min_length': 31.0, 'completions/max_length': 121.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 60.625, 'completions/min_terminated_length': 31.0, 'completions/max_terminated_length': 121.0, 'rewards/sandbox_reward/mean': 0.612500011920929, 'rewards/sandbox_reward/std': 0.3720118999481201, 'reward': 0.6124999523162842, 'reward_std': 0.2749999761581421, 'frac_reward_zero_std': 0.5, 'kl': 0.11323031038045883, 'entropy': 0.35729606449604034, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.47}
+[step 48] resumed 8 sandboxes in 4.2s
+  reward-exec error [48_7]: Failed to communicate with the sandbox at http://10.117.34.95:8888/upload.
+[step 48] 8 sandbox evals in 252.3s rewards=['1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.00']
+[step 48] suspended fleet in 34.9s
+{'loss': 0.041, 'grad_norm': 14.932373046875, 'learning_rate': 1.2e-07, 'num_tokens': 82085.0, 'completions/mean_length': 39.0, 'completions/min_length': 22.0, 'completions/max_length': 86.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 39.0, 'completions/min_terminated_length': 22.0, 'completions/max_terminated_length': 86.0, 'rewards/sandbox_reward/mean': 0.5375000238418579, 'rewards/sandbox_reward/std': 0.4955156147480011, 'reward': 0.5375000238418579, 'reward_std': 0.02500000037252903, 'frac_reward_zero_std': 0.5, 'kl': 0.12771882861852646, 'entropy': 0.23959049582481384, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.48}
+[step 49] resumed 8 sandboxes in 2.2s
+  reward-exec error [49_7]: Failed to communicate with the sandbox at http://10.117.34.96:8888/upload.
+[step 49] 8 sandbox evals in 252.2s rewards=['0.10', '1.00', '1.00', '0.10', '0.10', '0.00', '0.10', '0.00']
+[step 49] suspended fleet in 34.5s
+{'loss': -0.0043, 'grad_norm': 12.521801948547363, 'learning_rate': 8e-08, 'num_tokens': 83985.0, 'completions/mean_length': 71.5, 'completions/min_length': 15.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.375, 'completions/mean_terminated_length': 37.60000228881836, 'completions/min_terminated_length': 15.0, 'completions/max_terminated_length': 102.0, 'rewards/sandbox_reward/mean': 0.30000001192092896, 'rewards/sandbox_reward/std': 0.4342481195926666, 'reward': 0.30000001192092896, 'reward_std': 0.28867512941360474, 'frac_reward_zero_std': 0.0, 'kl': 0.08837980777025223, 'entropy': 0.42684970796108246, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.49}
+[step 50] resumed 8 sandboxes in 4.2s
+  reward-exec error [50_7]: Failed to communicate with the sandbox at http://10.117.24.80:8888/upload.
+[step 50] 8 sandbox evals in 252.3s rewards=['1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.00']
+[step 50] suspended fleet in 34.8s
+{'loss': 0.0091, 'grad_norm': 9.666351318359375, 'learning_rate': 4e-08, 'num_tokens': 85502.0, 'completions/mean_length': 25.125, 'completions/min_length': 20.0, 'completions/max_length': 40.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 25.125, 'completions/min_terminated_length': 20.0, 'completions/max_terminated_length': 40.0, 'rewards/sandbox_reward/mean': 0.5375000238418579, 'rewards/sandbox_reward/std': 0.4955156147480011, 'reward': 0.5375000238418579, 'reward_std': 0.02500000037252903, 'frac_reward_zero_std': 0.5, 'kl': 0.21574684232473373, 'entropy': 0.18774514645338058, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.5}
+{'train_runtime': 4381.2998, 'train_samples_per_second': 0.091, 'train_steps_per_second': 0.011, 'train_loss': 0.016775550954043865, 'epoch': 0.5}
+terminating reward sandboxes...
