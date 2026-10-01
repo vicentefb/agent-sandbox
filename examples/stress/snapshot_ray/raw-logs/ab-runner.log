@@ -1,0 +1,7 @@
+nohup: ignoring input
++ cd /usr/local/google/home/vicenteferrara/kuberay/ray-operator/config/samples/agent-sandbox-snapshots/stress
++ kubectl wait '--for=jsonpath={.status.phase}=Succeeded' pod/grpo-sandbox-trainer --timeout=3h
+pod/grpo-sandbox-trainer condition met
++ kubectl get pod grpo-sandbox-trainer -o 'jsonpath={.status.startTime} {.status.containerStatuses[0].state.terminated.finishedAt}'
++ echo ''
++ pkill -f train2.log

@@ -1,0 +1,76 @@
+apiVersion: v1
+items:
+- apiVersion: extensions.agents.x-k8s.io/v1beta1
+  kind: SandboxTemplate
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"extensions.agents.x-k8s.io/v1beta1","kind":"SandboxTemplate","metadata":{"annotations":{},"name":"python-snapshot-sandbox","namespace":"default"},"spec":{"envVarsInjectionPolicy":"Disallowed","networkPolicyManagement":"Unmanaged","podTemplate":{"metadata":{"labels":{"app":"python-snapshot-pool"}},"spec":{"automountServiceAccountToken":false,"containers":[{"image":"registry.k8s.io/agent-sandbox/python-runtime-sandbox:v0.4.6","imagePullPolicy":"IfNotPresent","name":"runtime"}],"nodeSelector":{"cloud.google.com/machine-family":"n2d"},"runtimeClassName":"gvisor","serviceAccountName":"sandbox-snapshot-ksa"}}}}
+    creationTimestamp: "2026-08-30T21:26:38Z"
+    generation: 9
+    labels:
+      agents.x-k8s.io/sandbox-template-ref-hash: f9b1004c
+    name: python-snapshot-sandbox
+    namespace: default
+    resourceVersion: "1788646915835167024"
+    uid: 1f644b64-ef13-4f84-a628-c4e4f691751e
+  spec:
+    envVarsInjectionPolicy: Disallowed
+    networkPolicyManagement: Unmanaged
+    podTemplate:
+      metadata:
+        labels:
+          app: python-snapshot-pool
+      spec:
+        automountServiceAccountToken: false
+        containers:
+        - image: us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/python-runtime-sandbox:v0.4.6
+          imagePullPolicy: IfNotPresent
+          name: runtime
+        nodeSelector:
+          cloud.google.com/gke-nodepool: snap-pool
+        runtimeClassName: gvisor
+        serviceAccountName: sandbox-snapshot-ksa
+    volumeClaimTemplatesPolicy: Disallowed
+- apiVersion: extensions.agents.x-k8s.io/v1beta1
+  kind: SandboxTemplate
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"extensions.agents.x-k8s.io/v1beta1","kind":"SandboxTemplate","metadata":{"annotations":{},"name":"python-swarm-sandbox","namespace":"default"},"spec":{"envVarsInjectionPolicy":"Disallowed","networkPolicyManagement":"Unmanaged","podTemplate":{"metadata":{"labels":{"app":"python-snapshot-pool"}},"spec":{"automountServiceAccountToken":false,"containers":[{"image":"us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/python-runtime-sandbox:v0.4.6","imagePullPolicy":"IfNotPresent","name":"runtime","resources":{"limits":{"cpu":"250m","memory":"512Mi"},"requests":{"cpu":"250m","memory":"512Mi"}}}],"nodeSelector":{"cloud.google.com/machine-family":"n2d"},"runtimeClassName":"gvisor","serviceAccountName":"sandbox-snapshot-ksa"}},"volumeClaimTemplatesPolicy":"Disallowed"}}
+    creationTimestamp: "2026-09-07T16:48:39Z"
+    generation: 1
+    labels:
+      agents.x-k8s.io/sandbox-template-ref-hash: 5b3e5564
+    name: python-swarm-sandbox
+    namespace: default
+    resourceVersion: "1788799719513631003"
+    uid: 22a41876-457e-46ee-b59f-89dba8792d37
+  spec:
+    envVarsInjectionPolicy: Disallowed
+    networkPolicyManagement: Unmanaged
+    podTemplate:
+      metadata:
+        labels:
+          app: python-snapshot-pool
+      spec:
+        automountServiceAccountToken: false
+        containers:
+        - image: us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/python-runtime-sandbox:v0.4.6
+          imagePullPolicy: IfNotPresent
+          name: runtime
+          resources:
+            limits:
+              cpu: 250m
+              memory: 512Mi
+            requests:
+              cpu: 250m
+              memory: 512Mi
+        nodeSelector:
+          cloud.google.com/machine-family: n2d
+        runtimeClassName: gvisor
+        serviceAccountName: sandbox-snapshot-ksa
+    volumeClaimTemplatesPolicy: Disallowed
+kind: List
+metadata:
+  resourceVersion: ""
