@@ -1,0 +1,878 @@
+Using the latest cached version of the dataset since google-research-datasets/mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+WARNING:datasets.load:Using the latest cached version of the dataset since google-research-datasets/mbpp couldn't be found on the Hugging Face Hub (offline mode is enabled).
+Found the latest cached dataset configuration 'full' at /opt/hf/datasets/google-research-datasets___mbpp/full/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Fri Sep  4 22:23:25 2026).
+WARNING:datasets.packaged_modules.cache.cache:Found the latest cached dataset configuration 'full' at /opt/hf/datasets/google-research-datasets___mbpp/full/0.0.0/4bb6404fdc6cacfda99d4ac4205087b89d32030c (last modified on Fri Sep  4 22:23:25 2026).
+claiming 64 reward sandboxes from warmpool python-snapshot-pool...
+  sandbox 0 ready
+  sandbox 1 ready
+  sandbox 2 ready
+  sandbox 3 ready
+  sandbox 4 ready
+  sandbox 5 ready
+  sandbox 6 ready
+  sandbox 7 ready
+  sandbox 8 ready
+  sandbox 9 ready
+  sandbox 10 ready
+  sandbox 11 ready
+  sandbox 12 ready
+  sandbox 13 ready
+  sandbox 14 ready
+  sandbox 15 ready
+  sandbox 16 ready
+  sandbox 17 ready
+  sandbox 18 ready
+  sandbox 19 ready
+  sandbox 20 ready
+  sandbox 21 ready
+  sandbox 22 ready
+  sandbox 23 ready
+  sandbox 24 ready
+  sandbox 25 ready
+  sandbox 26 ready
+  sandbox 27 ready
+  sandbox 28 ready
+  sandbox 29 ready
+  sandbox 30 ready
+  sandbox 31 ready
+  sandbox 32 ready
+  sandbox 33 ready
+  sandbox 34 ready
+  sandbox 35 ready
+  sandbox 36 ready
+  sandbox 37 ready
+  sandbox 38 ready
+  sandbox 39 ready
+  sandbox 40 ready
+  sandbox 41 ready
+  sandbox 42 ready
+  sandbox 43 ready
+  sandbox 44 ready
+  sandbox 45 ready
+  sandbox 46 ready
+  sandbox 47 ready
+  sandbox 48 ready
+  sandbox 49 ready
+  sandbox 50 ready
+  sandbox 51 ready
+  sandbox 52 ready
+  sandbox 53 ready
+  sandbox 54 ready
+  sandbox 55 ready
+  sandbox 56 ready
+  sandbox 57 ready
+  sandbox 58 ready
+  sandbox 59 ready
+  sandbox 60 ready
+  sandbox 61 ready
+  sandbox 62 ready
+  sandbox 63 ready
+Map:   0%|          | 0/200 [00:00<?, ? examples/s]Map: 100%|██████████| 200/200 [00:00<00:00, 11064.58 examples/s]
+The tokenizer has new PAD/BOS/EOS tokens that differ from the model config and generation config. The model config and generation config were aligned accordingly, being updated with the tokenizer's values. Updated tokens: {'bos_token_id': None, 'pad_token_id': 151643}.
+  0%|          | 0/12 [00:00<?, ?it/s]/usr/local/lib/python3.11/site-packages/torch/utils/data/dataloader.py:759: UserWarning: 'pin_memory' argument is set as true but no accelerator is found, then device pinned memory won't be used.
+  super().__init__(loader)
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+  8%|▊         | 1/12 [08:33<1:34:12, 513.89s/it]                                                   8%|▊         | 1/12 [08:33<1:34:12, 513.89s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 17%|█▋        | 2/12 [17:33<1:28:12, 529.22s/it]                                                  17%|█▋        | 2/12 [17:33<1:28:12, 529.22s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 25%|██▌       | 3/12 [24:09<1:10:15, 468.43s/it]                                                  25%|██▌       | 3/12 [24:09<1:10:15, 468.43s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-0525daca' was not restored from snapshot '497ac622-ef71-41f6-8b07-5132e33ed07f': Pod was started as a fresh instance
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0a5328a9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0a5328a9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2d3f1aa9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2d3f1aa9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-ed3bf906.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-ed3bf906.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7e4f521a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7e4f521a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-6bb33c6a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-6bb33c6a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f278ee5d.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f278ee5d.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-63c5457a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-63c5457a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c0a5b67e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c0a5b67e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-06f8475a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-06f8475a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2a0cd75a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2a0cd75a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2b0ad95e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2b0ad95e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-469ac983.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-469ac983.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c2e37737.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c2e37737.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-8af59e8f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-8af59e8f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0b3bab3b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0b3bab3b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-54ca7145.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-54ca7145.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-91e41cf1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-91e41cf1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-b7abd20f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-b7abd20f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-128c92f1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-128c92f1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4c723136.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4c723136.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c5614077.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c5614077.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-50158085.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-50158085.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-53724836.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-53724836.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f03d9abf.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f03d9abf.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-bf7621ca.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-bf7621ca.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-d4bac214.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-d4bac214.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c74e7b7b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c74e7b7b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7d29e3e5.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7d29e3e5.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-24acb954.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-24acb954.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4df4adbb.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4df4adbb.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-58048572.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-58048572.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-3826247b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-3826247b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-a91ccece.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-a91ccece.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2d3f1aa9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2d3f1aa9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-ed3bf906.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-ed3bf906.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7e4f521a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7e4f521a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-6bb33c6a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-6bb33c6a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f278ee5d.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f278ee5d.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0a5328a9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0a5328a9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-63c5457a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-63c5457a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c0a5b67e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c0a5b67e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-06f8475a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-06f8475a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2b0ad95e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2b0ad95e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2a0cd75a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2a0cd75a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-469ac983.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-469ac983.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c2e37737.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c2e37737.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-8af59e8f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-8af59e8f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0b3bab3b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0b3bab3b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-54ca7145.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-54ca7145.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-91e41cf1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-91e41cf1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-b7abd20f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-b7abd20f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-128c92f1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-128c92f1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4c723136.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4c723136.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c5614077.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c5614077.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-50158085.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-50158085.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-53724836.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-53724836.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f03d9abf.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f03d9abf.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7d29e3e5.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7d29e3e5.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-d4bac214.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-d4bac214.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-bf7621ca.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-bf7621ca.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c74e7b7b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c74e7b7b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-24acb954.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-24acb954.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4df4adbb.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4df4adbb.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-3826247b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-3826247b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-58048572.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-58048572.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-a91ccece.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-a91ccece.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2d3f1aa9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2d3f1aa9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-ed3bf906.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-ed3bf906.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7e4f521a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7e4f521a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-6bb33c6a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-6bb33c6a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f278ee5d.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f278ee5d.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0a5328a9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0a5328a9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c0a5b67e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c0a5b67e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-63c5457a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-63c5457a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-06f8475a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-06f8475a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2b0ad95e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2b0ad95e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2a0cd75a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2a0cd75a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-469ac983.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-469ac983.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4c723136.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4c723136.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-8af59e8f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-8af59e8f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-50158085.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-50158085.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-53724836.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-53724836.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f03d9abf.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f03d9abf.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c74e7b7b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c74e7b7b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-128c92f1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-128c92f1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0b3bab3b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0b3bab3b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7d29e3e5.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7d29e3e5.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-d4bac214.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-d4bac214.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-bf7621ca.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-bf7621ca.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c2e37737.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c2e37737.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4df4adbb.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4df4adbb.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-3826247b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-3826247b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-58048572.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-58048572.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c5614077.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c5614077.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-54ca7145.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-54ca7145.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-91e41cf1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-91e41cf1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-b7abd20f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-b7abd20f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-24acb954.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-24acb954.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=2, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-a91ccece.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-a91ccece.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2d3f1aa9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2d3f1aa9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-ed3bf906.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-ed3bf906.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7e4f521a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7e4f521a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-6bb33c6a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-6bb33c6a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f278ee5d.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f278ee5d.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0a5328a9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0a5328a9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c0a5b67e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c0a5b67e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-63c5457a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-63c5457a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-06f8475a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-06f8475a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2b0ad95e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2b0ad95e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2a0cd75a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2a0cd75a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f03d9abf.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f03d9abf.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4c723136.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4c723136.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-8af59e8f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-8af59e8f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-50158085.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-50158085.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-53724836.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-53724836.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-469ac983.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-469ac983.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c74e7b7b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c74e7b7b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-128c92f1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-128c92f1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7d29e3e5.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7d29e3e5.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0b3bab3b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0b3bab3b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-d4bac214.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-d4bac214.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-bf7621ca.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-bf7621ca.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c2e37737.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c2e37737.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4df4adbb.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4df4adbb.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-3826247b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-3826247b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-58048572.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-58048572.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c5614077.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c5614077.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-91e41cf1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-91e41cf1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-54ca7145.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-54ca7145.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-b7abd20f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-b7abd20f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-24acb954.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-24acb954.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=1, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-a91ccece.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-a91ccece.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2d3f1aa9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2d3f1aa9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7e4f521a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7e4f521a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-ed3bf906.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-ed3bf906.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-6bb33c6a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-6bb33c6a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-2d3f1aa9.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-2d3f1aa9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2d3f1aa9.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-7e4f521a.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-7e4f521a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7e4f521a.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-6bb33c6a.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-6bb33c6a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-6bb33c6a.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-ed3bf906.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-ed3bf906.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-ed3bf906.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f278ee5d.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f278ee5d.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0a5328a9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0a5328a9.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-f278ee5d.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-f278ee5d.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f278ee5d.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-0a5328a9.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-0a5328a9.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0a5328a9.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c0a5b67e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c0a5b67e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-63c5457a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-63c5457a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-63c5457a.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-63c5457a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-63c5457a.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-c0a5b67e.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-c0a5b67e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c0a5b67e.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-06f8475a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-06f8475a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2b0ad95e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2b0ad95e.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-2a0cd75a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2a0cd75a.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-2b0ad95e.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-2b0ad95e.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2b0ad95e.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-06f8475a.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-06f8475a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-06f8475a.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-2a0cd75a.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-2a0cd75a.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-2a0cd75a.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-f03d9abf.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f03d9abf.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-8af59e8f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-8af59e8f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-469ac983.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-469ac983.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4c723136.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4c723136.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-50158085.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-50158085.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-0b3bab3b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0b3bab3b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-128c92f1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-128c92f1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c74e7b7b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c74e7b7b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-8af59e8f.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-8af59e8f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-8af59e8f.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-f03d9abf.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-f03d9abf.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-f03d9abf.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-bf7621ca.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-bf7621ca.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-7d29e3e5.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7d29e3e5.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-53724836.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-53724836.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-d4bac214.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-d4bac214.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c2e37737.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c2e37737.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-4df4adbb.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4df4adbb.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-c5614077.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c5614077.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-58048572.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-58048572.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-469ac983.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-469ac983.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-469ac983.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-54ca7145.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-54ca7145.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-91e41cf1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-91e41cf1.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-50158085.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-50158085.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-50158085.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-3826247b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-3826247b.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-b7abd20f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-b7abd20f.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-4c723136.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-4c723136.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4c723136.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-0b3bab3b.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-0b3bab3b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-0b3bab3b.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-a91ccece.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-a91ccece.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-c74e7b7b.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-c74e7b7b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c74e7b7b.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Retrying (Retry(total=0, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NameResolutionError("HTTPConnection(host='sandbox-claim-24acb954.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-24acb954.default.svc.cluster.local' ([Errno -2] Name or service not known)")': /upload
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-53724836.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-53724836.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-53724836.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-128c92f1.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-128c92f1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-128c92f1.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-bf7621ca.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-bf7621ca.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-bf7621ca.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-d4bac214.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-d4bac214.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-d4bac214.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-7d29e3e5.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-7d29e3e5.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-7d29e3e5.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-c2e37737.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-c2e37737.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c2e37737.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-4df4adbb.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-4df4adbb.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-4df4adbb.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-58048572.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-58048572.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-58048572.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-54ca7145.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-54ca7145.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-54ca7145.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-c5614077.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-c5614077.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-c5614077.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-91e41cf1.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-91e41cf1.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-91e41cf1.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-3826247b.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-3826247b.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-3826247b.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-24acb954.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-24acb954.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-24acb954.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-a91ccece.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-a91ccece.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-a91ccece.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='sandbox-claim-b7abd20f.default.svc.cluster.local', port=8888): Max retries exceeded with url: /upload (Caused by NameResolutionError("HTTPConnection(host='sandbox-claim-b7abd20f.default.svc.cluster.local', port=8888): Failed to resolve 'sandbox-claim-b7abd20f.default.svc.cluster.local' ([Errno -2] Name or service not known)"))
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 33%|███▎      | 4/12 [31:26<1:00:46, 455.87s/it]                                                  33%|███▎      | 4/12 [31:26<1:00:46, 455.87s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 42%|████▏     | 5/12 [38:31<51:52, 444.61s/it]                                                  42%|████▏     | 5/12 [38:31<51:52, 444.61s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 37
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 37
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 37
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 37
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+[step 1] 64 sandbox evals in 0.2s rewards=['0.00', '0.00', '0.00', '0.00', '0.10', '0.00', '0.00', '1.00', '1.00', '0.10', '0.10', '1.00', '1.00', '0.10', '1.00', '1.00', '0.40', '1.00', '0.10', '0.00', '0.10', '0.00', '0.10', '0.40', '1.00', '0.00', '1.00', '0.00', '0.10', '0.10', '1.00', '1.00', '0.40', '1.00', '0.10', '1.00', '0.10', '1.00', '0.00', '0.00', '0.00', '0.00', '0.00', '0.00', '1.00', '1.00', '1.00', '0.00', '0.10', '0.10', '0.10', '0.40', '0.10', '0.10', '0.00', '1.00', '0.70', '0.70', '0.70', '1.00', '0.10', '0.10', '0.00', '0.10']
+[step 1] suspended fleet in 7.5s
+{'loss': 0.1129, 'grad_norm': 3.5894432067871094, 'learning_rate': 2e-06, 'num_tokens': 14685.0, 'completions/mean_length': 73.515625, 'completions/min_length': 15.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.28125, 'completions/mean_terminated_length': 52.19565200805664, 'completions/min_terminated_length': 15.0, 'completions/max_terminated_length': 124.0, 'rewards/sandbox_reward/mean': 0.3843750059604645, 'rewards/sandbox_reward/std': 0.43359655141830444, 'reward': 0.3843749761581421, 'reward_std': 0.33938008546829224, 'frac_reward_zero_std': 0.125, 'kl': 0.0, 'entropy': 0.30226795095950365, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.08}
+[step 2] resumed 64 sandboxes in 4.9s
+[step 2] 64 sandbox evals in 0.4s rewards=['1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '0.40', '0.10', '0.40', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '0.10', '0.10', '1.00', '0.40', '0.40', '0.40', '0.40', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '1.00', '1.00', '1.00', '0.40', '0.10', '1.00', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '0.10', '0.00', '0.00', '0.40', '0.00']
+[step 2] suspended fleet in 6.6s
+{'loss': -0.0083, 'grad_norm': 4.09147310256958, 'learning_rate': 1.833333333333333e-06, 'num_tokens': 28850.0, 'completions/mean_length': 39.578125, 'completions/min_length': 12.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.03125, 'completions/mean_terminated_length': 36.725807189941406, 'completions/min_terminated_length': 12.0, 'completions/max_terminated_length': 93.0, 'rewards/sandbox_reward/mean': 0.38593751192092896, 'rewards/sandbox_reward/std': 0.40034398436546326, 'reward': 0.38593748211860657, 'reward_std': 0.2555769085884094, 'frac_reward_zero_std': 0.375, 'kl': 0.09340033796615899, 'entropy': 0.29392992425709963, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.17}
+[step 3] resumed 64 sandboxes in 4.9s
+[step 3] 64 sandbox evals in 0.3s rewards=['0.10', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.40', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '0.40', '0.40', '0.40', '0.40', '0.10', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '1.00', '0.10', '0.40', '0.40', '1.00', '0.10', '0.10', '0.10', '0.10', '0.40', '0.10', '0.10', '0.10']
+[step 3] suspended fleet in 7.5s
+{'loss': -0.0063, 'grad_norm': 3.0817182064056396, 'learning_rate': 1.6666666666666667e-06, 'num_tokens': 41867.0, 'completions/mean_length': 38.015625, 'completions/min_length': 10.0, 'completions/max_length': 89.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 38.015625, 'completions/min_terminated_length': 10.0, 'completions/max_terminated_length': 89.0, 'rewards/sandbox_reward/mean': 0.40468746423721313, 'rewards/sandbox_reward/std': 0.4017539620399475, 'reward': 0.4046874940395355, 'reward_std': 0.13106918334960938, 'frac_reward_zero_std': 0.625, 'kl': 0.04414168547373265, 'entropy': 0.22608513524755836, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.25}
+[step 4] resumed 64 sandboxes in 4.7s
+[step 4] 64 sandbox evals in 18.5s rewards=['0.10', '0.10', '0.10', '0.10', '0.10', '0.40', '0.10', '0.70', '0.00', '0.70', '1.00', '0.00', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '1.00', '0.10', '1.00', '1.00', '0.70', '0.00', '0.40', '0.40', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00']
+[step 4] suspended fleet in 7.4s
+{'loss': 0.0143, 'grad_norm': 2.6129343509674072, 'learning_rate': 1.5e-06, 'num_tokens': 54903.0, 'completions/mean_length': 48.6875, 'completions/min_length': 18.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.0625, 'completions/mean_terminated_length': 43.400001525878906, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 104.0, 'rewards/sandbox_reward/mean': 0.4468749761581421, 'rewards/sandbox_reward/std': 0.42723503708839417, 'reward': 0.44687503576278687, 'reward_std': 0.15189099311828613, 'frac_reward_zero_std': 0.625, 'kl': 0.03223258053185418, 'entropy': 0.23111636517569423, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.33}
+[step 5] resumed 64 sandboxes in 4.8s
+[step 5] 64 sandbox evals in 0.3s rewards=['0.10', '0.10', '0.10', '0.10', '0.70', '0.70', '0.10', '0.70', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.70', '1.00', '1.00', '1.00', '0.10', '0.40', '0.10', '0.00', '1.00', '1.00', '1.00', '1.00', '1.00', '0.70', '0.70', '0.70', '1.00', '1.00', '1.00', '1.00', '0.40', '0.10', '0.00', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '1.00', '0.10', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '1.00', '0.10', '1.00', '0.10', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10']
+[step 5] suspended fleet in 7.1s
+{'loss': -0.0217, 'grad_norm': 3.2062318325042725, 'learning_rate': 1.3333333333333332e-06, 'num_tokens': 67662.0, 'completions/mean_length': 37.796875, 'completions/min_length': 17.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.03125, 'completions/mean_terminated_length': 34.8870964050293, 'completions/min_terminated_length': 17.0, 'completions/max_terminated_length': 90.0, 'rewards/sandbox_reward/mean': 0.48124998807907104, 'rewards/sandbox_reward/std': 0.42234230041503906, 'reward': 0.4812500476837158, 'reward_std': 0.1478765904903412, 'frac_reward_zero_std': 0.5, 'kl': 0.03875189181417227, 'entropy': 0.18720153393223882, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.42}
+[step 6] resumed 64 sandboxes in 8.8s
+[step 6] 64 sandbox evals in 0.3s rewards=['0.10', '0.10', '0.10', '0.10', '0.00', '1.00', '0.70', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '0.70', '0.70', '1.00', '0.10', '0.70', '0.40', '0.70', '0.70', '0.10', '0.10', '0.10', '0.10', '0.00', '0.10', '0.00', '0.10', '0.70', '0.70', '0.70', '0.70', '0.10', '1.00', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '0.10', '0.40', '0.10', '0.10']
+[step 6] suspended fleet in 12.8s
+ 50%|█████     | 6/12 [46:07<44:52, 448.71s/it]                                                50%|█████     | 6/12 [46:07<44:52, 448.71s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 37
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 37
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 58%|█████▊    | 7/12 [52:58<36:21, 436.29s/it]                                                58%|█████▊    | 7/12 [52:58<36:21, 436.29s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 67%|██████▋   | 8/12 [1:03:10<32:48, 492.18s/it]                                                  67%|██████▋   | 8/12 [1:03:10<32:48, 492.18s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 75%|███████▌  | 9/12 [1:10:26<23:43, 474.67s/it]                                                  75%|███████▌  | 9/12 [1:10:26<23:43, 474.67s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 83%|████████▎ | 10/12 [1:16:37<14:45, 442.51s/it]                                                   83%|████████▎ | 10/12 [1:16:37<14:45, 442.51s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 37
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 38
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.62.62.89', port=8888): Read timed out. (read timeout=30)
+ERROR:root:Request to sandbox failed: HTTPConnectionPool(host='10.62.62.89', port=8888): Read timed out. (read timeout=30)
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+ 92%|█████████▏| 11/12 [1:24:46<07:36, 456.92s/it]                                                   92%|█████████▏| 11/12 [1:24:46<07:36, 456.92s/it]WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 39
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+WARNING:urllib3.connectionpool:Connection pool is full, discarding connection: 10.5.192.1. Connection pool size: 40
+{'loss': 0.0353, 'grad_norm': 3.1069326400756836, 'learning_rate': 1.1666666666666668e-06, 'num_tokens': 81962.0, 'completions/mean_length': 57.0625, 'completions/min_length': 18.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.03125, 'completions/mean_terminated_length': 54.774192810058594, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 123.0, 'rewards/sandbox_reward/mean': 0.32499998807907104, 'rewards/sandbox_reward/std': 0.3532165288925171, 'reward': 0.32499998807907104, 'reward_std': 0.16030064225196838, 'frac_reward_zero_std': 0.5, 'kl': 0.02863049862207845, 'entropy': 0.24288080167025328, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.5}
+[step 7] resumed 64 sandboxes in 4.8s
+[step 7] 64 sandbox evals in 0.3s rewards=['1.00', '0.10', '1.00', '1.00', '0.10', '0.10', '0.10', '0.00', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '1.00', '0.10', '0.40', '1.00', '0.10', '1.00', '0.40', '0.40', '0.70', '0.40', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '0.00', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '0.70', '1.00', '0.00', '0.10', '0.00', '0.00', '1.00', '0.10', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10']
+[step 7] suspended fleet in 6.5s
+{'loss': 0.0082, 'grad_norm': 3.978717088699341, 'learning_rate': 1e-06, 'num_tokens': 96259.0, 'completions/mean_length': 46.328125, 'completions/min_length': 15.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.0625, 'completions/mean_terminated_length': 40.88333511352539, 'completions/min_terminated_length': 15.0, 'completions/max_terminated_length': 106.0, 'rewards/sandbox_reward/mean': 0.4671874940395355, 'rewards/sandbox_reward/std': 0.4353632926940918, 'reward': 0.4671874940395355, 'reward_std': 0.17310094833374023, 'frac_reward_zero_std': 0.4375, 'kl': 0.03826170600950718, 'entropy': 0.21685593575239182, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.58}
+[step 8] resumed 64 sandboxes in 5.5s
+[step 8] 64 sandbox evals in 0.3s rewards=['0.40', '0.70', '0.10', '0.40', '1.00', '0.10', '1.00', '1.00', '0.40', '0.10', '0.40', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.40', '0.10', '0.40', '0.40', '0.10', '0.10', '1.00', '0.10', '0.40', '0.40', '0.70', '0.10', '0.00', '0.00', '0.00', '0.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.00', '0.10', '1.00', '1.00', '1.00', '1.00']
+[step 8] suspended fleet in 5.4s
+{'loss': 0.0186, 'grad_norm': 3.4199821949005127, 'learning_rate': 8.333333333333333e-07, 'num_tokens': 112455.0, 'completions/mean_length': 50.5, 'completions/min_length': 16.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.0625, 'completions/mean_terminated_length': 45.33333206176758, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 115.0, 'rewards/sandbox_reward/mean': 0.3499999940395355, 'rewards/sandbox_reward/std': 0.37628090381622314, 'reward': 0.3500000238418579, 'reward_std': 0.16644394397735596, 'frac_reward_zero_std': 0.4375, 'kl': 0.0394491400802508, 'entropy': 0.18733745533972979, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.67}
+[step 9] resumed 64 sandboxes in 4.8s
+[step 9] 64 sandbox evals in 0.3s rewards=['0.10', '0.40', '1.00', '0.40', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '1.00', '0.70', '0.40', '0.40', '0.40', '0.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '0.10', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '1.00', '0.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10']
+[step 9] suspended fleet in 7.8s
+{'loss': 0.0229, 'grad_norm': 5.23209810256958, 'learning_rate': 6.666666666666666e-07, 'num_tokens': 127094.0, 'completions/mean_length': 29.859375, 'completions/min_length': 14.0, 'completions/max_length': 103.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 29.859375, 'completions/min_terminated_length': 14.0, 'completions/max_terminated_length': 103.0, 'rewards/sandbox_reward/mean': 0.5093749761581421, 'rewards/sandbox_reward/std': 0.4359695613384247, 'reward': 0.5093749761581421, 'reward_std': 0.21667011082172394, 'frac_reward_zero_std': 0.4375, 'kl': 0.03570310864597559, 'entropy': 0.21236071782186627, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.75}
+[step 10] resumed 64 sandboxes in 4.6s
+[step 10] 64 sandbox evals in 0.3s rewards=['0.10', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.40', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '0.10', '1.00', '0.10', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '1.00', '0.70', '0.40', '0.70', '0.70', '1.00', '0.10', '0.10', '1.00']
+[step 10] suspended fleet in 5.6s
+{'loss': 0.0155, 'grad_norm': 3.7266135215759277, 'learning_rate': 5e-07, 'num_tokens': 140862.0, 'completions/mean_length': 30.75, 'completions/min_length': 16.0, 'completions/max_length': 79.0, 'completions/clipped_ratio': 0.0, 'completions/mean_terminated_length': 30.75, 'completions/min_terminated_length': 16.0, 'completions/max_terminated_length': 79.0, 'rewards/sandbox_reward/mean': 0.4609375, 'rewards/sandbox_reward/std': 0.42821788787841797, 'reward': 0.4609375, 'reward_std': 0.11182690411806107, 'frac_reward_zero_std': 0.6875, 'kl': 0.04639626818243414, 'entropy': 0.22816804144531488, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.83}
+[step 11] resumed 64 sandboxes in 4.8s
+  reward-exec error [11_47]: Failed to communicate with the sandbox at http://10.62.62.89:8888/execute.
+  [healer] replaced wedged sandbox
+[step 11] 64 sandbox evals in 68.0s rewards=['0.10', '1.00', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.40', '1.00', '0.10', '0.10', '0.10', '0.40', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.70', '0.10', '0.40', '0.10', '0.10', '0.10', '0.10', '0.10', '0.40', '0.00', '0.10', '0.70', '0.40', '0.70', '1.00', '0.10', '0.70', '0.40', '0.40', '0.70', '0.40', '0.70', '0.40', '0.10', '0.10', '0.10', '0.00', '0.40', '0.10', '0.70', '1.00', '0.10', '0.10', '0.10', '0.10', '0.10', '0.40', '0.40', '1.00', '1.00', '0.40', '0.40', '0.70']
+[step 11] suspended fleet in 6.9s
+{'loss': 0.0169, 'grad_norm': 3.7665679454803467, 'learning_rate': 3.333333333333333e-07, 'num_tokens': 154242.0, 'completions/mean_length': 48.8125, 'completions/min_length': 15.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.015625, 'completions/mean_terminated_length': 47.55555725097656, 'completions/min_terminated_length': 15.0, 'completions/max_terminated_length': 111.0, 'rewards/sandbox_reward/mean': 0.3359375, 'rewards/sandbox_reward/std': 0.3154071271419525, 'reward': 0.3359375298023224, 'reward_std': 0.20746463537216187, 'frac_reward_zero_std': 0.25, 'kl': 0.03880416019819677, 'entropy': 0.2215096652507782, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 0.92}
+[step 12] resumed 64 sandboxes in 4.7s
+[step 12] 64 sandbox evals in 0.3s rewards=['0.10', '0.10', '0.10', '0.10', '1.00', '0.10', '1.00', '1.00', '0.10', '0.40', '0.10', '0.10', '0.10', '0.10', '0.10', '0.00', '0.10', '1.00', '0.10', '0.10', '0.70', '0.00', '0.00', '0.40', '0.10', '1.00', '0.10', '0.40', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.40', '1.00', '0.10', '0.10', '0.10', '1.00', '0.10', '0.10', '0.10', '0.10', '1.00', '1.00', '1.00', '0.40', '0.10', '0.10', '0.10', '0.10', '0.10', '0.10', '0.00', '0.10', '0.10', '0.10', '0.10', '0.70', '0.40', '0.40', '0.40']
+[step 12] suspended fleet in 5.3s
+100%|██████████| 12/12 [1:30:54<00:00, 429.72s/it]                                                  100%|██████████| 12/12 [1:30:54<00:00, 429.72s/it]                                                  100%|██████████| 12/12 [1:30:54<00:00, 429.72s/it]100%|██████████| 12/12 [1:30:54<00:00, 454.52s/it]
+{'loss': 0.0034, 'grad_norm': 4.645376682281494, 'learning_rate': 1.6666666666666665e-07, 'num_tokens': 167335.0, 'completions/mean_length': 54.828125, 'completions/min_length': 18.0, 'completions/max_length': 128.0, 'completions/clipped_ratio': 0.0625, 'completions/mean_terminated_length': 49.95000076293945, 'completions/min_terminated_length': 18.0, 'completions/max_terminated_length': 124.0, 'rewards/sandbox_reward/mean': 0.29062503576278687, 'rewards/sandbox_reward/std': 0.3393358588218689, 'reward': 0.2906250059604645, 'reward_std': 0.2321629375219345, 'frac_reward_zero_std': 0.1875, 'kl': 0.04680181393632665, 'entropy': 0.2766602896153927, 'clip_ratio/low_mean': 0.0, 'clip_ratio/low_min': 0.0, 'clip_ratio/high_mean': 0.0, 'clip_ratio/high_max': 0.0, 'clip_ratio/region_mean': 0.0, 'epoch': 1.0}
+{'train_runtime': 5454.2026, 'train_samples_per_second': 0.141, 'train_steps_per_second': 0.002, 'train_loss': 0.017648799461312592, 'epoch': 1.0}
+terminating reward sandboxes...
