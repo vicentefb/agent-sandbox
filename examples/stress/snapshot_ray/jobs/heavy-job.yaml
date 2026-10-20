@@ -1,0 +1,45 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: heavy-snap
+spec:
+  completionMode: Indexed
+  completions: 2
+  parallelism: 2
+  backoffLimit: 2
+  template:
+    spec:
+      restartPolicy: Never
+      tolerations:
+      - key: sandbox.gke.io/runtime
+        operator: Equal
+        value: gvisor
+        effect: NoSchedule
+      volumes:
+      - name: script
+        configMap:
+          name: heavy-script
+      containers:
+      - name: driver
+        image: us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/grpo-trainer:v1
+        workingDir: /work
+        env:
+        - name: SANDBOXES
+          value: "8"
+        - name: STATE_MB
+          value: "4096"
+        - name: CYCLES
+          value: "3"
+        - name: WARMPOOL
+          value: "heavy-pool"
+        volumeMounts:
+        - name: script
+          mountPath: /work
+        resources:
+          requests:
+            cpu: "1"
+            memory: "2Gi"
+          limits:
+            cpu: "1"
+            memory: "2Gi"
+        command: ["python", "/work/heavy_snapshot_test.py"]

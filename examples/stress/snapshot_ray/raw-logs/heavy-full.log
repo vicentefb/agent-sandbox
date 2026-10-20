@@ -1,0 +1,206 @@
+[pod/heavy-snap-0-tqkpg/driver] claimed 0
+[pod/heavy-snap-0-tqkpg/driver] claimed 1
+[pod/heavy-snap-0-tqkpg/driver] claimed 2
+[pod/heavy-snap-0-tqkpg/driver] claimed 3
+[pod/heavy-snap-0-tqkpg/driver] claimed 4
+[pod/heavy-snap-0-tqkpg/driver] claimed 5
+[pod/heavy-snap-0-tqkpg/driver] claimed 6
+[pod/heavy-snap-0-tqkpg/driver] claimed 7
+[pod/heavy-snap-0-tqkpg/driver] WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='10.116.91.76', port=8888): Failed to establish a new connection: [Errno 111] Connection refused")': /upload
+[pod/heavy-snap-0-tqkpg/driver] WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='10.113.13.211', port=8888): Failed to establish a new connection: [Errno 111] Connection refused")': /upload
+[pod/heavy-snap-0-tqkpg/driver] WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='10.116.91.76', port=8888): Failed to establish a new connection: [Errno 111] Connection refused")': /upload
+[pod/heavy-snap-0-tqkpg/driver] WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='10.113.13.211', port=8888): Failed to establish a new connection: [Errno 111] Connection refused")': /upload
+[pod/heavy-snap-0-tqkpg/driver] [3] wrote 4096MB in 9.1s digest=842e4dda
+[pod/heavy-snap-0-tqkpg/driver] [4] wrote 4096MB in 9.2s digest=55a74324
+[pod/heavy-snap-0-tqkpg/driver] [5] wrote 4096MB in 9.5s digest=38b1fbf8
+[pod/heavy-snap-0-tqkpg/driver] [0] wrote 4096MB in 9.7s digest=2bba3ff8
+[pod/heavy-snap-0-tqkpg/driver] [1] wrote 4096MB in 9.9s digest=c70d63ba
+[pod/heavy-snap-0-tqkpg/driver] [7] wrote 4096MB in 10.1s digest=1099a945
+[pod/heavy-snap-0-tqkpg/driver] [2] wrote 4096MB in 12.4s digest=44bf7db1
+[pod/heavy-snap-0-tqkpg/driver] [6] wrote 4096MB in 12.7s digest=a7c3d4b0
+[pod/heavy-snap-0-tqkpg/driver] === cycle 0 ===
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-SUSPEND 4096MB ok=True in 7.5s
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-SUSPEND 4096MB ok=True in 7.6s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-SUSPEND 4096MB ok=True in 7.7s
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-SUSPEND 4096MB ok=True in 9.3s
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-SUSPEND 4096MB ok=True in 9.4s
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-SUSPEND 4096MB ok=True in 9.4s
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-SUSPEND 4096MB ok=True in 9.5s
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-SUSPEND 4096MB ok=True in 9.6s
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-e596ae12' was not restored from snapshot 'b51a802e-a255-432f-91a1-5b6c04211789': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-VERIFY ok=True in 6.6s
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-VERIFY ok=True in 6.7s
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-VERIFY ok=True in 7.1s
+[pod/heavy-snap-0-tqkpg/driver] === cycle 1 ===
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-SUSPEND 4096MB ok=True in 7.1s
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-SUSPEND 4096MB ok=True in 7.1s
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-SUSPEND 4096MB ok=True in 7.4s
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-SUSPEND 4096MB ok=True in 7.5s
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-SUSPEND 4096MB ok=True in 9.0s
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-SUSPEND 4096MB ok=True in 9.2s
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-SUSPEND 4096MB ok=True in 9.4s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-SUSPEND 4096MB ok=True in 9.7s
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-c70eae6c' was not restored from snapshot '1e5062d6-6536-4e74-b0f8-d102608835c0': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-RESUME 4096MB ok=False in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-RESUME 4096MB ok=False in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-c39208af' was not restored from snapshot '087f04e8-468d-4f45-8f3a-c52a101102fa': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-85c21ad9' was not restored from snapshot '316ff0de-e215-4ad3-9a5c-89da9b581ee0': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-51584b8c' was not restored from snapshot 'd25763aa-b41e-40e5-b1dc-42b3c9607fc2': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-VERIFY ok=True in 6.7s
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-VERIFY ok=True in 6.7s
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-VERIFY ok=True in 6.7s
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-VERIFY ok=True in 7.2s
+[pod/heavy-snap-0-tqkpg/driver] === cycle 2 ===
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-SUSPEND 4096MB ok=True in 7.3s
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-SUSPEND 4096MB ok=True in 7.7s
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-SUSPEND 4096MB ok=True in 7.8s
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-SUSPEND 4096MB ok=True in 8.4s
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-SUSPEND 4096MB ok=True in 9.3s
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-SUSPEND 4096MB ok=True in 9.4s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-SUSPEND 4096MB ok=True in 9.8s
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-SUSPEND 4096MB ok=True in 10.1s
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-c70eae6c' was not restored from snapshot '970cea18-bbf5-44df-9f91-85d0ce588c19': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-RESUME 4096MB ok=False in 4.2s
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-c39208af' was not restored from snapshot '28bda5c9-3ad1-47e1-96de-e9a03dac96b7': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-85c21ad9' was not restored from snapshot '55eb34ed-c4e7-454b-a03a-08ee719554b7': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-0-tqkpg/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-e596ae12' was not restored from snapshot 'aaae0bf6-416d-42f4-a96d-178015651e04': Pod was started as a fresh instance
+[pod/heavy-snap-0-tqkpg/driver] [2] HEAVY-VERIFY ok=True in 6.7s
+[pod/heavy-snap-0-tqkpg/driver] [4] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-0-tqkpg/driver] [6] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-0-tqkpg/driver] [3] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [5] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [0] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-0-tqkpg/driver] [7] HEAVY-VERIFY ok=True in 7.0s
+[pod/heavy-snap-0-tqkpg/driver] [1] HEAVY-VERIFY ok=True in 7.0s
+[pod/heavy-snap-0-tqkpg/driver] terminating...
+[pod/heavy-snap-0-tqkpg/driver] DONE
+[pod/heavy-snap-1-h8wbv/driver] claimed 0
+[pod/heavy-snap-1-h8wbv/driver] claimed 1
+[pod/heavy-snap-1-h8wbv/driver] claimed 2
+[pod/heavy-snap-1-h8wbv/driver] claimed 3
+[pod/heavy-snap-1-h8wbv/driver] claimed 4
+[pod/heavy-snap-1-h8wbv/driver] claimed 5
+[pod/heavy-snap-1-h8wbv/driver] claimed 6
+[pod/heavy-snap-1-h8wbv/driver] claimed 7
+[pod/heavy-snap-1-h8wbv/driver] WARNING:urllib3.connectionpool:Retrying (Retry(total=4, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='10.114.17.93', port=8888): Failed to establish a new connection: [Errno 111] Connection refused")': /upload
+[pod/heavy-snap-1-h8wbv/driver] WARNING:urllib3.connectionpool:Retrying (Retry(total=3, connect=None, read=None, redirect=None, status=None)) after connection broken by 'NewConnectionError("HTTPConnection(host='10.114.17.93', port=8888): Failed to establish a new connection: [Errno 111] Connection refused")': /upload
+[pod/heavy-snap-1-h8wbv/driver] [3] wrote 4096MB in 8.9s digest=bfd2e557
+[pod/heavy-snap-1-h8wbv/driver] [6] wrote 4096MB in 9.0s digest=d16e912d
+[pod/heavy-snap-1-h8wbv/driver] [0] wrote 4096MB in 9.0s digest=3e141dee
+[pod/heavy-snap-1-h8wbv/driver] [2] wrote 4096MB in 9.1s digest=e8f10f06
+[pod/heavy-snap-1-h8wbv/driver] [4] wrote 4096MB in 9.1s digest=21620b9b
+[pod/heavy-snap-1-h8wbv/driver] [5] wrote 4096MB in 9.3s digest=95d958b8
+[pod/heavy-snap-1-h8wbv/driver] [1] wrote 4096MB in 9.6s digest=202e33f9
+[pod/heavy-snap-1-h8wbv/driver] [7] wrote 4096MB in 10.2s digest=c23b6ce4
+[pod/heavy-snap-1-h8wbv/driver] === cycle 0 ===
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-SUSPEND 4096MB ok=True in 7.4s
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-SUSPEND 4096MB ok=True in 9.3s
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-SUSPEND 4096MB ok=True in 9.3s
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-SUSPEND 4096MB ok=True in 9.4s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-SUSPEND 4096MB ok=True in 9.5s
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-SUSPEND 4096MB ok=True in 9.6s
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-SUSPEND 4096MB ok=True in 9.7s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-SUSPEND 4096MB ok=True in 9.7s
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-c257ad7c' was not restored from snapshot '7403c9f9-bf91-4126-b539-46cc59da5951': Pod was started as a fresh instance
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] === cycle 1 ===
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-SUSPEND 4096MB ok=True in 7.3s
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-SUSPEND 4096MB ok=True in 7.4s
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-SUSPEND 4096MB ok=True in 9.2s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-SUSPEND 4096MB ok=True in 9.2s
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-SUSPEND 4096MB ok=True in 9.3s
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-SUSPEND 4096MB ok=True in 9.3s
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-SUSPEND 4096MB ok=True in 9.3s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-SUSPEND 4096MB ok=True in 9.6s
+[pod/heavy-snap-1-h8wbv/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-e0dbf92a' was not restored from snapshot 'fecceb73-30f7-406b-84d1-14b4e7fd74a1': Pod was started as a fresh instance
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-RESUME 4096MB ok=False in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-c257ad7c' was not restored from snapshot 'e9d521d7-e9e2-40be-be4d-ba2687f562d8': Pod was started as a fresh instance
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-f518b0fc' was not restored from snapshot '3f678228-ca42-46e0-bc82-b609d1289b3e': Pod was started as a fresh instance
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-RESUME 4096MB ok=False in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-RESUME 4096MB ok=True in 4.4s
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-VERIFY ok=True in 6.7s
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-VERIFY ok=True in 7.0s
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-VERIFY ok=True in 7.1s
+[pod/heavy-snap-1-h8wbv/driver] === cycle 2 ===
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-SUSPEND 4096MB ok=True in 7.5s
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-SUSPEND 4096MB ok=True in 7.5s
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-SUSPEND 4096MB ok=True in 7.5s
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-SUSPEND 4096MB ok=True in 7.6s
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-SUSPEND 4096MB ok=True in 7.9s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-SUSPEND 4096MB ok=True in 8.2s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-SUSPEND 4096MB ok=True in 9.6s
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-SUSPEND 4096MB ok=True in 9.7s
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] ERROR:k8s_agent_sandbox.gke_extensions.snapshots.sandbox_with_snapshot_support:Sandbox 'sandbox-claim-0c4537d7' was not restored from snapshot '23eac4bb-fe8f-4401-8a52-165b37313c74': Pod was started as a fresh instance
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-RESUME 4096MB ok=False in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-RESUME 4096MB ok=True in 4.2s
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-RESUME 4096MB ok=True in 4.3s
+[pod/heavy-snap-1-h8wbv/driver] [5] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-1-h8wbv/driver] [1] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-1-h8wbv/driver] [0] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-1-h8wbv/driver] [7] HEAVY-VERIFY ok=True in 6.8s
+[pod/heavy-snap-1-h8wbv/driver] [4] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [6] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [3] HEAVY-VERIFY ok=True in 6.9s
+[pod/heavy-snap-1-h8wbv/driver] [2] HEAVY-VERIFY ok=True in 7.0s
+[pod/heavy-snap-1-h8wbv/driver] terminating...
+[pod/heavy-snap-1-h8wbv/driver] DONE

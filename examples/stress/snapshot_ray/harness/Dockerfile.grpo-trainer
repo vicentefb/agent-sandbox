@@ -1,0 +1,17 @@
+# Baked GRPO trainer: all deps + model + dataset in-image so trainers can run
+# on private nodes (no pip/HF egress). Script still comes from the configmap.
+# Build: gcloud builds submit --project gke-ai-eco-dev \
+#   --tag us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/grpo-trainer:v1 - < Dockerfile.grpo-trainer
+FROM python:3.11-slim
+
+RUN pip install --no-cache-dir torch --index-url https://download.pytorch.org/whl/cpu && \
+    pip install --no-cache-dir "trl==0.21.0" "transformers<5" datasets accelerate k8s-agent-sandbox==1.0.0
+
+ENV HF_HOME=/opt/hf
+RUN python -c "from huggingface_hub import snapshot_download; snapshot_download('Qwen/Qwen2.5-0.5B-Instruct')" && \
+    python -c "from datasets import load_dataset; load_dataset('google-research-datasets/mbpp')"
+
+# Never touch the network at runtime.
+ENV HF_HUB_OFFLINE=1 HF_DATASETS_OFFLINE=1
+WORKDIR /work
+CMD ["python", "/work/grpo_sandbox_train.py"]

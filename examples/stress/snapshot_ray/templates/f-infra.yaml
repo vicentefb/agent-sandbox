@@ -1,0 +1,109 @@
+apiVersion: v1
+items:
+- apiVersion: extensions.agents.x-k8s.io/v1beta1
+  kind: SandboxTemplate
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"extensions.agents.x-k8s.io/v1beta1","kind":"SandboxTemplate","metadata":{"annotations":{},"name":"python-snapshot-sandbox","namespace":"default"},"spec":{"envVarsInjectionPolicy":"Disallowed","networkPolicyManagement":"Unmanaged","podTemplate":{"metadata":{"labels":{"app":"python-snapshot-pool"}},"spec":{"automountServiceAccountToken":false,"containers":[{"image":"registry.k8s.io/agent-sandbox/python-runtime-sandbox:v0.4.6","imagePullPolicy":"Always","name":"runtime"}],"runtimeClassName":"gvisor","serviceAccountName":"sandbox-snapshot-ksa"}}}}
+    creationTimestamp: "2026-09-08T00:13:35Z"
+    generation: 3
+    labels:
+      agents.x-k8s.io/sandbox-template-ref-hash: f9b1004c
+    name: python-snapshot-sandbox
+    namespace: default
+    resourceVersion: "1788826422589887024"
+    uid: 54a27df0-c5c2-47e1-8137-6d04e2e4a723
+  spec:
+    envVarsInjectionPolicy: Disallowed
+    networkPolicyManagement: Unmanaged
+    podTemplate:
+      metadata:
+        labels:
+          app: python-snapshot-pool
+      spec:
+        automountServiceAccountToken: false
+        containers:
+        - image: us-docker.pkg.dev/gke-ai-eco-dev/sandbox-images/python-runtime-sandbox:v0.4.6
+          imagePullPolicy: Always
+          name: runtime
+        nodeSelector:
+          cloud.google.com/machine-family: n2d
+        runtimeClassName: gvisor
+        serviceAccountName: sandbox-snapshot-ksa
+    volumeClaimTemplatesPolicy: Disallowed
+- apiVersion: podsnapshot.gke.io/v1
+  kind: PodSnapshotPolicy
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"podsnapshot.gke.io/v1","kind":"PodSnapshotPolicy","metadata":{"annotations":{},"name":"sandbox-snapshot-policy","namespace":"default"},"spec":{"selector":{"matchLabels":{"app":"python-snapshot-pool"}},"snapshotGroupingRules":{"groupByLabelValue":{"groupRetentionPolicy":{"maxSnapshotCountPerGroup":3},"labels":["agents.x-k8s.io/sandbox-name-hash"]}},"storageConfigName":"sandbox-snapshot-storage","triggerConfig":{"postCheckpoint":"resume","type":"manual"}}}
+    creationTimestamp: "2026-09-08T00:13:35Z"
+    generation: 1
+    name: sandbox-snapshot-policy
+    namespace: default
+    resourceVersion: "1788826415131247012"
+    uid: 8ac9f262-e3b8-44bd-8789-a962416b071e
+  spec:
+    selector:
+      matchLabels:
+        app: python-snapshot-pool
+    snapshotGroupingRules:
+      groupByLabelValue:
+        groupRetentionPolicy:
+          maxSnapshotCountPerGroup: 3
+        labels:
+        - agents.x-k8s.io/sandbox-name-hash
+    snapshotScope: whole-pod
+    storageConfigName: sandbox-snapshot-storage
+    triggerConfig:
+      postCheckpoint: resume
+      type: manual
+  status:
+    conditions:
+    - lastTransitionTime: "2026-09-08T00:13:35Z"
+      message: Policy specification is supported
+      reason: PolicySpecSupported
+      status: "True"
+      type: PolicySpecSupported
+    - lastTransitionTime: "2026-09-08T00:13:35Z"
+      message: The referenced PodSnapshotStorageConfig "sandbox-snapshot-storage"
+        was found
+      reason: StorageConfigValid
+      status: "True"
+      type: StorageConfigValid
+    - lastTransitionTime: "2026-09-08T00:13:35Z"
+      message: The referenced PodSnapshotStorageConfig "sandbox-snapshot-storage"
+        was found
+      reason: StorageConfigValid
+      status: "True"
+      type: Ready
+    observedGeneration: 1
+- apiVersion: podsnapshot.gke.io/v1
+  kind: PodSnapshotStorageConfig
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"podsnapshot.gke.io/v1","kind":"PodSnapshotStorageConfig","metadata":{"annotations":{},"name":"sandbox-snapshot-storage"},"spec":{"snapshotStorageConfig":{"gcs":{"bucket":"gke-ai-eco-dev-sbx-snapshots-us-west1","path":"agent-sandbox-snapshots"}}}}
+    creationTimestamp: "2026-09-08T00:13:35Z"
+    generation: 1
+    name: sandbox-snapshot-storage
+    resourceVersion: "1788826415045007001"
+    uid: a95ce103-0019-4590-a158-91d74ae7c8b0
+  spec:
+    snapshotStorageConfig:
+      gcs:
+        bucket: gke-ai-eco-dev-sbx-snapshots-us-west1
+        path: agent-sandbox-snapshots
+        tokenSource: podKSA
+  status:
+    conditions:
+    - lastTransitionTime: "2026-09-08T00:13:35Z"
+      message: Valid PodSnapshotStorageConfig
+      reason: StorageConfigValid
+      status: "True"
+      type: Ready
+    observedGeneration: 1
+kind: List
+metadata:
+  resourceVersion: ""
